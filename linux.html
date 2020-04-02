@@ -1,0 +1,258 @@
+SYSTÈME		
+	do-release-upgrade	Upgrade operating system to latest release.
+	cat /etc/issue	Version du système.
+	sudo hwclock –show	Heure du système.
+	systemctl status systemd-timesyncd.service	Donne le statut du démon de synchronisation de l'heure locale à un serveur distant. Pour indiquer le serveur à connecter, éditer le fichier /etc/systemd/timesyncd.conf (ajouter les serveurs, séparés par des espaces, sur la ligne "NTP=" décommentée).
+	sudo -i	Se logger comme root (home = /root).
+	sudo passwd	Changer le pw de root.
+	passwd	Changer mon pw.
+	sudo passwd USERNAME	Changer le pw d'un autre utilisateur.
+	apt policy linux-generic	Version du kernel.
+	uname -s	Nom du kernel.
+	uname -r	Version du kernel.
+	purge-old-kernels	Purge les vieux kernels (s’appuie sur byobu qui doit être installé).
+	dpkg -l linux-image-\* | grep ^ii	Voir tous les kernels installés.
+	lspci -k	Liste tous les drivers PCI, et indique les modules kernels capables de s'en occuper.
+	lscpu	Informations sur l'architecture CPU.
+	xdg-user-dirs-update	Updates the current state of the users user-dirs.dir. Utile pour restaurer les icônes par défaut (Pictures, Music…) si on a remplacé les folders initiaux par des liens symboliques vers un disque externe.
+	dconf-editor	Éditeur graphique de gsettings et dconf.
+	free	Display amount of free and used memory in the system.
+	~/.config/user-dirs.dirs	Éditer ce fichier pour modifier les dossiers systèmes de l’utilisateur (donc aussi les vignettes).
+		
+MATÉRIEL		
+	xset -q	Informations on the current settings (keyboard, pointer, screen…).
+	xset r rate 250 70	Vitesse de répétition des touches du clavier.
+	xinput	Lister et modifier les réglages concernant le matériel d’input (souris, clavier).
+	xinput list-props 10	Propriétés du device 10 (indice à prendre dans la liste, cf. ligne précédente).
+		
+CRONTAB		
+	crontab -l	Voir mon fichier crontab.
+	crontab -e	Éditer mon fichier crontab.
+	# Example of job definition: # .---------------- minute (0 - 59) # |  .------------- hour (0 - 23) # |  |  .---------- day of month (1 - 31) # |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ... # |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat # |  |  |  |  | # *  *  *  *  *  user command to be executed	Syntaxe d’une ligne de crontab.
+	0 0 13 1 5 tâche	Exécuter tâche le 13 janvier et tous les vendredis.
+	*/5 9-17 * * mon,tue,wed,thu,fri wall "Où en es tu ?"	Afficher un message toutes les 5 minutes entre 9h et 17h.
+	00 */6 * * * /root/scripts/synchronisation-ftp.sh	Exécution d’une commande toutes les 6 heures.
+	00 22 * * * /root/scripts/sauvegarde.sh >> sauvegarde.log	Exécution d’une commande à 22h et écriture dans un fichier log.
+		
+WATCH		
+	watch -n 5 <command>	Exécute <command> toutes les 5 secondes et affiche le résultat rafraîchi dans le Terminal.
+		
+RÉSEAU		
+	ip [OBJECT]	Infos sur le réseau et les interfaces (voir man ip pour les objets disponibles).
+	ip -s -c -h a	Adresses, avec stats, couleurs et option 'human'.
+	hostname -I	Renvoie l'adresse IP de ce poste.
+	nmap 192.168.1.11	Scanne les ports ouverts sur une machine du réseau.
+	sudo netdiscover -r 192.168.1.0/24	Scanne le réseau local.
+	avahi-browse --all --terminate	Idem.
+	avahi-resolve-address 192.168.1.254	Résout l’adresse IP passée en paramètre.
+	nmcli	Command-line tool for controlling NetworkManager. Use "nmcli device show" to get complete information about known devices and "nmcli connection show" to get an overview on active connection profiles.
+		
+DEVICES/MOUNT		
+	df -h	Espace libre/utilisé sur disque.
+	df -h | grep "^/dev/sd*" | sort	Idem, mais seulement les «/dev/sd*».
+	sudo fdisk -l	Liste des devices (indique notamment la partition de boot).
+	mount -t ntfs /dev/sda1  /mnt/	Monter /dev/sda1 sur /mnt (type ntfs, pour usb: usually vfat, pour linux: usually ext).
+	mount /dev/disk/by-id/ata-ST31500341AS_9VS2AM04-part1 /some/dir	Idem by verbose path (other names: /dev/disk/by-uuid/, /dev/disk/by-path/, /dev/disk/by-label/.
+	lsblk --fs -l -o NAME,FSTYPE,LABEL,UUID,MOUNTPOINT,SIZE	Vue générale des filesystems et partitions (permet de voir les types, uuid etc.). Voir les available columns en tapant 'lsblk --help'.
+	sudo blkid	Locate/print block device attributes.
+	findmnt	Trouver un filesystem.
+	findmnt -lo source,target,fstype,label,options,used -t ext4	-l: list; -o: options list; -t: filter.
+	lsusb	Liste les devices usb.
+	cat /proc/partitions	Liste les partitions.
+	lsblk -io KNAME,TYPE,SIZE,MODEL	Lists  information  about  all available or the specified block devices.
+		
+MODULES		
+	sudo modprobe <nom_du_module>	Charger un module kernel.
+	depmod	Handle dependency descriptions for loadable kernel modules.
+	insmod	Install loadable kernel module.
+	lsmod	List loaded modules. /proc/modules shows what kernel modules (drivers) are currently loaded into memory.
+	modinfo	Display information about a kernel module.
+	modprobe	High level handling of loadable modules.
+	rmmod	Unload loadable modules.
+		
+SERVICES/DÉMONS		
+	systemctl list-unit-files *service	Liste tous les services (systemctl) et leur état.
+	systemctl | grep running	Liste tous les services dont le statut est “running”.
+	systemctl list-unit-files --state=enabled	Liste tous les services dont le statut est “enabled”.
+	service --status-all	Runs all init scripts with the status command.
+	ls /etc/init.d	Liste tous les démons.
+	cd /etc/systemd/system sudo chmod a+x sdcard.service  systemctl --system daemon-reload  systemctl start sdcard.service	Pour ajouter le service sdcard.service.
+	sudo systemctl stop sdcard.service sudo systemctl disable sdcard.service sudo rm sdcard.service sudo rm sdcard.service sudo systemctl daemon-reload  sudo systemctl reset-failed	Pour supprimer le service sdcard.service.
+		
+MAILS		
+	cd ~/.thunderbird/xxx.default/Mail/localhost ln -s ~/Mails/Inbox Inbox	Voir les mails de ~/Mails/Inbox sur Thunderbird.
+		
+ACCÈS		
+	id	Pour voir dans quels groupes je suis inscrit.
+	groups	Idem (plus simple).
+	whoami	To know who I am.
+		
+PAQUETS		
+	sudo dpkg -i *.deb	Installer un paquet deb.
+	dpkg-query -l	Liste des paquets présents dans la database dpkg.
+	apt list --installed	Liste des paquets installés.
+	aptitude search '~i!~M'	Idem avec aptitude.
+	apt-file search 'word'	Cherche un paquet contenant 'word'.
+	apt-get autoremove	Supprime les paquets installés en raison de dépendances, et devenus inutiles.
+	apt-get autoremove --purge	Supprimer les anciens noyaux.
+	apt-get autoremove --purge <nom-du-paquet>	Supprimer le paquet, ses dépendances et ses fichiers de configuration.
+	apt-get upgrade	Installe nouvelles versions de tous les paquets.
+	apt-get dist-upgrade	Mise à jour des paquets, se charge de gérer les changements de paquets dépendants (cf. aptitude full-upgrade).
+	apt-get check	Checks for broken dependencies.
+	aptitude update	Met à jour la liste des paquets disponibles.
+	aptitude safe-upgrade	Met à jour les paquets installés vers leurs versions les plus récentes, sans détruire l'existant.
+	aptitude full-upgrade	Idem mais installe et supprime selon les besoins.
+	aptitude autoclean	Supprime du cache les paquets qui ne peuvent plus être downloadés.
+	deborphan	Liste les paquets orphelins.
+		
+REPOSITORIES		
+	add-apt-repository ppa:<user>/<ppa-name>	Ajoute un repository dans /etc/apt/sources.list.d/.
+	add-apt-repository --remove ppa:virtualbox	Supprimer un repository.
+		
+KEYS		
+	wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -	Ajouter une clé.
+	wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key --keyring /tmp/test add -	Ajouter une clé dans un autre dossier que /etc/apt/.
+	apt-key list	Liste des clés.
+	apt-key del B9F8	Supprimer une clé.
+		
+CD		
+	cd "$(find -L . -name 'xxx' -type d)"	Commande en argument de cd.
+		
+CHMOD		
+	chmod -R a+rw my_rep	Droits rw à tout le monde de manière récursive.
+	chmod -R u-x,g-x,o-x,u+X,g+X,o+X my_rep	Droits x au rép. + sous-rép., et non-x aux fichiers.
+		
+PROCESSES		
+	echo $$	Donne le pid du shell courant ('1000' par ex.).
+	ps --pid 1000	Montre que c'est un shell.
+	ps -o ppid= -p 1000	Donne le pid du parent.
+	ps -aux	Liste des processes.
+	ps -aux | grep firefox	Trouver le pid de Firefox.
+	pgrep firefox	Idem.
+	pidof firefox	Idem.
+	kill -9 2301	Kill le process 2301.
+	kill -9 `pidof firefox`	Tuer le process de Firefox.
+	pkill firefox	Idem (encore faut-il être sûr qu’il n’y a qu’un process firefox).
+	top	Displays Linux processes (dynamique).     press shift+m after running the top command     or you can interactively choose which column to sort on         press Shift+f to enter the interactive menu         press the up or down arrow until the %MEM choice is highlighted         press s to select %MEM choice         press enter to save your selection         press q to exit the interactive menu
+	htop	Idem (beaucoup mieux).
+	long-running-command [Ctrl+Z] bg	Mettre une commande en background.
+		
+FIND		
+	find . type f -printf '%p %s'	printf = formate le résultat (voir man find pour la liste des balises). %p = nom, %s = taille du fichier.
+	find -L	Follow symbolic links.
+	find . ! -name '*light*' -delete	Delete every find which doesn't contain 'light'.
+		
+GREP		
+	grep -rn --include=*.php word	Inclut seulement les fichiers tex et cherche le mot 'word' (-r = recursive, -n = affiche les numéros de lignes).
+	--exclude=\*.{c,h}	Exclut les fichiers .c et .h.
+	--exclude-dir={dir1,*.dst}	Exclut des répertoires.
+	-l (L minuscule)	Ne retourne que les noms de fichiers.
+	grep -v ‘pattern’	Retourne les lignes qui ne matchent pas ‘pattern’.
+		
+DOSSIERS		
+	du -hsc *	Taille d'un dossier et de ses sous-dossiers.
+	ncdu [path]	Taille d'un dossier et de ses sous-dossiers + interface (basé sur le précédent). Défaut : répertoire courant.
+	tree -L 2 <nom_du_dossier>	Visualiser l'arborescence d'un dossier avec une profondeur de 2.
+	dir	List current directory contents.
+		
+FICHIERS		
+	file path/to/file	Renvoie les caractéristiques du fichier.
+	| sort	Trie des fichiers.
+	locate file_name.ext	Localise le fichier passé en paramètre.
+	evince `locate file.pdf`	Ouvre le pdf passé en paramètre.
+	od -t x name_of_file	Lire un fichier en hexadécimal (ou autre format, voire options dans man).
+	dirname $file	Extrait le nom du dossier parent de $file.
+	split -n 8 [FILE_NAME]	Coupe un fichier en 8.
+	echo 'abcd1234' | tr -d [a-z]	Retourne '1234' (efface les caractères [a-z]). Attention au pathname expansion (cf. man bash): pour l'éviter on peut mettre a-z sans les crochets.
+	echo 'abcd1234' | tr ad3 zy9	Retourne 'zbcy1294'.
+	tr -s ' ' < data	Supprime (squeeze) les espaces en trop dans data.
+	column test.txt -t -s "|"	Dispose un fichier en colonnes : No.|Country|Yes/No 01|India|Y 02|US|Y 03|Australia|Y => No.  Country      Yes/No 01   India        Y 02   US           Y 03   Australia    Y
+	jot 36	Écrit les nombres de 1 à 36.
+	jot 36 | rs 4 9	Dispose les nombres de 1 à 36 sur 4 lignes et 9 colonnes.
+	uniq -f2 FileName | wc -l	Renvoie le nombre de termes différents dans le champ 3 (les 2 premiers champs sont sautés) du fichier FileName. (uniq: report or omit repeated lines)
+	sort -uk3 FileName | wc -l	La même chose si les entrées ne sont pas pré-triées.
+	pdfunite file1.pdf file2.pdf [fileN.pdf] out.pdf	Merge plusieurs pdf dans out.pdf.
+	cut -d: -f1 < /etc/passwd	Extrait du fichier /etc/passwd le 1er field, en utilisant comme délimiteur le caractère ':'
+	$ s='one_two_three_four_five' $ A="$(cut -d'_' -f2 <<<"$s")" $ echo "$A" two $ B="$(cut -d'_' -f4 <<<"$s")" $ echo "$B" four	Autre exemple.
+	head -10 file	Donne les 10 premières ligne de file.
+	awk '$2 ~ /^L/' file	Extrait de file toutes les lignes dont le 2e champ commence par “L”. Example file = 59  LOUIS   1202    +1 60  FREDDIE 1201    +4 61  FINLAY  1200    -2 62  LEON    1137    +12 63  HARLEY  1132    +6 64  DAVID   1127    -1
+	paste	Fusionne plusieurs fichiers en plusieurs colonnes séparées par des tabs : $ cat state Arunachal Pradesh Assam Andhra Pradesh Bihar Chhattisgrah $ cat capital Itanagar Dispur Hyderabad Patna Raipur $ paste number state capital 1       Arunachal Pradesh       Itanagar 2       Assam   Dispur 3       Andhra Pradesh  Hyderabad 4       Bihar   Patna 5       Chhattisgrah    Raipur
+		
+FROM SOURCES		
+	./configure make sudo make install	3 étapes standard pour installer un logiciel from sources.
+		
+SORTIES STANDARD		
+	command > output.txt	The standard output stream will be redirected to the file only, it will not be visible in the terminal. If the file already exists, it gets overwritten.
+	command >> output.txt	The standard output stream will be redirected to the file only, it will not be visible in the terminal. If the file already exists, the new data will get appended to the end of the file.
+	command 2> output.txt	The standard error stream will be redirected to the file only, it will not be visible in the terminal. If the file already exists, it gets overwritten.
+	command 2>> output.txt	The standard error stream will be redirected to the file only, it will not be visible in the terminal. If the file already exists, the new data will get appended to the end of the file.
+	command &> output.txt	Both the standard output and standard error stream will be redirected to the file only, nothing will be visible in the terminal. If the file already exists, it gets overwritten.
+	command &>> output.txt	Both the standard output and standard error stream will be redirected to the file only, nothing will be visible in the terminal. If the file already exists, the new data will get appended to the end of the file..
+	command | tee output.txt	The standard output stream will be copied to the file, it will still be visible in the terminal. If the file already exists, it gets overwritten.
+	command | tee -a output.txt	The standard output stream will be copied to the file, it will still be visible in the terminal. If the file already exists, the new data will get appended to the end of the file.
+	command |& tee output.txt	Both the standard output and standard error streams will be copied to the file while still being visible in the terminal. If the file already exists, it gets overwritten.
+	command |& tee -a output.txt	Both the standard output and standard error streams will be copied to the file while still being visible in the terminal. If the file already exists, the new data will get appended to the end of the file.
+		
+SONS		
+	soundconverter -b -m audio/mpeg -s .mp3 fichier.wma	Convertit 'fichier.wma' en 'fichier.mp3'.
+		
+IMAGES		
+	display image.jpg	Ouvre l'image.
+	convert -thumbnail 120x image.jpg image_thumb.jpg	Crée une vignette à partir de image.jpg (largeur 120).
+	convert -thumbnail x120 image.jpg image_thumb.jpg	Crée une vignette à partir de image.jpg (hauteur 120).
+	convert image.jpg image.tiff	Convertit un jpeg en tiff.
+	convert image.jpg -colorspace CMYK image_cmyk.jpg	Convertit une image en CMJN.
+	convert image.tiff -density 300 image_300.tiff	Convertit une image en 300 dpi.
+	identify -verbose image.jpg	Détails sur une image.
+		
+XARGS		
+	cut -d: -f1 < /etc/passwd | sort | xargs echo	Passe en paramètre à la commande 'echo' les arguments donnés en entrée standard.
+	echo {1..9} | xargs -n2 -P2 --process-slot-var=index sh -c 'echo "$index" "$@" "$$"' _	Processes parallèles.
+		
+INTERNET		
+	nslookup site.com	Renvoie l'adresse IP de site.com.
+	dig site.com	Idem.
+	host site.com	Idem.
+	getent hosts site.com	Idem.
+		
+LS		
+	ls -alh	h = human readable
+	ls *.py	Liste tous les fichiers .py du dossier courant (on peut utiliser une regex, like [0-9]*, etc.).
+		
+COPIE À DISTANCE		
+	rsync -av /home/user/Desktop/file user@191.168.1.21:/home/user/Desktop/remote_file	Copie file vers remote_file.
+	scp src dest	Idem.
+		
+CLAMAV (ANTI-VIRUS)		
+	sudo clamscan --max-filesize=3999M --max-scansize=3999M --exclude-dir=/sys/* -i -r /	Lance un scan de tous les fichiers du système et affiche un rapport.
+		
+DATE		
+	date	Date.
+		
+TIPS & TRICKS		
+	touch foo bar && ls -l !#:2	Équivalent de 'touch foo bar && ls -l bar'
+		
+ARCHIVES		
+	unzip file.zip [-d destination_folder]	Unzip a file [to a particular dest. folder].
+	tar -cvf nom_archive nom_dossier	Créer une archive tar.
+	tar -tf nom_archive.tar	Voir contenu sans extraire.
+	tar -xvf nom_archive.tar	Extraire le contenu de l'archive.
+	tar xzvf nom_archive.tar.gz  -C repertoire	Idem vers un autre répertoire.
+	gzip nom_archive.tar	Compresser un tar en .tar.gz (plus courant).
+	bzip2 nom_archive.tar	Compresser un tar en bz2 (plus puissant et plus lent).
+	gunzip nom_archive.tar.gz	Décompresser un .tar.gz.
+	bunzip2 nom_archive.tar.bz2	Décompresser un .tar.bz2.
+	tar -zcvf nom_archive.tar.gz nom_dossier	Créer une archive tar + compresser automatiquement en gz.
+	tar -jcvf nom_archive.tar.bz2 nom_dossier	Créer une archive tar + compresser automatiquement en bz2.
+	tar -zxvf nom_archive.tar.gz	Extraire le contenu de l'archive après avoir décompressé automatiquement (.gz).
+	tar -jxvf nom_archive.tar.bz2	Extraire le contenu de l'archive après avoir décompressé automatiquement  (.bz2).
+		
+ENVIRONNEMENT		
+	env	Liste des variables d'environnement.
+	VARNAME="my value"	À mettre dans .bashrc [/etc/environment] pour ajouter VARNAME à toutes les futures sessions bash [system wide] de manière permanente.
+		
+SSH		
+	sudo netstat -tnpa | grep 'ESTABLISHED.*ssh'	Liste de toutes les connexions ssh en cours.
+		
+ASPIRATEUR DE SITES		
+	httrack https://site.com -r2 -P 192.168.1.11	Aspire le site https://site.com, avec une profondeur de 2 et en passant par le proxy.
