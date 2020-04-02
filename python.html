@@ -34,6 +34,40 @@
         <!-- CONTENT -->
         <div id="content" class="w-100 m-3 p-2">
             <h1 class="mt-5">Python / Django</h1>
+
+            SLICES			'Bonjour’[::-1]	'ruojnoB’	Reverse a string ([begin:end:step]).
+
+
+            Virtualenv		
+                pip3 install virtualenv	Installation de virtualenv.
+                virtualenv -p python3.7 my_project	Création de l’environnement virtuel.
+                cd my_project	
+                source bin/activate	Active l’environnement virtuel.
+                pip install Django	Installations dans le virtualenv.
+                pip install pylint	
+                pip install mysql-client	
+                python -c "import django; print(django.get_version())"	Version de Django.
+                    
+            Projet Django		
+                django-admin startproject my_project	Création de l’application Django.
+                cd my_project	On se retrouve donc dans my_project/my_project (contenant un sous-dossier my_project !).
+                ./manage.py runserver	Pour starter l’application.
+                    
+            Tests and coverage		test_models.py: - full name - absolute_url - labels, help_texts etc. - max length test_views.py: - resolve(<url>) uses the right view - login_required - redirections - user’s access to that page/item - 200 with direct and reverse urls - 404 - contains links to… - initial values of forms - redirect after form.is_valid() - uses correct template - pagination - items ordered by… test_forms.py: - form.is_valid() - contains widget - labels, help_texts etc.
+                manage.py test [module.tests[.test_models[.TestClass[.unit_test]]]]	Différents niveaux de tests: module, type (fichier), classe, fonction.
+                coverage run manage.py test; coverage html	
+                    
+            Divers		
+                pip install django-tempus-dominus	Pour installer tempus-dominus. - Ensuite dans settings.py : 1. Installed apps: ajouter ‘tempus_dominus’. 2. Ajouter tout en bas une option pour dire à Django de ne pas aller chercher les scripts sur le Cloud : TEMPUS_DOMINUS_INCLUDE_ASSETS = False - Puis installer lesdits scripts en allant les chercher sur le Cloud : https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js - Enfin bien sûr indiquer le chemin de ces scripts dans le main template.html.
+                    
+            Serveur		
+                NameVirtualHost *:8000 <VirtualHost *:8000>     ServerName python.asj.com     ServerAdmin editeur@traditions-monastiques.com     DocumentRoot /home/fr_romain/Sites/infirmerie/infirmerie      WSGIDaemonProcess infirmerie.asj.com processes=2 threads=15 display-name=%{GROUP} python-home=/home/fr_romain/Sites/infirmerie python-path=/ho    me_fr_romain/Sites/infirmerie/infirmerie     WSGIProcessGroup infirmerie.asj.com      WSGIScriptAlias / /home/fr_romain/Sites/infirmerie/infirmerie/infirmerie/wsgi.py     <Directory /home/fr_romain/Sites/infirmerie/infirmerie/infirmerie>          <Files wsgi.py>             Require all granted         </Files>     </Directory>       Alias /static/ /home/fr_romain/Sites/infirmerie/infirmerie/static_files/      <Directory /home/fr_romain/Sites/infirmerie/infirmerie/static_files>          Require all granted     </Directory>      ErrorLog ${APACHE_LOG_DIR}/error.log     CustomLog ${APACHE_LOG_DIR}/access.log combined </VirtualHost>	Dans /etc/apache2/sites-available/000-default.conf. Le dossier static est celui dans lequel collectstatic va placer tous les fichiers statiques.
+                sudo aptitude install libapache2-mod-wsgi-py3	Module wsgi pour Apache. Il se peut que le module ne soit pas adapté à la version de Django utilisée, auquel cas il faut l’installer from sources.
+                apt-get install libssl-dev; apt-get install python3.7-dev libmysqlclient-dev	Si besoin de mysql.
+                pip install -r requirements.txt	Installation dans un virtualenv (cf. supra).
+                DEBUG = False ALLOWED_HOSTS = ['*'] TEMPLATES = [         …         'DIRS': ['/home/fr_romain/Sites/infirmerie/infirmerie/templates'],         … ] STATIC_URL = '/static/' STATIC_ROOT = '/home/fr_romain/Sites/infirmerie/infirmerie/static_files/'	Lignes à ajouter/modifier dans my_site/settings.py.
+                import os import sys  paths = [     '/home/fr_romain/Sites/infirmerie/infirmerie',     '/home/fr_romain/Sites/infirmerie/lib/python3.7/site-packages', ] for path in paths:     if path not in sys.path:         sys.path.append(path)  from django.core.wsgi import get_wsgi_application  os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'infirmerie.settings')  application = get_wsgi_application()	Fichier wsgi.py.
+
         </div>
         <!-- END CONTENT -->
     </body>

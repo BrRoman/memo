@@ -34,6 +34,18 @@
         <!-- CONTENT -->
         <div id="content" class="w-100 m-3 p-2">
             <h1 class="mt-5">Git</h1>
+
+            git show <sha du commit>	Montre les détails d'un commit.
+            git commit	Après avoir résolu un conflit.
+            git rm -r --cached <path to folder>	Pour que Git ne suive plus un dossier, mais que ce dossier reste dans le working directory. Il faut d'abord avoir ajouté ce dossier au .gitignore.
+            git branch -vv	Montre les branches et les remote-trackings.
+            git diff -p <commit_1> <commit_2> <nom_du_fichier>	Montre les différences entre c1 et c2 sur le fichier mentionné.
+            git blame <nom fichier>	Historique d'un fichier.
+            git blame -L 150,+11 -- file.sh	Blâme sur une ou plusieurs lignes de code.
+            git remote set-url remote_rep <new_url> [<old_url]	Changer l’url du remote ‘remote_rep’.
+            git log –grep=<patter>	Chercher <pattern> dans les logs.
+            git merge --no-commit --squash branchA git reset HEAD	Pour merger les modifs de branchA dans la branche courante à l’état unstaged.
+            1. Add it to .gitignore 2. Remove the file from git without deleting the file: git rm --cached path/to/settings.py 3. Commit the change: git commit -m "Remove settings.py"	Ne plus tracker le fichier settings.py.
         </div>
         <!-- END CONTENT -->
     </body>

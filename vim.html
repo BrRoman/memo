@@ -34,6 +34,19 @@
         <!-- CONTENT -->
         <div id="content" class="w-100 m-3 p-2">
             <h1 class="mt-5">Vim</h1>
+
+            '.	Va à la dernière modification.	
+            ''	Idem.	
+            '^	Idem.	
+            :%s/pattern//ng	Compte le nombre d'occurrences de 'pattern'.	
+            :g/pattern/p	Affiche toutes les occurrences de 'pattern'.	A bit of trivia: This command is the origin of the name grep, as it would commonly be described as g/re/p, where re stands for "regular expression".
+            :g/pattern/d	Efface toutes les lignes (g) qui contiennent ‘pattern’.	
+            d'a	Delete to mark a.	
+            y'a	Yank to mark a.	
+            :h quickref	Quick ref.	
+            gv	Retourne en mode visuel après une commande, avec la même sélection que la dernière fois.	
+            1^g	Chemin du fichier courant.	
+            set ft=php.txtfmt	Format fichier = php + txtfmt (permet d'avoir les 2 highlightings).	
         </div>
         <!-- END CONTENT -->
     </body>

@@ -34,6 +34,32 @@
         <!-- CONTENT -->
         <div id="content" class="w-100 m-3 p-2">
             <h1 class="mt-5">MySQL</h1>
+
+            USERS		
+                SELECT User, Select_priv, Insert_priv, Create_priv, Update_priv FROM user;	Voir les utilisateurs.
+                CREATE USER 'savio'@'192.168.1.%' IDENTIFIED BY 'm0nk';	Créer un utilisateur.
+                SHOW GRANTS FOR 'savio'@'192.168.1.%';	Voir les privilèges d'un utilisateur.
+                GRANT SELECT ON editor.* TO 'savio'@'192.168.1.%';	Attribuer des privilèges.
+                SET PASSWORD FOR 'user'@'localhost' = PASSWORD('mdp');	Changer mot de passe.
+                    
+            TABLES		
+                ALTER TABLE Table CONVERT TO CHARACTER SET utf8;	Mettre une table en utf8.
+                RENAME TABLE Xxx TO Yyy;	Renommer une table.
+                SELECT COUNT(*) FROM table;	Compter enregistrements de <table>.
+                    
+            FIELDS		
+                RPAD(text, 50, “.”);	Tronquer un champ à droite (field, length, fill).
+                    
+            FOREIGN KEYS		
+                SELECT TABLE_NAME, COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE CONSTRAINT_NAME LIKE "%fk_%";	Voir les clés étrangères de toutes les tables.
+                ALTER TABLE Billets ADD CONSTRAINT fk_billets_users FOREIGN KEY (author) REFERENCES Users(ID);	Créer une clé étrangère.
+                ALTER TABLE Billets DROP FOREIGN KEY fk_absences_absents;	Supprimer une clé étrangère.
+                    
+            ERRORS		
+                SHOW ENGINE INNODB STATUS;	Utile pour repérer une erreur (par ex. échec de création d’une clé étrangère).
+                    
+            DIVERS		
+                mysql bdd < text.sql	Exécuter un statement depuis un fichier sur la base bdd.
         </div>
         <!-- END CONTENT -->
     </body>
