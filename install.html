@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Mémo Linux</title>
+        <link rel="icon" href="static/images/memo.png">
+        <link rel="stylesheet" href="static/css/fontawesome-free-5.7.1-web/css/all.min.css">
+        <link rel="stylesheet" href="static/css/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+        <link rel="stylesheet/less" href="static/css/memo.less">
+    </head>
+
+    <body>
+        <div id="header" class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div id="logo" class="col-3 mr-auto">
+                <a href="index.html" class="d-flex align-items-center">
+                    <img src="static/images/memo.png">
+                    <p class="my-0">Mémo Linux</p>
+                </a>
+            </div>
+        </div>
+
+        <nav class="mt-2">
+            <ul class="text-center">
+                <a href="install.html"><li>Installation</li></a>
+                <a href="commands.html"><li>Commandes</li></a>
+                <a href="scripts.html"><li>Scripts</li></a>
+                <a href="python.html"><li>Python</li></a>
+                <a href="mysql.html"><li>MySQL</li><a>
+                <a href="vim.html"><li>Vim</li></a>
+                <a href="git.html"><li>Git</li></a>
+            </ul>
+        </nav>
+
+        <!-- CONTENT -->
+        <div id="content" class="w-100 m-3 p-2">
+            <h1 class="mt-5">Installation Debian/Ubuntu</h1>
+                Installation du wifi :
+                apt-get install firmware-iwlwifi
+                Auparavant il faut avoir ajouté (si besoin) "non free" à /etc/apt/sources.list :
+                deb http://... main contrib non-free
+
+
+
+                Configurer réseau.
+                Tester échanges.
+
+                SSH keys between local and remote
+                On local:
+                ssh-keygen
+                then:
+                ssh-copy-id username@remote
+
+
+                Firefox : onglets, home, sécurité, proxy
+
+
+                vim
+
+                apache2:
+                Ajouter o+rx sur le dossier /media/frromain.
+
+                <VirtualHost *:80>
+                    ServerName services.asj.com
+                    DocumentRoot /home/fr_romain/Sites
+                    <Directory "/home/fr_romain/Sites">
+                        Options FollowSymLinks
+                        AllowOverride all
+                        Require all granted
+                        order allow,deny
+                        Allow from all
+                    </Directory>
+
+                    <Directory "/home/fr_romain/Sites/sql">
+                        Options FollowSymLinks
+                        AllowOverride all
+                        Require all granted
+                        order deny,allow
+                        deny from all
+                    </Directory>
+
+                    ErrorLog ${APACHE_LOG_DIR}/error.log
+                    CustomLog ${APACHE_LOG_DIR}/access.log combined
+                </VirtualHost>
+
+                <VirtualHost *:80>
+                    ServerName gregorio-doc.asj.com
+                    DocumentRoot /home/fr_romain/Sites/gregorio-doc
+                    <Directory "/home/fr_romain/Sites/gregorio-doc/">
+                        Options FollowSymLinks
+                        AllowOverride all
+                        Require all granted
+                        order allow,deny
+                        Allow from all
+                    </Directory>
+                    ErrorLog ${APACHE_LOG_DIR}/error.log
+                    CustomLog ${APACHE_LOG_DIR}/access.log combined
+                </VirtualHost>
+
+                Pour les virtual hosts de Django, voir la page Python/Django.
+
+
+
+                MySQL8 n'est pas dispo dans les paquets Debian, donc :
+                $ cd /tmp
+                $ wget https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb
+                $ dpkg -i mysql-apt-config_0.8.13-1_all.deb
+                Puis :
+                $ sudo apt update
+                $ sudo apt install mysql-server
+                Puis :
+                $ mysql_secure_installation
+                (cf. file:///home/frromain/Desktop/How%20to%20Install%20the%20Latest%20MySQL%208%20on%20Debian%2010.html)
+
+                php7.3
+                PHP/MySQL8: ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'my_password';
+
+
+
+                Importer les bases de données.
+
+
+                Fonts à copier dans /etc/share/fonts (ttf dans truetype et otf dans opentype).
+                (Puis : fc-cache -fv)?
+
+
+
+                Installer texlive, pas -full (qui semble faire des problèmes), puis texlive-luatex, texlive-xetex, texlive-lang-european, texlive-lang-french.
+                (Éventuellement latexmk.)
+
+
+
+
+                Installer gregorio :
+                Télécharger l'archive tar.bz2.
+                Désarchiver.
+                Dans le dossier obtenu :
+                    ./build.sh
+                    sudo ./install.sh
+
+
+                python3-pip
+
+                virtualenv
+
+                git
+
+                VSCode et ses plugins:
+                Auto close tags
+                Auto rename tags
+                Beautify
+                Bookmarks
+                Bracket pair colorizer
+                CSS peek
+                Django
+                Git graph
+                Highlight matching tags
+                jQuery code snippets
+                LaTeX workshop
+                Markdown all in one
+                PHP debug
+                PHP intellisense
+                Project manager
+                Python
+                Todo tree
+
+
+                ---------------------------------------------
+
+                Serveur :
+                Configurer l'envoi de mails par PHP (pour le site Absences) :
+                Installer esmtp
+                vim /etc/esmtprc et modifier la ligne du serveur smtp : 192.168.1.11:25
+                sudo ln -s /usr/bin/esmtp /usr/bin/sendmail
+                Puis dans /etc/php/7.x/apache2/php.ini modifier :
+                #SMTP = 192.168.1.11 // Semble parfaitement inutile.
+                sendmail_path = /usr/bin/sendmail -t -i
+
+                Crons :
+                $ crontab -e
+                Puis taper :
+                MAILTO=editeur@traditions-monastiques.com
+                00 10,16 * * 1-6 ~/Sites/sql/sql_backup.sh
+                00 10,16 * * 1-6 php ~/Sites/hotellerie/hotellerie.php
+                - Modifier /etc/mail/sendmail.cf pour l'envoi des mails (qui curieusement, malgré le lien symbolique ci-dessus, se fait par sendmail et non par esmtp) :
+                # "Smart" relay host (may be null)
+                DS[192.168.1.11]
+        </div>
+        <!-- END CONTENT -->
+    </body>
+
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/css/bootstrap-4.0.0-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="static/js/less.min.js"></script>
+</html>
