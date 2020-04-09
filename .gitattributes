@@ -1,4 +1,4 @@
-bootstrap* linguist-detectable=false
-jquery* linguist-detectable=false
-fontawesome* linguist-detectable=false
-less* linguist-detectable=false
+static/css/bootstrap-4.0.0-dist/** linguist-detectable=false
+static/css/fontawesome-free-5.7.1-web/** linguist-detectable=false
+static/js/jquery-3.3.1.min.js linguist-detectable=false
+static/js/less.min.js linguist-detectable=false
