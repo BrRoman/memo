@@ -1,0 +1,4 @@
+bootstrap* linguist-detectable=false
+jquery* linguist-detectable=false
+fontawesome* linguist-detectable=false
+less* linguist-detectable=false
