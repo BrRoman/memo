@@ -33,158 +33,184 @@
         </nav>
 
         <!-- CONTENT -->
-        <div id="content" class="w-100 m-3 p-2">
-            <h1 class="mt-5">Installation Debian/Ubuntu</h1>
-                Installation du wifi :
-                apt-get install firmware-iwlwifi
-                Auparavant il faut avoir ajouté (si besoin) "non free" à /etc/apt/sources.list :
-                deb http://... main contrib non-free
+        <div class="d-flex flex-column align-items-center w-75 mx-auto">
+            <div id="content">
+                <h1 class="text-center">Installation Debian/Ubuntu</h1>
+
+                <h4>Installer le wifi :</h4>
+                    <div class="group">
+                        <p class="terminal">apt-get install firmware-iwlwifi</p>
+                        <p class="descr">Auparavant il faut avoir ajouté "non free" à la ligne  "deb.debian.org" dans le fichier /etc/apt/sources.list :</p>
+                        <p class="file">deb http://deb.debian.org/debian/ buster main contrib non-free</p>
+                    </div>
 
 
-
-                Configurer réseau.
-                Tester échanges.
-
-                SSH keys between local and remote
-                On local:
-                ssh-keygen
-                then:
-                ssh-copy-id username@remote
+                <h4>Configurer le réseau.</h4>
 
 
-                Firefox : onglets, home, sécurité, proxy
+                <h4>Tester échanges.</h4>
 
 
-                vim
+                <h4>Clés SSH :</h4>
+                    <div class="group">
+                        <p class="terminal">ssh-keygen</p>
+                        <p class="terminal">ssh-copy-id username@remote</p>
+                    </div>
+                
 
-                apache2:
-                Ajouter o+rx sur le dossier /media/frromain.
-
-                <VirtualHost *:80>
-                    ServerName services.asj.com
-                    DocumentRoot /home/fr_romain/Sites
-                    <Directory "/home/fr_romain/Sites">
-                        Options FollowSymLinks
-                        AllowOverride all
-                        Require all granted
-                        order allow,deny
-                        Allow from all
-                    </Directory>
-
-                    <Directory "/home/fr_romain/Sites/sql">
-                        Options FollowSymLinks
-                        AllowOverride all
-                        Require all granted
-                        order deny,allow
-                        deny from all
-                    </Directory>
-
-                    ErrorLog ${APACHE_LOG_DIR}/error.log
-                    CustomLog ${APACHE_LOG_DIR}/access.log combined
-                </VirtualHost>
-
-                <VirtualHost *:80>
-                    ServerName gregorio-doc.asj.com
-                    DocumentRoot /home/fr_romain/Sites/gregorio-doc
-                    <Directory "/home/fr_romain/Sites/gregorio-doc/">
-                        Options FollowSymLinks
-                        AllowOverride all
-                        Require all granted
-                        order allow,deny
-                        Allow from all
-                    </Directory>
-                    ErrorLog ${APACHE_LOG_DIR}/error.log
-                    CustomLog ${APACHE_LOG_DIR}/access.log combined
-                </VirtualHost>
-
-                Pour les virtual hosts de Django, voir la page Python/Django.
+                <h4>Firefox :</h4>
+                    <div class="group">
+                        <p class="descr">Onglets, home, sécurité, proxy</p>
+                    </div>
 
 
+                <h4>Vim.</h4>
 
-                MySQL8 n'est pas dispo dans les paquets Debian, donc :
-                $ cd /tmp
-                $ wget https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb
-                $ dpkg -i mysql-apt-config_0.8.13-1_all.deb
-                Puis :
-                $ sudo apt update
-                $ sudo apt install mysql-server
-                Puis :
-                $ mysql_secure_installation
-                (cf. file:///home/frromain/Desktop/How%20to%20Install%20the%20Latest%20MySQL%208%20on%20Debian%2010.html)
+                <h4>Configurer le proxy pour root :</h4>
+                    <div class="group">
+                        <p class="descr">Dans ~/.bashrc :</p>
+                        <p class="terminal">export HTTP_PROXY=http://192.168.1.11:8080</p>
+                        <p class="terminal">export HTTPS_PROXY=http://192.168.1.11:8080</p>
+                    </div>
 
-                php7.3
-                PHP/MySQL8: ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'my_password';
-
-
-
-                Importer les bases de données.
+                    <div class="group">
+                        <p class="descr">Dans ~/.wgetrc :</p>
+                        <p class="terminal">HTTP_PROXY=http://192.168.1.11:8080</p>
+                        <p class="terminal">HTTPS_PROXY=http://192.168.1.11:8080</p>
+                    </div>
 
 
-                Fonts à copier dans /etc/share/fonts (ttf dans truetype et otf dans opentype).
-                (Puis : fc-cache -fv)?
+                <h4>Virtualbox :</h4>
+                     <div class="group">
+                        <p class="descr">Pour installer :</p>
+                        <p class="terminal">wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -</p>
+                        <p class="terminal">echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian bionic contrib" | tee /etc/apt/sources.list.d/virtualbox.list</p>
+                        <p class="terminal">apt update</p>
+                        <p class="terminal">apt install virtualbox-6.1</p>
+
+                        <p class="descr">Pour désinstaller :</p>
+                        <p class="terminal">apt-get remove virtualbox-6.1</p>
+                    </div>
 
 
+                <h4>Apache :</h4>
+                    <div class="group">
+                        <p class="descr">Ajouter o+rx sur le dossier /media/frromain.</p>
 
-                Installer texlive, pas -full (qui semble faire des problèmes), puis texlive-luatex, texlive-xetex, texlive-lang-european, texlive-lang-french.
-                (Éventuellement latexmk.)
+                        <p class="descr">Dupliquer /etc/apache2/sites-available/000-default.conf avant de le modifier ainsi :</p>
+                        <pre class="file">
+&lt;VirtualHost *:80&gt;
+    ServerName services.asj.com
+    DocumentRoot /home/frromain/Sites
+    &lt;Directory "/home/frromain/Sites"&gt;
+        Options FollowSymLinks
+        AllowOverride all
+        Require all granted
+        order allow,deny
+        Allow from all
+    &lt;/Directory&gt;
+
+    &lt;Directory "/home/frromain/Sites/sql"&gt;
+        Options FollowSymLinks
+        AllowOverride all
+        Require all granted
+        order&lt; deny,allow
+        deny from all
+    &lt;/Directory&gt;
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:80&gt;
+    ServerName gregorio-doc.asj.com
+    DocumentRoot /home/frromain/Sites/gregorio-doc
+    &lt;Directory "/home/frromain/Sites/gregorio-doc/"&gt;
+        Options FollowSymLinks
+        AllowOverride all
+        Require all granted
+        order allow,deny
+        Allow from all
+    &lt;/Directory&gt;
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+&lt;/VirtualHost&gt;
+                        </pre>
+
+                    <p class="descr"> Pour les virtual hosts de Django, voir la page Python/Django.</p>
+                </div>
 
 
+                <h4>MySQL :</h4>
+                    <div class="group">
+                        <p class="descr">MySQL8 n'est pas dispo dans les paquets Debian. Il faut l'installer manuellement à partir d'un dépôt distant :</p>
+                        <p class="terminal">cd /tmp</p>
+                        <p class="terminal">wget https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb</p>
+                        <p class="terminal">dpkg -i mysql-apt-config_0.8.13-1_all.deb</p>
+
+                        <p class="descr">Puis :</p>
+                        <p class="terminal">apt update</p>
+                        <p class="terminal">apt install mysql-server</p>
+
+                        <p class="descr">Puis :</p>
+                        <p class="terminal">mysql_secure_installation</p>
+
+                        <p class="descr">Enfin dans une console MySQL :</p>
+                        <p class="terminal">ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '<my_password>';</p>                    </div>
 
 
-                Installer gregorio :
-                Télécharger l'archive tar.bz2.
-                Désarchiver.
-                Dans le dossier obtenu :
-                    ./build.sh
-                    sudo ./install.sh
+                <h4>PHP7.3.</h4>
 
 
-                python3-pip
-
-                virtualenv
-
-                git
-
-                VSCode et ses plugins:
-                Auto close tags
-                Auto rename tags
-                Beautify
-                Bookmarks
-                Bracket pair colorizer
-                CSS peek
-                Django
-                Git graph
-                Highlight matching tags
-                jQuery code snippets
-                LaTeX workshop
-                Markdown all in one
-                PHP debug
-                PHP intellisense
-                Project manager
-                Python
-                Todo tree
+                <h4>Importer les bases de données.</h4>
 
 
-                ---------------------------------------------
+                <h4>Polices :</h4>
+                    <div class="group">
+                        <p class="descr">Fonts à copier dans /etc/share/fonts (ttf dans truetype et otf dans opentype).</p>
+                    </div>
 
-                Serveur :
-                Configurer l'envoi de mails par PHP (pour le site Absences) :
-                Installer esmtp
-                vim /etc/esmtprc et modifier la ligne du serveur smtp : 192.168.1.11:25
-                sudo ln -s /usr/bin/esmtp /usr/bin/sendmail
-                Puis dans /etc/php/7.x/apache2/php.ini modifier :
-                #SMTP = 192.168.1.11 // Semble parfaitement inutile.
-                sendmail_path = /usr/bin/sendmail -t -i
 
-                Crons :
-                $ crontab -e
-                Puis taper :
-                MAILTO=editeur@traditions-monastiques.com
-                00 10,16 * * 1-6 ~/Sites/sql/sql_backup.sh
-                00 10,16 * * 1-6 php ~/Sites/hotellerie/hotellerie.php
-                - Modifier /etc/mail/sendmail.cf pour l'envoi des mails (qui curieusement, malgré le lien symbolique ci-dessus, se fait par sendmail et non par esmtp) :
-                # "Smart" relay host (may be null)
-                DS[192.168.1.11]
+                <h4>LaTeX :</h4>
+                    <div class="group">
+                        <p class="descr">Installer texlive, pas -full (qui semble faire des problèmes), puis texlive-luatex, texlive-xetex, texlive-lang-european, texlive-lang-french.</p>
+                    </div>
+                
+
+                <h4>Gregorio :</h4>
+                    <div class="group">
+                        <p class="descr">Télécharger l'archive tar.bz2 sur le site de gregorio (releases).</p>
+                        <p class="descr">Désarchiver.</p>
+                        <p class="descr">Dans le dossier obtenu :</p>
+                        <p class="terminal">./build.sh</p>
+                        <p class="terminal">./install.sh</p>
+                    </div>
+
+
+                <h4>Git et ~/.gitconfig.</h4>
+
+
+                <h4>VSCode et ses plugins:</h4>
+                    <div class="group">
+                        <p class="descr">Auto close tags</p>
+                        <p class="descr">Auto rename tags</p>
+                        <p class="descr">Beautify</p>
+                        <p class="descr">Bookmarks</p>
+                        <p class="descr">Bracket pair colorizer</p>
+                        <p class="descr">CSS peek</p>
+                        <p class="descr">Django</p>
+                        <p class="descr">Git graph</p>
+                        <p class="descr">Highlight matching tags</p>
+                        <p class="descr">jQuery code snippets</p>
+                        <p class="descr">LaTeX workshop</p>
+                        <p class="descr">Markdown all in one</p>
+                        <p class="descr">PHP debug</p>
+                        <p class="descr">PHP intellisense</p>
+                        <p class="descr">Project manager</p>
+                        <p class="descr">Python</p>
+                        <p class="descr">Todo tree</p>
+                    </div>
+            </div>
         </div>
         <!-- END CONTENT -->
     </body>
