@@ -32,973 +32,1127 @@
             </ul>
         </nav>
 
-        <div id="content" class="w-100 m-3 p-2">
-            <!-- CONTENT -->
-            <h1 class="mt-5">Commandes Unix</h1>
+        <!-- CONTENT -->
+        <div class="d-flex flex-column align-items-center w-75 mx-auto">
+            <div id="content" class="w-100 m-3 p-2">
+                <h1 class="mt-5">Commandes Unix</h1>
 
-            <h4>SYSTÈME</h4>
-                <div id="line">
-                    <span class="terminal">do-release-upgrade</span><br>
-                    <span class="description">Upgrade operating system to latest release.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">cat /etc/issue</span><br>
-                    <span class="description">Version du système.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">sudo hwclock –show</span><br>
-                    <span class="description">Heure du système.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">systemctl status systemd-timesyncd.service</span><br>
-                    <span class="description">Donne le statut du démon de synchronisation de l'heure locale à un serveur distant. Pour indiquer le serveur à connecter, éditer le fichier /etc/systemd/timesyncd.conf (ajouter les serveurs, séparés par des espaces, sur la ligne "NTP=" décommentée).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">sudo -i</span><br>
-                    <span class="description">Se logger comme root (home = /root).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">sudo passwd</span><br>
-                    <span class="description">Changer le pw de root.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">passwd</span><br>
-                    <span class="description">Changer mon pw.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">sudo passwd USERNAME</span><br>
-                    <span class="description">Changer le pw d'un autre utilisateur.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">apt policy linux-generic</span><br>
-                    <span class="description">Version du kernel.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">uname -s</span><br>
-                    <span class="description">Nom du kernel.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">uname -r</span><br>
-                    <span class="description">Version du kernel.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">purge-old-kernels</span><br>
-                    <span class="description">Purge les vieux kernels (s’appuie sur byobu qui doit être installé).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">dpkg -l linux-image-\* | grep ^ii</span><br>
-                    <span class="description">Voir tous les kernels installés.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">lspci -k</span><br>
-                    <span class="description">Liste tous les drivers PCI, et indique les modules kernels capables de s'en occuper.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">lscpu</span><br>
-                    <span class="description">Informations sur l'architecture CPU.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">xdg-user-dirs-update</span><br>
-                    <span class="description">Updates the current state of the users user-dirs.dir. Utile pour restaurer les icônes par défaut (Pictures, Music…) si on a remplacé les folders initiaux par des liens symboliques vers un disque externe. Éditer ensuite ~/.config/user-dirs.dirs</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">dconf-editor</span><br>
-                    <span class="description">Éditeur graphique de gsettings et dconf.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">free</span><br>
-                    <span class="description">Display amount of free and used memory in the system.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">~/.config/user-dirs.dirs</span><br>
-                    <span class="description">Éditer ce fichier pour modifier les dossiers systèmes de l’utilisateur (donc aussi les vignettes).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                <h4>SYSTÈME</h4>
+                    <table class="table-borderless">
+                        <tr>
+                            <td><p class="terminal">apt-get update</p></td>
+                            <td><p class="descr">Met à jour le gestionnaire de paquets.</p></td>
+                        </tr>
 
-            <h4>MATÉRIEL</h4>
-                <div id="line">
-                    <span class="terminal">xset -q</span><br>
-                    <span class="description">Informations on the current settings (keyboard, pointer, screen…).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">xset r rate 250 70</span><br>
-                    <span class="description">Vitesse de répétition des touches du clavier.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">xinput</span><br>
-                    <span class="description">Lister et modifier les réglages concernant le matériel d’input (souris, clavier).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">xinput list-props 10</span><br>
-                    <span class="description">Propriétés du device 10 (indice à prendre dans la liste, cf. ligne précédente).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">apt-get upgrade</p></td>
+                            <td><p class="descr">Met à jour les paquets à leur dernière version.</p></td>
+                        </tr>
+                    
+                    
+                        <tr>
+                            <td><p class="terminal">do-release-upgrade</p></td>
+                            <td><p class="description">Upgrade operating system to latest release.</p></td>
+                        </tr>
+                        <tr>
+                            <td><p class="terminal">cat /etc/issue</p></td>
+                            <td><p class="description">Version du système.</p></td>
+                        </tr>
+                        <tr>
+                            <td><p class="terminal">sudo hwclock –show</p></td>
+                            <td><p class="description">Heure du système.</p></td>
+                        </tr>
+                        <tr>
+                            <td><p class="terminal">systemctl status systemd-timesyncd.service</p></td>
+                            <td><p class="description">Donne le statut du démon de synchronisation de l'heure locale à un serveur distant. Pour indiquer le serveur à connecter, éditer le fichier /etc/systemd/timesyncd.conf (ajouter les serveurs, séparés par des espaces, sur la ligne "NTP=" décommentée).</p></td>
+                        </tr>
 
-            <h4>CRONTAB</h4>
-                <div id="line">
-                    <span class="terminal">crontab -l</span><br>
-                    <span class="description">Voir mon fichier crontab.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">crontab -e</span><br>
-                    <span class="description">Éditer mon fichier crontab.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"># Example of job definition: # .---------------- minute (0 - 59) # |  .------------- hour (0 - 23) # |  |  .---------- day of month (1 - 31) # |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ... # |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat # |  |  |  |  | # *  *  *  *  *  user command to be executed</span><br>
-                    <span class="description">Syntaxe d’une ligne de crontab.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">0 0 13 1 5 tâche</span><br>
-                    <span class="description">Exécuter tâche le 13 janvier et tous les vendredis.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">*/5 9-17 * * mon,tue,wed,thu,fri wall "Où en es tu ?"</span><br>
-                    <span class="description">Afficher un message toutes les 5 minutes entre 9h et 17h.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">00 */6 * * * /root/scripts/synchronisation-ftp.sh</span><br>
-                    <span class="description">Exécution d’une commande toutes les 6 heures.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">00 22 * * * /root/scripts/sauvegarde.sh >> sauvegarde.log</span><br>
-                    <span class="description">Exécution d’une commande à 22h et écriture dans un fichier log.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">su</p></td>
+                            <td><p class="description">Se logger comme root.</p></td>
+                        </tr>
 
-            <h4>WATCH</h4>
-                <div id="line">
-                    <span class="terminal">watch -n 5 <command></span><br>
-                    <span class="description">Exécute <command> toutes les 5 secondes et affiche le résultat rafraîchi dans le Terminal.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">su -</p></td>
+                            <td><p class="description">Se logger comme root avec l'environnement de root, y compris la variable PATH.</p></td>
+                        </tr>
 
-            <h4>RÉSEAU</h4>
-                <div id="line">
-                    <span class="terminal">ip [OBJECT]</span><br>
-                    <span class="description">Infos sur le réseau et les interfaces (voir man ip pour les objets disponibles).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">ip -s -c -h a</span><br>
-                    <span class="description">Adresses, avec stats, couleurs et option 'human'.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">hostname -I</span><br>
-                    <span class="description">Renvoie l'adresse IP de ce poste.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">nmap 192.168.1.11</span><br>
-                    <span class="description">Scanne les ports ouverts sur une machine du réseau.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">sudo netdiscover -r 192.168.1.0/24</span><br>
-                    <span class="description">Scanne le réseau local.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">avahi-browse --all --terminate</span><br>
-                    <span class="description">Idem.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">avahi-resolve-address 192.168.1.254</span><br>
-                    <span class="description">Résout l’adresse IP passée en paramètre.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">nmcli</span><br>
-                    <span class="description">Command-line tool for controlling NetworkManager. Use "nmcli device show" to get complete information about known devices and "nmcli connection show" to get an overview on active connection profiles.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">passwd</p></td>
+                            <td><p class="description">Changer le pw de root.</p></td>
+                        </tr>
 
-            <h4>DEVICES/MOUNT</h4>
-                <div id="line">
-                    <span class="terminal">df -h</span><br>
-                    <span class="description">Espace libre/utilisé sur disque.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">df -h | grep "^/dev/sd*" | sort</span><br>
-                    <span class="description">Idem, mais seulement les «/dev/sd*».</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">sudo fdisk -l</span><br>
-                    <span class="description">Liste des devices (indique notamment la partition de boot).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">mount -t ntfs /dev/sda1  /mnt/</span><br>
-                    <span class="description">Monter /dev/sda1 sur /mnt (type ntfs, pour usb: usually vfat, pour linux: usually ext).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">mount /dev/disk/by-id/ata-ST31500341AS_9VS2AM04-part1 /some/dir</span><br>
-                    <span class="description">Idem by verbose path (other names: /dev/disk/by-uuid/, /dev/disk/by-path/, /dev/disk/by-label/.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">lsblk --fs -l -o NAME,FSTYPE,LABEL,UUID,MOUNTPOINT,SIZE</span><br>
-                    <span class="description">Vue générale des filesystems et partitions (permet de voir les types, uuid etc.). Voir les available columns en tapant 'lsblk --help'.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">sudo blkid</span><br>
-                    <span class="description">Locate/print block device attributes.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">findmnt</span><br>
-                    <span class="description">Trouver un filesystem.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">findmnt -lo source,target,fstype,label,options,used -t ext4</span><br>
-                    <span class="description">-l: list; -o: options list; -t: filter.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">lsusb</span><br>
-                    <span class="description">Liste les devices usb.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">cat /proc/partitions</span><br>
-                    <span class="description">Liste les partitions.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">lsblk -io KNAME,TYPE,SIZE,MODEL</span><br>
-                    <span class="description">Lists  information  about  all available or the specified block devices.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">passwd</p></td>
+                            <td><p class="description">Changer mon pw.</p></td>
+                        </tr>
 
-            <h4>MODULES</h4>
-                <div id="line">
-                    <span class="terminal">sudo modprobe <nom_du_module></span><br>
-                    <span class="description">Charger un module kernel.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">depmod</span><br>
-                    <span class="description">Handle dependency descriptions for loadable kernel modules.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">insmod</span><br>
-                    <span class="description">Install loadable kernel module.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">lsmod</span><br>
-                    <span class="description">List loaded modules. /proc/modules shows what kernel modules (drivers) are currently loaded into memory.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">modinfo</span><br>
-                    <span class="description">Display information about a kernel module.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">modprobe</span><br>
-                    <span class="description">High level handling of loadable modules.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">rmmod</span><br>
-                    <span class="description">Unload loadable modules.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">passwd USERNAME</p></td>
+                            <td><p class="description">Changer le pw d'un autre utilisateur.</p></td>
+                        </tr>
 
-            <h4>SERVICES/DÉMONS</h4>
-                <div id="line">
-                    <span class="terminal">systemctl list-unit-files *service</span><br>
-                    <span class="description">Liste tous les services (systemctl) et leur état.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">systemctl | grep running</span><br>
-                    <span class="description">Liste tous les services dont le statut est “running”.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">systemctl list-unit-files --state=enabled</span><br>
-                    <span class="description">Liste tous les services dont le statut est “enabled”.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">service --status-all</span><br>
-                    <span class="description">Runs all init scripts with the status command.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">ls /etc/init.d</span><br>
-                    <span class="description">Liste tous les démons.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">cd /etc/systemd/system sudo chmod a+x sdcard.service  systemctl --system daemon-reload  systemctl start sdcard.service</span><br>
-                    <span class="description">Pour ajouter le service sdcard.service.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">sudo systemctl stop sdcard.service sudo systemctl disable sdcard.service sudo rm sdcard.service sudo rm sdcard.service sudo systemctl daemon-reload  sudo systemctl reset-failed</span><br>
-                    <span class="description">Pour supprimer le service sdcard.service.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">apt policy linux-generic</p></td>
+                            <td><p class="description">Version du kernel.</p></td>
+                        </tr>
 
-            <h4>MAILS</h4>
-                <div id="line">
-                    <span class="terminal">cd ~/.thunderbird/xxx.default/Mail/localhost ln -s ~/Mails/Inbox Inbox</span><br>
-                    <span class="description">Voir les mails de ~/Mails/Inbox sur Thunderbird.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">uname -s</p></td>
+                            <td><p class="description">Nom du kernel.</p></td>
+                        </tr>
 
-            <h4>ACCÈS</h4>
-                <div id="line">
-                    <span class="terminal">id</span><br>
-                    <span class="description">Pour voir dans quels groupes je suis inscrit.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">groups</span><br>
-                    <span class="description">Idem (plus simple).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">whoami</span><br>
-                    <span class="description">To know who I am.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">uname -r</p></td>
+                            <td><p class="description">Version du kernel.</p></td>
+                        </tr>
 
-            <h4>PAQUETS</h4>
-                <div id="line">
-                    <span class="terminal">sudo dpkg -i *.deb</span><br>
-                    <span class="description">Installer un paquet deb.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">dpkg-query -l</span><br>
-                    <span class="description">Liste des paquets présents dans la database dpkg.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">apt list --installed</span><br>
-                    <span class="description">Liste des paquets installés.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">aptitude search '~i!~M'</span><br>
-                    <span class="description">Idem avec aptitude.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">apt-file search 'word'</span><br>
-                    <span class="description">Cherche un paquet contenant 'word'.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">apt-get autoremove</span><br>
-                    <span class="description">Supprime les paquets installés en raison de dépendances, et devenus inutiles.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">apt-get autoremove --purge</span><br>
-                    <span class="description">Supprimer les anciens noyaux.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">apt-get autoremove --purge <nom-du-paquet></span><br>
-                    <span class="description">Supprimer le paquet, ses dépendances et ses fichiers de configuration.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">apt-get upgrade</span><br>
-                    <span class="description">Installe nouvelles versions de tous les paquets.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">apt-get dist-upgrade</span><br>
-                    <span class="description">Mise à jour des paquets, se charge de gérer les changements de paquets dépendants (cf. aptitude full-upgrade).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">apt-get check</span><br>
-                    <span class="description">Checks for broken dependencies.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">aptitude update</span><br>
-                    <span class="description">Met à jour la liste des paquets disponibles.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">aptitude safe-upgrade</span><br>
-                    <span class="description">Met à jour les paquets installés vers leurs versions les plus récentes, sans détruire l'existant.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">aptitude full-upgrade</span><br>
-                    <span class="description">Idem mais installe et supprime selon les besoins.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">aptitude autoclean</span><br>
-                    <span class="description">Supprime du cache les paquets qui ne peuvent plus être downloadés.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">deborphan</span><br>
-                    <span class="description">Liste les paquets orphelins.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">purge-old-kernels</p></td>
+                            <td><p class="description">Purge les vieux kernels (s’appuie sur byobu qui doit être installé).</p></td>
+                        </tr>
 
-            <h4>REPOSITORIES</h4>
-                <div id="line">
-                    <span class="terminal">add-apt-repository ppa:<user>/<ppa-name></span><br>
-                    <span class="description">Ajoute un repository dans /etc/apt/sources.list.d/.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">add-apt-repository --remove ppa:virtualbox</span><br>
-                    <span class="description">Supprimer un repository.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">dpkg -l linux-image-\* | grep ^ii</p></td>
+                            <td><p class="description">Voir tous les kernels installés.</p></td>
+                        </tr>
 
-            <h4>KEYS</h4>
-                <div id="line">
-                    <span class="terminal">wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -</span><br>
-                    <span class="description">Ajouter une clé.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key --keyring /tmp/test add -</span><br>
-                    <span class="description">Ajouter une clé dans un autre dossier que /etc/apt/.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">apt-key list</span><br>
-                    <span class="description">Liste des clés.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">apt-key del B9F8</span><br>
-                    <span class="description">Supprimer une clé.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">lspci -k</p></td>
+                            <td><p class="description">Liste tous les drivers PCI, et indique les modules kernels capables de s'en occuper.</p></td>
+                        </tr>
 
-            <h4>CD</h4>
-                <div id="line">
-                    <span class="terminal">cd "$(find -L . -name 'xxx' -type d)"</span><br>
-                    <span class="description">Commande en argument de cd.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">lscpu</p></td>
+                            <td><p class="description">Informations sur l'architecture CPU.</p></td>
+                        </tr>
 
-            <h4>CHMOD</h4>
-                <div id="line">
-                    <span class="terminal">chmod -R a+rw my_rep</span><br>
-                    <span class="description">Droits rw à tout le monde de manière récursive.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">chmod -R u-x,g-x,o-x,u+X,g+X,o+X my_rep</span><br>
-                    <span class="description">Droits x au rép. + sous-rép., et non-x aux fichiers.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">xdg-user-dirs-update</p></td>
+                            <td><p class="description">Updates the current state of the users user-dirs.dir. Utile pour restaurer les icônes par défaut (Pictures, Music…) si on a remplacé les folders initiaux par des liens symboliques vers un disque externe. Éditer ensuite ~/.config/user-dirs.dirs</p></td>
+                        </tr>
 
-            <h4>PROCESSES</h4>
-                <div id="line">
-                    <span class="terminal">echo $$</span><br>
-                    <span class="description">Donne le pid du shell courant ('1000' par ex.).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">ps --pid 1000</span><br>
-                    <span class="description">Montre que c'est un shell.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">ps -o ppid= -p 1000</span><br>
-                    <span class="description">Donne le pid du parent.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">ps -aux</span><br>
-                    <span class="description">Liste des processes.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">ps -aux | grep firefox</span><br>
-                    <span class="description">Trouver le pid de Firefox.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">pgrep firefox</span><br>
-                    <span class="description">Idem.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">pidof firefox</span><br>
-                    <span class="description">Idem.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">kill -9 2301</span><br>
-                    <span class="description">Kill le process 2301.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">kill -9 `pidof firefox`</span><br>
-                    <span class="description">Tuer le process de Firefox.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">pkill firefox</span><br>
-                    <span class="description">Idem (encore faut-il être sûr qu’il n’y a qu’un process firefox).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">top</span><br>
-                    <span class="description">Displays Linux processes (dynamique).     press shift+m after running the top command     or you can interactively choose which column to sort on         press Shift+f to enter the interactive menu         press the up or down arrow until the %MEM choice is highlighted         press s to select %MEM choice         press enter to save your selection         press q to exit the interactive menu</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">htop</span><br>
-                    <span class="description">Idem (beaucoup mieux).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">long-running-command [Ctrl+Z] bg</span><br>
-                    <span class="description">Mettre une commande en background.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">dconf-editor</p></td>
+                            <td><p class="description">Éditeur graphique de gsettings et dconf.</p></td>
+                        </tr>
 
-            <h4>FIND</h4>
-                <div id="line">
-                    <span class="terminal">find . type f -printf '%p %s'</span><br>
-                    <span class="description">printf = formate le résultat (voir man find pour la liste des balises). %p = nom, %s = taille du fichier.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">find -L</span><br>
-                    <span class="description">Follow symbolic links.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">find . ! -name '*light*' -delete</span><br>
-                    <span class="description">Delete every find which doesn't contain 'light'.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">free</p></td>
+                            <td><p class="description">Display amount of free and used memory in the system.</p></td>
+                        </tr>
 
-            <h4>GREP</h4>
-                <div id="line">
-                    <span class="terminal">grep -rn --include=*.php word</span><br>
-                    <span class="description">Inclut seulement les fichiers tex et cherche le mot 'word' (-r = recursive, -n = affiche les numéros de lignes).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">--exclude=\*.{c,h}</span><br>
-                    <span class="description">Exclut les fichiers .c et .h.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">--exclude-dir={dir1,*.dst}</span><br>
-                    <span class="description">Exclut des répertoires.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">-l (L minuscule)</span><br>
-                    <span class="description">Ne retourne que les noms de fichiers.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">grep -v ‘pattern’</span><br>
-                    <span class="description">Retourne les lignes qui ne matchent pas ‘pattern’.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">~/.config/user-dirs.dirs</p></td>
+                            <td><p class="description">Éditer ce fichier pour modifier les dossiers systèmes de l’utilisateur (donc aussi les vignettes).</p></td>
+                        </tr>
+                    </table>
 
-            <h4>DOSSIERS</h4>
-                <div id="line">
-                    <span class="terminal">du -hsc *</span><br>
-                    <span class="description">Taille d'un dossier et de ses sous-dossiers.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">ncdu [path]</span><br>
-                    <span class="description">Taille d'un dossier et de ses sous-dossiers + interface (basé sur le précédent). Défaut : répertoire courant.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">tree -L 2 <nom_du_dossier></span><br>
-                    <span class="description">Visualiser l'arborescence d'un dossier avec une profondeur de 2.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">dir</span><br>
-                    <span class="description">List current directory contents.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
 
-            <h4>FICHIERS</h4>
-                <div id="line">
-                    <span class="terminal">file path/to/file</span><br>
-                    <span class="description">Renvoie les caractéristiques du fichier.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">| sort</span><br>
-                    <span class="description">Trie des fichiers.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">locate file_name.ext</span><br>
-                    <span class="description">Localise le fichier passé en paramètre.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">evince `locate file.pdf`</span><br>
-                    <span class="description">Ouvre le pdf passé en paramètre.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">od -t x name_of_file</span><br>
-                    <span class="description">Lire un fichier en hexadécimal (ou autre format, voire options dans man).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">dirname $file</span><br>
-                    <span class="description">Extrait le nom du dossier parent de $file.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">split -n 8 [FILE_NAME]</span><br>
-                    <span class="description">Coupe un fichier en 8.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">echo 'abcd1234' | tr -d [a-z]</span><br>
-                    <span class="description">Retourne '1234' (efface les caractères [a-z]). Attention au pathname expansion (cf. man bash): pour l'éviter on peut mettre a-z sans les crochets.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">echo 'abcd1234' | tr ad3 zy9</span><br>
-                    <span class="description">Retourne 'zbcy1294'.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">tr -s ' ' < data</span><br>
-                    <span class="description">Supprime (squeeze) les espaces en trop dans data.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">column test.txt -t -s "|"</span><br>
-                    <span class="description">Dispose un fichier en colonnes : No.|Country|Yes/No 01|India|Y 02|US|Y 03|Australia|Y => No.  Country      Yes/No 01   India        Y 02   US           Y 03   Australia    Y</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">jot 36</span><br>
-                    <span class="description">Écrit les nombres de 1 à 36.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">jot 36 | rs 4 9</span><br>
-                    <span class="description">Dispose les nombres de 1 à 36 sur 4 lignes et 9 colonnes.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">uniq -f2 FileName | wc -l</span><br>
-                    <span class="description">Renvoie le nombre de termes différents dans le champ 3 (les 2 premiers champs sont sautés) du fichier FileName. (uniq: report or omit repeated lines)</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">sort -uk3 FileName | wc -l</span><br>
-                    <span class="description">La même chose si les entrées ne sont pas pré-triées.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">pdfunite file1.pdf file2.pdf [fileN.pdf] out.pdf</span><br>
-                    <span class="description">Merge plusieurs pdf dans out.pdf.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">cut -d: -f1 < /etc/passwd</span><br>
-                    <span class="description">Extrait du fichier /etc/passwd le 1er field, en utilisant comme délimiteur le caractère ':'</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">$ s='one_two_three_four_five' $ A="$(cut -d'_' -f2 <<<"$s")" $ echo "$A" two $ B="$(cut -d'_' -f4 <<<"$s")" $ echo "$B" four</span><br>
-                    <span class="description">Autre exemple.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">head -10 file</span><br>
-                    <span class="description">Donne les 10 premières ligne de file.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">awk '$2 ~ /^L/' file</span><br>
-                    <span class="description">Extrait de file toutes les lignes dont le 2e champ commence par “L”. Example file = 59  LOUIS   1202    +1 60  FREDDIE 1201    +4 61  FINLAY  1200    -2 62  LEON    1137    +12 63  HARLEY  1132    +6 64  DAVID   1127    -1</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">paste</span><br>
-                    <span class="description">Fusionne plusieurs fichiers en plusieurs colonnes séparées par des tabs : $ cat state Arunachal Pradesh Assam Andhra Pradesh Bihar Chhattisgrah $ cat capital Itanagar Dispur Hyderabad Patna Raipur $ paste number state capital 1       Arunachal Pradesh       Itanagar 2       Assam   Dispur 3       Andhra Pradesh  Hyderabad 4       Bihar   Patna 5       Chhattisgrah    Raipur</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                <h4>MATÉRIEL</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">xset -q</p></td>
+                            <td><p class="description">Informations on the current settings (keyboard, pointer, screen…).</p></td>
+                        </tr>
 
-            <h4>FROM SOURCES</h4>
-                <div id="line">
-                    <span class="terminal">./configure make sudo make install</span><br>
-                    <span class="description">3 étapes standard pour installer un logiciel from sources.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">xset r rate 250 70</p></td>
+                            <td><p class="description">Vitesse de répétition des touches du clavier.</p></td>
+                        </tr>
 
-            <h4>SORTIES STANDARD</h4>
-                <div id="line">
-                    <span class="terminal">command > output.txt</span><br>
-                    <span class="description">The standard output stream will be redirected to the file only, it will not be visible in the terminal. If the file already exists, it gets overwritten.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">command >> output.txt</span><br>
-                    <span class="description">The standard output stream will be redirected to the file only, it will not be visible in the terminal. If the file already exists, the new data will get appended to the end of the file.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">command 2> output.txt</span><br>
-                    <span class="description">The standard error stream will be redirected to the file only, it will not be visible in the terminal. If the file already exists, it gets overwritten.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">command 2>> output.txt</span><br>
-                    <span class="description">The standard error stream will be redirected to the file only, it will not be visible in the terminal. If the file already exists, the new data will get appended to the end of the file.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">command &> output.txt</span><br>
-                    <span class="description">Both the standard output and standard error stream will be redirected to the file only, nothing will be visible in the terminal. If the file already exists, it gets overwritten.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">command &>> output.txt</span><br>
-                    <span class="description">Both the standard output and standard error stream will be redirected to the file only, nothing will be visible in the terminal. If the file already exists, the new data will get appended to the end of the file..</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">command | tee output.txt</span><br>
-                    <span class="description">The standard output stream will be copied to the file, it will still be visible in the terminal. If the file already exists, it gets overwritten.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">command | tee -a output.txt</span><br>
-                    <span class="description">The standard output stream will be copied to the file, it will still be visible in the terminal. If the file already exists, the new data will get appended to the end of the file.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">command |& tee output.txt</span><br>
-                    <span class="description">Both the standard output and standard error streams will be copied to the file while still being visible in the terminal. If the file already exists, it gets overwritten.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">command |& tee -a output.txt</span><br>
-                    <span class="description">Both the standard output and standard error streams will be copied to the file while still being visible in the terminal. If the file already exists, the new data will get appended to the end of the file.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">xinput</p></td>
+                            <td><p class="description">Lister et modifier les réglages concernant le matériel d’input (souris, clavier).</p></td>
+                        </tr>
 
-            <h4>SONS</h4>
-                <div id="line">
-                    <span class="terminal">soundconverter -b -m audio/mpeg -s .mp3 fichier.wma</span><br>
-                    <span class="description">Convertit 'fichier.wma' en 'fichier.mp3'.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">xinput list-props 10</p></td>
+                            <td><p class="description">Propriétés du device 10 (indice à prendre dans la liste, cf. ligne précédente).</p></td>
+                        </tr>
+                    </table>
 
-            <h4>IMAGES</h4>
-                <div id="line">
-                    <span class="terminal">display image.jpg</span><br>
-                    <span class="description">Ouvre l'image.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">convert -thumbnail 120x image.jpg image_thumb.jpg</span><br>
-                    <span class="description">Crée une vignette à partir de image.jpg (largeur 120).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">convert -thumbnail x120 image.jpg image_thumb.jpg</span><br>
-                    <span class="description">Crée une vignette à partir de image.jpg (hauteur 120).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">convert image.jpg image.tiff</span><br>
-                    <span class="description">Convertit un jpeg en tiff.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">convert image.jpg -colorspace CMYK image_cmyk.jpg</span><br>
-                    <span class="description">Convertit une image en CMJN.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">convert image.tiff -density 300 image_300.tiff</span><br>
-                    <span class="description">Convertit une image en 300 dpi.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">identify -verbose image.jpg</span><br>
-                    <span class="description">Détails sur une image.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
 
-            <h4>XARGS</h4>
-                <div id="line">
-                    <span class="terminal">cut -d: -f1 < /etc/passwd | sort | xargs echo</span><br>
-                    <span class="description">Passe en paramètre à la commande 'echo' les arguments donnés en entrée standard.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">echo {1..9} | xargs -n2 -P2 --process-slot-var=index sh -c 'echo "$index" "$@" "$$"' _</span><br>
-                    <span class="description">Processes parallèles.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                <h4>CRONTAB</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">crontab -l</p></td>
+                            <td><p class="description">Voir mon fichier crontab.</p></td>
+                        </tr>
 
-            <h4>INTERNET</h4>
-                <div id="line">
-                    <span class="terminal">nslookup site.com</span><br>
-                    <span class="description">Renvoie l'adresse IP de site.com.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">dig site.com</span><br>
-                    <span class="description">Idem.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">host site.com</span><br>
-                    <span class="description">Idem.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">getent hosts site.com</span><br>
-                    <span class="description">Idem.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>*
+                        <tr>
+                            <td><p class="terminal">crontab -e</p></td>
+                            <td><p class="description">Éditer mon fichier crontab.</p></td>
+                        </tr>
 
-            <h4>LS</h4>
-                <div id="line">
-                    <span class="terminal">ls -alh</span><br>
-                    <span class="description">h = human readable</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">ls *.py</span><br>
-                    <span class="description">Liste tous les fichiers .py du dossier courant (on peut utiliser une regex, like [0-9]*, etc.).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><pre class="terminal">
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  *  &lt;user_command_to_be_executed&gt;</pre></td>
+                            <td><p class="description">Syntaxe d’une ligne de crontab.</p></td>
+                        </tr>
 
-            <h4>COPIE À DISTANCE</h4>
-                <div id="line">
-                    <span class="terminal">rsync -av /home/user/Desktop/file user@191.168.1.21:/home/user/Desktop/remote_file</span><br>
-                    <span class="description">Copie file vers remote_file.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">scp src dest</span><br>
-                    <span class="description">Idem.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">0 0 13 1 5 tâche</p></td>
+                            <td><p class="description">Exécuter tâche le 13 janvier et tous les vendredis.</p></td>
+                        </tr>
 
-            <h4>CLAMAV (ANTI-VIRUS)</h4>
-                <div id="line">
-                    <span class="terminal">sudo clamscan --max-filesize=3999M --max-scansize=3999M --exclude-dir=/sys/* -i -r /</span><br>
-                    <span class="description">Lance un scan de tous les fichiers du système et affiche un rapport.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">*/5 9-17 * * mon,tue,wed,thu,fri wall "Où en es tu ?"</p></td>
+                            <td><p class="description">Afficher un message toutes les 5 minutes entre 9h et 17h.</p></td>
+                        </tr>
 
-            <h4>DATE</h4>
-                <div id="line">
-                    <span class="terminal">date</span><br>
-                    <span class="description">Date.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">00 */6 * * * /root/scripts/synchronisation-ftp.sh</p></td>
+                            <td><p class="description">Exécution d’une commande toutes les 6 heures.</p></td>
+                        </tr>
 
-            <h4>TIPS & TRICKS</h4>
-                <div id="line">
-                    <span class="terminal">touch foo bar && ls -l !#:2</span><br>
-                    <span class="description">Équivalent de 'touch foo bar && ls -l bar'</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                        <tr>
+                            <td><p class="terminal">00 22 * * * /root/scripts/sauvegarde.sh >> sauvegarde.log</p></td>
+                            <td><p class="description">Exécution d’une commande à 22h et écriture dans un fichier log.</p></td>
+                        </tr>
+                    </table>
 
-            <h4>ARCHIVES</h4>
-                <div id="line">
-                    <span class="terminal">unzip file.zip [-d destination_folder]</span><br>
-                    <span class="description">Unzip a file [to a particular dest. folder].</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">tar -cvf nom_archive nom_dossier</span><br>
-                    <span class="description">Créer une archive tar.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">tar -tf nom_archive.tar</span><br>
-                    <span class="description">Voir contenu sans extraire.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">tar -xvf nom_archive.tar</span><br>
-                    <span class="description">Extraire le contenu de l'archive.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">tar xzvf nom_archive.tar.gz  -C repertoire</span><br>
-                    <span class="description">Idem vers un autre répertoire.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">gzip nom_archive.tar</span><br>
-                    <span class="description">Compresser un tar en .tar.gz (plus courant).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">bzip2 nom_archive.tar</span><br>
-                    <span class="description">Compresser un tar en bz2 (plus puissant et plus lent).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">gunzip nom_archive.tar.gz</span><br>
-                    <span class="description">Décompresser un .tar.gz.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">bunzip2 nom_archive.tar.bz2</span><br>
-                    <span class="description">Décompresser un .tar.bz2.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">tar -zcvf nom_archive.tar.gz nom_dossier</span><br>
-                    <span class="description">Créer une archive tar + compresser automatiquement en gz.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">tar -jcvf nom_archive.tar.bz2 nom_dossier</span><br>
-                    <span class="description">Créer une archive tar + compresser automatiquement en bz2.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">tar -zxvf nom_archive.tar.gz</span><br>
-                    <span class="description">Extraire le contenu de l'archive après avoir décompressé automatiquement (.gz).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">tar -jxvf nom_archive.tar.bz2</span><br>
-                    <span class="description">Extraire le contenu de l'archive après avoir décompressé automatiquement  (.bz2).</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
 
-            <h4>ENVIRONNEMENT</h4>
-                <div id="line">
-                    <span class="terminal">env</span><br>
-                    <span class="description">Liste des variables d'environnement.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal">VARNAME="my value"</span><br>
-                    <span class="description">À mettre dans .bashrc [/etc/environment] pour ajouter VARNAME à toutes les futures sessions bash [system wide] de manière permanente.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
+                <h4>WATCH</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">watch -n 5 <command></p></td>
+                            <td><p class="description">Exécute <command> toutes les 5 secondes et affiche le résultat rafraîchi dans le Terminal.</p></td>
+                        </tr>
+                    </table>
 
-            <h4>SSH</h4>
-                <div id="line">
-                    <span class="terminal">sudo netstat -tnpa | grep 'ESTABLISHED.*ssh'</span><br>
-                    <span class="description">Liste de toutes les connexions ssh en cours.</span>
-                </div>
-                <div id="line">
-                    <span class="terminal"></span><br>
-                    <span class="description"></span>
-                </div>
 
-            <h4>ASPIRATEUR DE SITES</h4>
-                <div id="line">
-                    <span class="terminal">httrack https://site.com -r2 -P 192.168.1.11</span><br>
-                    <span class="description">Aspire le site https://site.com, avec une profondeur de 2 et en passant par le proxy.</span>
-                </div>
-            <!-- END CONTENT -->
+                <h4>RÉSEAU</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">ip [OBJECT]</p></td>
+                            <td><p class="description">Infos sur le réseau et les interfaces (voir man ip pour les objets disponibles).</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">ip -s -c -h a</p></td>
+                            <td><p class="description">Adresses, avec stats, couleurs et option 'human'.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">hostname -I</p></td>
+                            <td><p class="description">Renvoie l'adresse IP de ce poste.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">nmap 192.168.1.11</p></td>
+                            <td><p class="description">Scanne les ports ouverts sur une machine du réseau.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">sudo netdiscover -r 192.168.1.0/24</p></td>
+                            <td><p class="description">Scanne le réseau local.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">avahi-browse --all --terminate</p></td>
+                            <td><p class="description">Idem.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">avahi-resolve-address 192.168.1.254</p></td>
+                            <td><p class="description">Résout l’adresse IP passée en paramètre.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">nmcli</p></td>
+                            <td><p class="description">Command-line tool for controlling NetworkManager. Use "nmcli device show" to get complete information about known devices and "nmcli connection show" to get an overview on active connection profiles.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>DEVICES/MOUNT</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">df -h</p></td>
+                            <td><p class="description">Espace libre/utilisé sur disque.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">df -h | grep "^/dev/sd*" | sort</p></td>
+                            <td><p class="description">Idem, mais seulement les «/dev/sd*».</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">sudo fdisk -l</p></td>
+                            <td><p class="description">Liste des devices (indique notamment la partition de boot).</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">mount -t ntfs /dev/sda1  /mnt/</p></td>
+                            <td><p class="description">Monter /dev/sda1 sur /mnt (type ntfs, pour usb: usually vfat, pour linux: usually ext).</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">mount /dev/disk/by-id/ata-ST31500341AS_9VS2AM04-part1 /some/dir</p></td>
+                            <td><p class="description">Idem by verbose path (other names: /dev/disk/by-uuid/, /dev/disk/by-path/, /dev/disk/by-label/.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">lsblk --fs -l -o NAME,FSTYPE,LABEL,UUID,MOUNTPOINT,SIZE</p></td>
+                            <td><p class="description">Vue générale des filesystems et partitions (permet de voir les types, uuid etc.). Voir les available columns en tapant 'lsblk --help'.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">sudo blkid</p></td>
+                            <td><p class="description">Locate/print block device attributes.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">findmnt</p></td>
+                            <td><p class="description">Trouver un filesystem.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">findmnt -lo source,target,fstype,label,options,used -t ext4</p></td>
+                            <td><p class="description">-l: list; -o: options list; -t: filter.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">lsusb</p></td>
+                            <td><p class="description">Liste les devices usb.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">cat /proc/partitions</p></td>
+                            <td><p class="description">Liste les partitions.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">lsblk -io KNAME,TYPE,SIZE,MODEL</p></td>
+                            <td><p class="description">Lists  information  about  all available or the specified block devices.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>MODULES</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">sudo modprobe <nom_du_module></p></td>
+                            <td><p class="description">Charger un module kernel.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">depmod</p></td>
+                            <td><p class="description">Handle dependency descriptions for loadable kernel modules.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">insmod</p></td>
+                            <td><p class="description">Install loadable kernel module.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">lsmod</p></td>
+                            <td><p class="description">List loaded modules. /proc/modules shows what kernel modules (drivers) are currently loaded into memory.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">modinfo</p></td>
+                            <td><p class="description">Display information about a kernel module.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">modprobe</p></td>
+                            <td><p class="description">High level handling of loadable modules.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">rmmod</p></td>
+                            <td><p class="description">Unload loadable modules.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>SERVICES/DÉMONS</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">systemctl list-unit-files *service</p></td>
+                            <td><p class="description">Liste tous les services (systemctl) et leur état.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">systemctl | grep running</p></td>
+                            <td><p class="description">Liste tous les services dont le statut est “running”.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">systemctl list-unit-files --state=enabled</p></td>
+                            <td><p class="description">Liste tous les services dont le statut est “enabled”.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">service --status-all</p></td>
+                            <td><p class="description">Runs all init scripts with the status command.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">ls /etc/init.d</p></td>
+                            <td><p class="description">Liste tous les démons.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">cd /etc/systemd/system sudo chmod a+x sdcard.service  systemctl --system daemon-reload  systemctl start sdcard.service</p></td>
+                            <td><p class="description">Pour ajouter le service sdcard.service.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">sudo systemctl stop sdcard.service sudo systemctl disable sdcard.service sudo rm sdcard.service sudo rm sdcard.service sudo systemctl daemon-reload  sudo systemctl reset-failed</p></td>
+                            <td><p class="description">Pour supprimer le service sdcard.service.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>MAILS</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">cd ~/.thunderbird/xxx.default/Mail/localhost<br>ln -s ~/Mails/Inbox Inbox</p></td>
+                            <td><p class="description">Voir les mails de ~/Mails/Inbox sur Thunderbird.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>ACCÈS</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">id</p></td>
+                            <td><p class="description">Pour voir dans quels groupes je suis inscrit.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">groups</p></td>
+                            <td><p class="description">Idem (plus simple).</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">whoami</p></td>
+                            <td><p class="description">To know who I am.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>PAQUETS</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">sudo dpkg -i *.deb</p></td>
+                            <td><p class="description">Installer un paquet deb.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">dpkg-query -l</p></td>
+                            <td><p class="description">Liste des paquets présents dans la database dpkg.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">apt list --installed</p></td>
+                            <td><p class="description">Liste des paquets installés.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">aptitude search '~i!~M'</p></td>
+                            <td><p class="description">Idem avec aptitude.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">apt-file search 'word'</p></td>
+                            <td><p class="description">Cherche un paquet contenant 'word'.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">apt-get autoremove</p></td>
+                            <td><p class="description">Supprime les paquets installés en raison de dépendances, et devenus inutiles.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">apt-get autoremove --purge</p></td>
+                            <td><p class="description">Supprimer les anciens noyaux.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">apt-get autoremove --purge <nom-du-paquet></p></td>
+                            <td><p class="description">Supprimer le paquet, ses dépendances et ses fichiers de configuration.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">apt-get upgrade</p></td>
+                            <td><p class="description">Installe nouvelles versions de tous les paquets.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">apt-get dist-upgrade</p></td>
+                            <td><p class="description">Mise à jour des paquets, se charge de gérer les changements de paquets dépendants (cf. aptitude full-upgrade).</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">apt-get check</p></td>
+                            <td><p class="description">Checks for broken dependencies.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">aptitude update</p></td>
+                            <td><p class="description">Met à jour la liste des paquets disponibles.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">aptitude safe-upgrade</p></td>
+                            <td><p class="description">Met à jour les paquets installés vers leurs versions les plus récentes, sans détruire l'existant.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">aptitude full-upgrade</p></td>
+                            <td><p class="description">Idem mais installe et supprime selon les besoins.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">aptitude autoclean</p></td>
+                            <td><p class="description">Supprime du cache les paquets qui ne peuvent plus être downloadés.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">deborphan</p></td>
+                            <td><p class="description">Liste les paquets orphelins.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>REPOSITORIES</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">add-apt-repository ppa:<user>/<ppa-name></p></td>
+                            <td><p class="description">Ajoute un repository dans /etc/apt/sources.list.d/.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">add-apt-repository --remove ppa:virtualbox</p></td>
+                            <td><p class="description">Supprimer un repository.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>KEYS</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -</p></td>
+                            <td><p class="description">Ajouter une clé.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key --keyring /tmp/test add -</p></td>
+                            <td><p class="description">Ajouter une clé dans un autre dossier que /etc/apt/.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">apt-key list</p></td>
+                            <td><p class="description">Liste des clés.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">apt-key del B9F8</p></td>
+                            <td><p class="description">Supprimer une clé.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>CD</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">cd "$(find -L . -name 'xxx' -type d)"</p></td>
+                            <td><p class="description">Commande en argument de cd.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>CHMOD</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">chmod -R a+rw my_rep</p></td>
+                            <td><p class="description">Droits rw à tout le monde de manière récursive.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">chmod -R u-x,g-x,o-x,u+X,g+X,o+X my_rep</p></td>
+                            <td><p class="description">Droits x au rép. + sous-rép., et non-x aux fichiers.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>PROCESSES</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">echo $$</p></td>
+                            <td><p class="description">Donne le pid du shell courant ('1000' par ex.).</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">ps --pid 1000</p></td>
+                            <td><p class="description">Montre que c'est un shell.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">ps -o ppid= -p 1000</p></td>
+                            <td><p class="description">Donne le pid du parent.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">ps -aux</p></td>
+                            <td><p class="description">Liste des processes.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">ps -aux | grep firefox</p></td>
+                            <td><p class="description">Trouver le pid de Firefox.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">pgrep firefox</p></td>
+                            <td><p class="description">Idem.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">pidof firefox</p></td>
+                            <td><p class="description">Idem.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">kill -9 2301</p></td>
+                            <td><p class="description">Kill le process 2301.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">kill -9 `pidof firefox`</p></td>
+                            <td><p class="description">Tuer le process de Firefox.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">pkill firefox</p></td>
+                            <td><p class="description">Idem (encore faut-il être sûr qu’il n’y a qu’un process firefox).</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">top</p></td>
+                            <td><p class="description">Displays Linux processes (dynamique).     press shift+m after running the top command     or you can interactively choose which column to sort on         press Shift+f to enter the interactive menu         press the up or down arrow until the %MEM choice is highlighted         press s to select %MEM choice         press enter to save your selection         press q to exit the interactive menu</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">htop</p></td>
+                            <td><p class="description">Idem (beaucoup mieux).</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">long-running-command [Ctrl+Z] bg</p></td>
+                            <td><p class="description">Mettre une commande en background.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>FIND</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">find . type f -printf '%p %s'</p></td>
+                            <td><p class="description">printf = formate le résultat (voir man find pour la liste des balises). %p = nom, %s = taille du fichier.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">find -L</p></td>
+                            <td><p class="description">Follow symbolic links.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">find . ! -name '*light*' -delete</p></td>
+                            <td><p class="description">Delete every find which doesn't contain 'light'.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">find ~ -type f -mmin -3 -exec grep -Fl 'rc' {} \;</p></td>
+                            <td><p class="description">Combiner find et grep (fichier modifié il y a moins de 3 minutes et contenant 'rc').</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>GREP</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">grep -rn --include=*.php word</p></td>
+                            <td><p class="description">Inclut seulement les fichiers tex et cherche le mot 'word' (-r = recursive, -n = affiche les numéros de lignes).</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">--exclude=\*.{c,h}</p></td>
+                            <td><p class="description">Exclut les fichiers .c et .h.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">--exclude-dir={dir1,*.dst}</p></td>
+                            <td><p class="description">Exclut des répertoires.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">-l (L minuscule)</p></td>
+                            <td><p class="description">Ne retourne que les noms de fichiers.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">grep -v ‘pattern’</p></td>
+                            <td><p class="description">Retourne les lignes qui ne matchent pas ‘pattern’.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>DOSSIERS</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">du -hsc *</p></td>
+                            <td><p class="description">Taille d'un dossier et de ses sous-dossiers.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">ncdu [path]</p></td>
+                            <td><p class="description">Taille d'un dossier et de ses sous-dossiers + interface (basé sur le précédent). Défaut : répertoire courant.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">tree -L 2 <nom_du_dossier></p></td>
+                            <td><p class="description">Visualiser l'arborescence d'un dossier avec une profondeur de 2.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">dir</p></td>
+                            <td><p class="description">List current directory contents.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>FICHIERS</h4>
+                    <table>
+                        <tr>
+                            <td><pre class="terminal">
+Number    Permission            Symbol
+0         No Permission         ---
+1         Execute               --x
+2         Write                 -w-
+3         Execute + Write       -wx
+4         Read                  r--
+5         Read + Execute        r-x
+6         Read + Write          rw-
+7         Read + Write +Execute rwx</pre></td>
+                            <td><p class="description">Permission sur les fichiers et les dossiers. Ainsi 744 équivaut à "rwxr--r--", soit "lecture écriture exécution" pour "u" (user) et "lecture seule" pour "g" (group) et "o" (others).</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">file path/to/file</p></td>
+                            <td><p class="description">Renvoie les caractéristiques du fichier.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">| sort</p></td>
+                            <td><p class="description">Trie des fichiers.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">locate file_name.ext</p></td>
+                            <td><p class="description">Localise le fichier passé en paramètre.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">evince `locate file.pdf`</p></td>
+                            <td><p class="description">Ouvre le pdf passé en paramètre.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">od -t x name_of_file</p></td>
+                            <td><p class="description">Lire un fichier en hexadécimal (ou autre format, voire options dans man).</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">dirname $file</p></td>
+                            <td><p class="description">Extrait le nom du dossier parent de $file.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">split -n 8 [FILE_NAME]</p></td>
+                            <td><p class="description">Coupe un fichier en 8.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">echo 'abcd1234' | tr -d [a-z]</p></td>
+                            <td><p class="description">Retourne '1234' (efface les caractères [a-z]). Attention au pathname expansion (cf. man bash): pour l'éviter on peut mettre a-z sans les crochets.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">echo 'abcd1234' | tr ad3 zy9</p></td>
+                            <td><p class="description">Retourne 'zbcy1294'.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">tr -s ' ' < data</p></td>
+                            <td><p class="description">Supprime (squeeze) les espaces en trop dans data.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">column test.txt -t -s "|"</p></td>
+                            <td><p class="description">Dispose un fichier en colonnes : No.|Country|Yes/No 01|India|Y 02|US|Y 03|Australia|Y => No.  Country      Yes/No 01   India        Y 02   US           Y 03   Australia    Y</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">jot 36</p></td>
+                            <td><p class="description">Écrit les nombres de 1 à 36.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">jot 36 | rs 4 9</p></td>
+                            <td><p class="description">Dispose les nombres de 1 à 36 sur 4 lignes et 9 colonnes.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">uniq -f2 FileName | wc -l</p></td>
+                            <td><p class="description">Renvoie le nombre de termes différents dans le champ 3 (les 2 premiers champs sont sautés) du fichier FileName. (uniq: report or omit repeated lines)</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">sort -uk3 FileName | wc -l</p></td>
+                            <td><p class="description">La même chose si les entrées ne sont pas pré-triées.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">pdfunite file1.pdf file2.pdf [fileN.pdf] out.pdf</p></td>
+                            <td><p class="description">Merge plusieurs pdf dans out.pdf.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">cut -d: -f1 < /etc/passwd</p></td>
+                            <td><p class="description">Extrait du fichier /etc/passwd le 1er field, en utilisant comme délimiteur le caractère ':'</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">$ s='one_two_three_four_five' $ A="$(cut -d'_' -f2 <<<"$s")" $ echo "$A" two $ B="$(cut -d'_' -f4 <<<"$s")" $ echo "$B" four</p></td>
+                            <td><p class="description">Autre exemple.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">head -10 file</p></td>
+                            <td><p class="description">Donne les 10 premières ligne de file.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">awk '$2 ~ /^L/' file</p></td>
+                            <td><p class="description">Extrait de file toutes les lignes dont le 2e champ ($2) commence par “L”. Example file = 59  LOUIS   1202    +1 60  FREDDIE 1201    +4 61  FINLAY  1200    -2 62  LEON    1137    +12 63  HARLEY  1132    +6 64  DAVID   1127    -1</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">paste</p></td>
+                            <td><p class="description">Fusionne plusieurs fichiers en plusieurs colonnes séparées par des tabs :<br>$ cat state Arunachal Pradesh Assam Andhra Pradesh Bihar Chhattisgrah<br>$ cat capital Itanagar Dispur Hyderabad Patna Raipur<br>$ paste number state capital 1       Arunachal Pradesh       Itanagar 2       Assam   Dispur 3       Andhra Pradesh  Hyderabad 4       Bihar   Patna 5       Chhattisgrah    Raipur</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>INSTALLATION FROM SOURCES</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">./configure<br>make<br>make install</p></td>
+                            <td><p class="description">1. Configure the software<br>The configure script is responsible for getting ready to build the software on your specific system. It makes sure all of the dependencies for the rest of the build and install process are available, and finds out whatever it needs to know to use those dependencies.<br>Unix programs are often written in C, so we’ll usually need a C compiler to build them. In these cases the configure script will establish that your system does indeed have a C compiler, and find out what it’s called and where to find it.<br>2. Build the software<br>Once configure has done its job, we can invoke make to build the software. This runs a series of tasks defined in a Makefile to build the finished program from its source code.<br>The tarball you download usually doesn’t include a finished Makefile. Instead it comes with a template called Makefile.in and the configure script produces a customised Makefile specific to your system.3. Install the software<br>Now that the software is built and ready to run, the files can be copied to their final destinations. The make install command will copy the built program, and its libraries and documentation, to the correct locations.<br>This usually means that the program’s binary will be copied to a directory on your PATH, the program’s manual page will be copied to a directory on your MANPATH, and any other files it depends on will be safely stored in the appropriate place.<br>Since the install step is also defined in the Makefile, where the software is installed can change based on options passed to the configure script, or things the configure script discovered about your system.<br>Depending on where the software is being installed, you might need escalated permissions for this step so you can copy files to system directories. Using sudo will often do the trick.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>SORTIES STANDARD</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">command > output.txt</p></td>
+                            <td><p class="description">The standard output stream will be redirected to the file only, it will not be visible in the terminal. If the file already exists, it gets overwritten.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">command >> output.txt</p></td>
+                            <td><p class="description">The standard output stream will be redirected to the file only, it will not be visible in the terminal. If the file already exists, the new data will get appended to the end of the file.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">command 2> output.txt</p></td>
+                            <td><p class="description">The standard error stream will be redirected to the file only, it will not be visible in the terminal. If the file already exists, it gets overwritten.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">command 2>> output.txt</p></td>
+                            <td><p class="description">The standard error stream will be redirected to the file only, it will not be visible in the terminal. If the file already exists, the new data will get appended to the end of the file.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">command &> output.txt</p></td>
+                            <td><p class="description">Both the standard output and standard error stream will be redirected to the file only, nothing will be visible in the terminal. If the file already exists, it gets overwritten.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">command &>> output.txt</p></td>
+                            <td><p class="description">Both the standard output and standard error stream will be redirected to the file only, nothing will be visible in the terminal. If the file already exists, the new data will get appended to the end of the file..</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">command | tee output.txt</p></td>
+                            <td><p class="description">The standard output stream will be copied to the file, it will still be visible in the terminal. If the file already exists, it gets overwritten.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">command | tee -a output.txt</p></td>
+                            <td><p class="description">The standard output stream will be copied to the file, it will still be visible in the terminal. If the file already exists, the new data will get appended to the end of the file.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">command |& tee output.txt</p></td>
+                            <td><p class="description">Both the standard output and standard error streams will be copied to the file while still being visible in the terminal. If the file already exists, it gets overwritten.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">command |& tee -a output.txt</p></td>
+                            <td><p class="description">Both the standard output and standard error streams will be copied to the file while still being visible in the terminal. If the file already exists, the new data will get appended to the end of the file.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>SONS</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">soundconverter -b -m audio/mpeg -s .mp3 fichier.wma</p></td>
+                            <td><p class="description">Convertit 'fichier.wma' en 'fichier.mp3'.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>IMAGES</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">display image.jpg</p></td>
+                            <td><p class="description">Ouvre l'image.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">convert -thumbnail 120x image.jpg image_thumb.jpg</p></td>
+                            <td><p class="description">Crée une vignette à partir de image.jpg (largeur 120).</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">convert -thumbnail x120 image.jpg image_thumb.jpg</p></td>
+                            <td><p class="description">Crée une vignette à partir de image.jpg (hauteur 120).</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">convert image.jpg image.tiff</p></td>
+                            <td><p class="description">Convertit un jpeg en tiff.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">convert image.jpg -colorspace CMYK image_cmyk.jpg</p></td>
+                            <td><p class="description">Convertit une image en CMJN.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">convert image.tiff -density 300 image_300.tiff</p></td>
+                            <td><p class="description">Convertit une image en 300 dpi.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">identify -verbose image.jpg</p></td>
+                            <td><p class="description">Détails sur une image.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>XARGS</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">cut -d: -f1 < /etc/passwd | sort | xargs echo</p></td>
+                            <td><p class="description">Passe en paramètre à la commande 'echo' les arguments donnés en entrée standard.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">echo {1..9} | xargs -n2 -P2 --process-slot-var=index sh -c 'echo "$index" "$@" "$$"' _</p></td>
+                            <td><p class="description">Processes parallèles.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>INTERNET</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">nslookup site.com</p></td>
+                            <td><p class="description">Renvoie l'adresse IP de site.com.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">dig site.com</p></td>
+                            <td><p class="description">Idem.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">host site.com</p></td>
+                            <td><p class="description">Idem.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">getent hosts site.com</p></td>
+                            <td><p class="description">Idem.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>LS</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">ls -alh</p></td>
+                            <td><p class="description">a = all (y compris fichiers cachés), l = list, h = human readable</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">ls *.py</p></td>
+                            <td><p class="description">Liste tous les fichiers .py du dossier courant (on peut utiliser une regex, like [0-9]*, etc.).</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>CONNEXION & COPIE À DISTANCE</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">ssh user@192.168.1.xxx</p></td>
+                            <td><p class="description">Secure shell distant.</p></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><p class="terminal">sudo netstat -tnpa | grep 'ESTABLISHED.*ssh'</p></td>
+                            <td><p class="description">Liste de toutes les connexions ssh en cours.</p></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><p class="terminal">rsync -av /home/user/Desktop/file user@191.168.1.21:/home/user/Desktop/remote_file</p></td>
+                            <td><p class="description">Copie file vers remote_file.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">scp src dest</p></td>
+                            <td><p class="description">Idem.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>DATE</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">date</p></td>
+                            <td><p class="description">Date.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>TIPS & TRICKS</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">touch foo bar && ls -l !#:2</p></td>
+                            <td><p class="description">Équivalent de 'touch foo bar && ls -l bar'</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>ARCHIVES</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">unzip file.zip [-d destination_folder]</p></td>
+                            <td><p class="description">Unzip a file [to a particular dest. folder].</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">tar -cvf nom_archive nom_dossier</p></td>
+                            <td><p class="description">Créer une archive tar.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">tar -tf nom_archive.tar</p></td>
+                            <td><p class="description">Voir contenu sans extraire.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">tar -xvf nom_archive.tar</p></td>
+                            <td><p class="description">Extraire le contenu de l'archive.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">tar xzvf nom_archive.tar.gz  -C repertoire</p></td>
+                            <td><p class="description">Idem vers un autre répertoire.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">gzip nom_archive.tar</p></td>
+                            <td><p class="description">Compresser un tar en .tar.gz (plus courant).</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">bzip2 nom_archive.tar</p></td>
+                            <td><p class="description">Compresser un tar en bz2 (plus puissant et plus lent).</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">gunzip nom_archive.tar.gz</p></td>
+                            <td><p class="description">Décompresser un .tar.gz.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">bunzip2 nom_archive.tar.bz2</p></td>
+                            <td><p class="description">Décompresser un .tar.bz2.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">tar -zcvf nom_archive.tar.gz nom_dossier</p></td>
+                            <td><p class="description">Créer une archive tar + compresser automatiquement en gz.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">tar -jcvf nom_archive.tar.bz2 nom_dossier</p></td>
+                            <td><p class="description">Créer une archive tar + compresser automatiquement en bz2.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">tar -zxvf nom_archive.tar.gz</p></td>
+                            <td><p class="description">Extraire le contenu de l'archive après avoir décompressé automatiquement (.gz).</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">tar -jxvf nom_archive.tar.bz2</p></td>
+                            <td><p class="description">Extraire le contenu de l'archive après avoir décompressé automatiquement  (.bz2).</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>ENVIRONNEMENT</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">env</p></td>
+                            <td><p class="description">Liste des variables d'environnement.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">VARNAME="my value"</p></td>
+                            <td><p class="description">À mettre dans .bashrc [/etc/environment] pour ajouter VARNAME à toutes les futures sessions bash [system wide] de manière permanente.</p></td>
+                        </tr>
+                    </table>
+
+
+                <h4>ASPIRATEUR DE SITES</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">httrack https://site.com -r2 -P 192.168.1.11</p></td>
+                            <td><p class="description">Aspire le site https://site.com, avec une profondeur de 2 et en passant par le proxy.</p></td>
+                    </table>
+            </div>
         </div>
+        <!-- END CONTENT -->
     </body>
 
     <script src="static/js/jquery-3.3.1.min.js"></script>
