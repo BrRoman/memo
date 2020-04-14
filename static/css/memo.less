@@ -21,7 +21,7 @@
 }
 
 body {
-    background-color: rgb(233, 233, 233);
+    background-color: rgb(255, 242, 231);
 
 
     #header {
@@ -48,28 +48,53 @@ body {
     }
 
     #content {
-        border: 1px solid grey;
-        border-radius: 5px;
         margin: 10px 40px 40px 40px;
         padding: 20px;
 
         h1 {
             color: @green;
+            text-align: center;
         }
 
         h4 {
-            color: @blue;
-            margin: 20px 0px 0px 0px;
+            color: @red;
+            margin: 30px 0px 0px 0px;
         }
 
         .group {
             margin: 0px 0px 30px 40px;
-        }
 
-        .descr {
-            font-family: sans-serif;
-            font-size: 12pt;
-            margin: 5px;
+            .descr,
+            .file,
+            .terminal {
+                margin: 8px 8px 8px 50px;
+                padding: 7px;
+                width: 700px;
+            }
+
+            .file {
+                background-color: rgb(234, 255, 221);
+                border: 1px solid lightgrey;
+                border-radius: 4px;
+                color: black;
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 12pt;
+            }
+
+            .terminal {
+                background-color: black;
+                border-radius: 4px;
+                color: white;
+                font-family: monospace;
+                font-size: 10pt;
+            }
+
+
+            .descr {
+                font-family: sans-serif;
+                font-size: 12pt;
+                margin: 5px;
+            }
         }
 
         table {
