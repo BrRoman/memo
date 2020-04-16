@@ -33,20 +33,57 @@
         </nav>
 
         <!-- CONTENT -->
-        <div id="content" class="w-100 m-3 p-2">
-            <h1 class="mt-5">Git</h1>
+        <div class="d-flex flex-column align-items-center w-75 mx-auto">
+            <div id="content" class="w-100 m-3 p-2">
+                <h1>Git</h1>
 
-            git show <sha du commit>	Montre les détails d'un commit.
-            git commit	Après avoir résolu un conflit.
-            git rm -r --cached <path to folder>	Pour que Git ne suive plus un dossier, mais que ce dossier reste dans le working directory. Il faut d'abord avoir ajouté ce dossier au .gitignore.
-            git branch -vv	Montre les branches et les remote-trackings.
-            git diff -p <commit_1> <commit_2> <nom_du_fichier>	Montre les différences entre c1 et c2 sur le fichier mentionné.
-            git blame <nom fichier>	Historique d'un fichier.
-            git blame -L 150,+11 -- file.sh	Blâme sur une ou plusieurs lignes de code.
-            git remote set-url remote_rep <new_url> [<old_url]	Changer l’url du remote ‘remote_rep’.
-            git log –grep=<patter>	Chercher <pattern> dans les logs.
-            git merge --no-commit --squash branchA git reset HEAD	Pour merger les modifs de branchA dans la branche courante à l’état unstaged.
-            1. Add it to .gitignore 2. Remove the file from git without deleting the file: git rm --cached path/to/settings.py 3. Commit the change: git commit -m "Remove settings.py"	Ne plus tracker le fichier settings.py.
+                <table>
+                    <tr>
+                        <td><p class="terminal">git show &lt;sha du commit&gt;</p></td>
+                        <td><p class="description">Montre les détails d'un commit.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p class="terminal">git commit</p></td>
+                        <td><p class="description">Après avoir résolu un conflit.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p class="terminal">git rm -r --cached &lt;path to folder&gt;</p></td>
+                        <td><p class="description">Pour que Git ne suive plus un dossier, mais que ce dossier reste dans le working directory. Il faut d'abord avoir ajouté ce dossier au .gitignore.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p class="terminal">git branch -vv</p></td>
+                        <td><p class="description">Montre les branches et les remote-trackings.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p class="terminal">git diff -p &lt;commit_1&gt; &lt;commit_2&gt; &lt;nom_du_fichier&gt;</p></td>
+                        <td><p class="description">Montre les différences entre c1 et c2 sur le fichier mentionné.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p class="terminal">git blame &lt;nom fichier&gt;</p></td>
+                        <td><p class="description">Historique d'un fichier.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p class="terminal">git blame -L 150,+11 -- file.sh</p></td>
+                        <td><p class="description">Blâme sur une ou plusieurs lignes de code.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p class="terminal">git remote set-url remote_rep &lt;new_url&gt; [&lt;old_url]</p></td>
+                        <td><p class="description">Changer l’url du remote ‘remote_rep’.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p class="terminal">git log –grep=&lt;patter&gt;</p></td>
+                        <td><p class="description">Chercher &lt;pattern&gt; dans les logs.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p class="terminal">git merge --no-commit --squash branchA git reset HEAD</p></td>
+                        <td><p class="description">Pour merger les modifs de branchA dans la branche courante à l’état unstaged.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p class="terminal">1. Add it to .gitignore<br>2. Remove the file from git without deleting the file: git rm --cached path/to/settings.py<br>3. Commit the change: git commit -m "Remove settings.py"</p></td>
+                        <td><p class="description">Ne plus tracker le fichier settings.py.</p></td>
+                    </tr>
+                </table>
+            </div>
         </div>
         <!-- END CONTENT -->
     </body>
