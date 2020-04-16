@@ -163,7 +163,11 @@ NameVirtualHost *:8000
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 &lt;/VirtualHost&gt;</pre>
-                        <p class="descr">Commentaire :<br>Le dossier static est celui dans lequel collectstatic va placer tous les fichiers statiques.</p>
+                        <p class="descr">Commentaires :<br>Le dossier static est celui dans lequel collectstatic va placer tous les fichiers statiques.<br>S'il y a plusieurs sites distingués uniquement par le port, ajouter "listen" en tête des virtual hosts :</p>
+                        <pre class="terminal">
+listen 8000
+listen 8001
+listen 8002</pre>
 
                         <p class="descr">Installer le module wsgi pour Apache :</p>
                         <pre class="terminal">
