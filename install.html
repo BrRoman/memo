@@ -37,14 +37,30 @@
             <div id="content">
                 <h1>Installation Debian/Ubuntu</h1>
 
-                <h4>Installer le wifi :</h4>
+                <h4>Préparer la clé bootable :</h4>
                     <div class="group">
-                        <p class="terminal">apt-get install firmware-iwlwifi</p>
-                        <p class="descr">Auparavant il faut avoir ajouté "non free" à la ligne  "deb.debian.org" dans le fichier /etc/apt/sources.list :</p>
-                        <p class="file">deb http://deb.debian.org/debian/ buster main contrib non-free</p>
+                        <p class="descr">Télécharger l'image iso de Debian (small image), et se placer dans le répertoire contenant cette image.<br>Insérer la clé USB, puis chercher son identifiant :</p>
+                        <pre class="terminal">
+fdisk -l
+=> /dev/sdd1    *   1   487 3911796 6   FAT16</pre>
+                        <p class="descr">On voit que notre clé USB est montée sur /dev/sdd.<br>Lancer la copie des fichiers :</p>
+                        <p class="terminal">dd if=image.iso of=/dev/sdd bs=4M && sync</p>
+                        <p class="descr">Il ne reste plus qu'à booter sur la clé USB et à se laisser guider.<br>Quand l'installateur demande s'il faut installer le paquet iwlwifi à partir d'un volume externe, dire non. Ce paquet sera installé après coup (cf. ci-dessous).</p>
                     </div>
 
 
+                <h4>Installer le wifi :</h4>
+                    <div class="group">
+                        <p class="descr">Il faut d'abord ajouter l'option "non free" à la ligne  "deb.debian.org" du fichier /etc/apt/sources.list :</p>
+                        <p class="file">deb http://deb.debian.org/debian/ buster main contrib non-free</p>
+                        <p class="descr">Ensuite installer le paquet :</p>
+                        <p class="terminal">apt-get install firmware-iwlwifi</p>
+                    </div>
+
+
+                <h4>Installer aptitude.</h4>
+
+                
                 <h4>Configurer le réseau.</h4>
 
 
@@ -56,15 +72,27 @@
                         <p class="terminal">ssh-keygen</p>
                         <p class="terminal">ssh-copy-id username@remote</p>
                     </div>
-                
+
 
                 <h4>Firefox :</h4>
                     <div class="group">
-                        <p class="descr">Onglets, home, sécurité, proxy</p>
+                        <p class="descr">Onglets, home, sécurité, proxy.</p>
                     </div>
 
 
                 <h4>Vim.</h4>
+
+
+                <h4>Mails (Mutt) :</h4>
+                    <div class="group">
+                        <p class="descr">
+                            Installer mutt, fetchmail, procmail, msmtp et w3m.<br>
+                            Ensuite copier les fichiers de configuration : .muttrc, .fetchmailrc, .procmailrc, .msmtprc, .mailcaprc dans son home.<br>
+                            Enfin lancer fetchmail (en mode nossl) et mutt :
+                        </p>
+                        <p class="terminal">rm ~/.fetchmail.pid; fetchmail --nosslcertck -av -d 10; mutt</p>
+                    </div>
+
 
                 <h4>Configurer le proxy pour root :</h4>
                     <div class="group">
