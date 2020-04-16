@@ -33,42 +33,176 @@
         </nav>
 
         <!-- CONTENT -->
-        <div id="content" class="w-100 m-3 p-2">
-            <h1 class="mt-5">Python / Django</h1>
+        <div class="d-flex flex-column align-items-center w-75 mx-auto">
+            <div id="content" class="w-100 m-3 p-2">
+                <h1>Python / Django</h1>
+                    <h5 class="descr text-center mb-5">Les chevrons (>>>) indiquent que la commande doit être exécutée dans un shell Python.</h5>
 
-            SLICES			'Bonjour’[::-1]	'ruojnoB’	Reverse a string ([begin:end:step]).
+
+                <h4>SLICES</h4>
+                    <div class="group">
+                        <p class="descr">Inverser une chaîne ([begin:end:step]) :</p>
+                        <pre class="terminal">
+>>> 'Bonjour’[::-1]
+=> 'ruojnoB’</pre>
+                    </div>
 
 
-            Virtualenv		
-                pip3 install virtualenv	Installation de virtualenv.
-                virtualenv -p python3.7 my_project	Création de l’environnement virtuel.
-                cd my_project	
-                source bin/activate	Active l’environnement virtuel.
-                pip install Django	Installations dans le virtualenv.
-                pip install pylint	
-                pip install mysql-client	
-                python -c "import django; print(django.get_version())"	Version de Django.
-                    
-            Projet Django		
-                django-admin startproject my_project	Création de l’application Django.
-                cd my_project	On se retrouve donc dans my_project/my_project (contenant un sous-dossier my_project !).
-                ./manage.py runserver	Pour starter l’application.
-                    
-            Tests and coverage		test_models.py: - full name - absolute_url - labels, help_texts etc. - max length test_views.py: - resolve(<url>) uses the right view - login_required - redirections - user’s access to that page/item - 200 with direct and reverse urls - 404 - contains links to… - initial values of forms - redirect after form.is_valid() - uses correct template - pagination - items ordered by… test_forms.py: - form.is_valid() - contains widget - labels, help_texts etc.
-                manage.py test [module.tests[.test_models[.TestClass[.unit_test]]]]	Différents niveaux de tests: module, type (fichier), classe, fonction.
-                coverage run manage.py test; coverage html	
-                    
-            Divers		
-                pip install django-tempus-dominus	Pour installer tempus-dominus. - Ensuite dans settings.py : 1. Installed apps: ajouter ‘tempus_dominus’. 2. Ajouter tout en bas une option pour dire à Django de ne pas aller chercher les scripts sur le Cloud : TEMPUS_DOMINUS_INCLUDE_ASSETS = False - Puis installer lesdits scripts en allant les chercher sur le Cloud : https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js - Enfin bien sûr indiquer le chemin de ces scripts dans le main template.html.
-                    
-            Serveur		
-                NameVirtualHost *:8000 <VirtualHost *:8000>     ServerName python.asj.com     ServerAdmin editeur@traditions-monastiques.com     DocumentRoot /home/fr_romain/Sites/infirmerie/infirmerie      WSGIDaemonProcess infirmerie.asj.com processes=2 threads=15 display-name=%{GROUP} python-home=/home/fr_romain/Sites/infirmerie python-path=/ho    me_fr_romain/Sites/infirmerie/infirmerie     WSGIProcessGroup infirmerie.asj.com      WSGIScriptAlias / /home/fr_romain/Sites/infirmerie/infirmerie/infirmerie/wsgi.py     <Directory /home/fr_romain/Sites/infirmerie/infirmerie/infirmerie>          <Files wsgi.py>             Require all granted         </Files>     </Directory>       Alias /static/ /home/fr_romain/Sites/infirmerie/infirmerie/static_files/      <Directory /home/fr_romain/Sites/infirmerie/infirmerie/static_files>          Require all granted     </Directory>      ErrorLog ${APACHE_LOG_DIR}/error.log     CustomLog ${APACHE_LOG_DIR}/access.log combined </VirtualHost>	Dans /etc/apache2/sites-available/000-default.conf. Le dossier static est celui dans lequel collectstatic va placer tous les fichiers statiques.
-                sudo aptitude install libapache2-mod-wsgi-py3	Module wsgi pour Apache. Il se peut que le module ne soit pas adapté à la version de Django utilisée, auquel cas il faut l’installer from sources.
-                apt-get install libssl-dev; apt-get install python3.7-dev libmysqlclient-dev	Si besoin de mysql.
-                pip install -r requirements.txt	Installation dans un virtualenv (cf. supra).
-                DEBUG = False ALLOWED_HOSTS = ['*'] TEMPLATES = [         …         'DIRS': ['/home/fr_romain/Sites/infirmerie/infirmerie/templates'],         … ] STATIC_URL = '/static/' STATIC_ROOT = '/home/fr_romain/Sites/infirmerie/infirmerie/static_files/'	Lignes à ajouter/modifier dans my_site/settings.py.
-                import os import sys  paths = [     '/home/fr_romain/Sites/infirmerie/infirmerie',     '/home/fr_romain/Sites/infirmerie/lib/python3.7/site-packages', ] for path in paths:     if path not in sys.path:         sys.path.append(path)  from django.core.wsgi import get_wsgi_application  os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'infirmerie.settings')  application = get_wsgi_application()	Fichier wsgi.py.
+                <h4>ENVIRONNEMENTS VIRTUELS</h4>
+                    <div class="group">
+                        <p class="descr">Installation de virtualenv :</p>
+                        <pre class="terminal">
+pip3 install virtualenv</pre>
+                        <p class="descr">Création du projet my_project dans un environnement virtuel :</p>
+                        <pre class="terminal">
+virtualenv -p python3.7 my_project
+ cd my_project</pre>
+                      <p class="descr">Activer l’environnement virtuel :</p>
+                        <pre class="terminal">
+source bin/activate</pre>
+                      <p class="descr">Installer un module (ici Django) dans l'environnement virtuel :</p>
+                        <pre class="terminal">
+pip install Django</pre>
+                      <p class="descr">Installer des modules à partir d'un fichier :</p>
+                        <pre class="terminal">
+pip install -r requirements.txt</pre>
+                      <p class="descr">Tester la version de Django :</p>
+                        <pre class="terminal">
+>>> import django;
+>>> print(django.get_version())</pre>
+                    </div>
 
+
+                <h4>DÉMARRER UN PROJECT DJANGO</h4>
+                    <div class="group">
+                        <p class="descr">Création de l’application Django :</p>
+                        <pre class="terminal">
+django-admin startproject my_project
+cd my_project</pre>
+                        <p class="descr">Démarrer l'application sur 'http://localhost:8003' :</p>
+                        <pre class="terminal">
+./manage.py runserver 8003</pre>
+                    </div>
+
+
+                <h4>TESTS DJANGO</h4>
+                    <div class="group">
+                        <p class="descr">Liste des test à faire :</p>
+                        <pre class="file">
+<b>test_models.py:</b>
+    - full name
+    - absolute_url
+    - labels, help_texts etc.
+    - max length
+<b>test_views.py:</b>
+    - resolve(&lt;url&gt;) uses the right view
+    - login_required
+    - redirections
+    - user’s access to that page/item
+    - 200 with direct and reverse urls
+    - 404 - contains links to…
+    - initial values of forms
+    - redirect after form.is_valid()
+    - uses correct template
+    - pagination
+    - items ordered by…
+<b>test_forms.py:</b>
+    - form.is_valid()
+    - contains widget
+    - labels, help_texts etc.</pre>
+                        <p class="descr">Différents niveaux de tests: module, type (fichier), classe, fonction :</p>
+                        <pre class="terminal">
+./manage.py test [module.tests[.test_models[.TestClass[.unit_test]]]]</pre>
+                        <p class="descr">Avec coverage :</p>
+                        <pre class="terminal">
+coverage run manage.py test; coverage html</pre>
+                    </div>
+
+                    
+                <h4>DJANGO TEMPUS-DOMINUS</h4>
+                    <div class="group">
+                        <p class="descr">Installer tempus-dominus :</p>
+                        <pre class="terminal">
+pip install django-tempus-dominus</pre>
+                        <p class="descr">Ensuite dans settings.py :</p>
+                        <pre class="file">
+1. Installed apps: ajouter ‘tempus_dominus’.
+2. Ajouter tout en bas une option pour dire à Django de ne pas aller chercher les scripts sur le Cloud : TEMPUS_DOMINUS_INCLUDE_ASSETS = False</pre>
+                        <p class="descr">Ensuite installer lesdits scripts dans le dossier static, en allant les chercher sur le Cloud :</p>
+                        <pre class="file">
+https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js
+https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css
+https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js</pre>
+                        <p class="descr">Enfin bien sûr indiquer le chemin de ces scripts dans le main template.html.</p>
+                    </div>
+
+
+                <h4>DJANGO SUR UN SERVEUR</h4>
+                    <div class="group">
+                        <p class="descr">Ajouter un virtual host dans /etc/apache2/sites-available/000-default.conf :</p>
+                        <pre class="file">
+NameVirtualHost *:8000
+&lt;VirtualHost *:8000&gt;
+    ServerName python.asj.com
+    ServerAdmin editeur@traditions-monastiques.com
+    DocumentRoot /home/fr_romain/Sites/infirmerie/infirmerie
+    WSGIDaemonProcess infirmerie.asj.com processes=2 threads=15 display-name=%{GROUP} python-home=/home/fr_romain/Sites/infirmerie python-path=/home_fr_romain/Sites/infirmerie/infirmerie
+    WSGIProcessGroup infirmerie.asj.com
+    WSGIScriptAlias / /home/fr_romain/Sites/infirmerie/infirmerie/infirmerie/wsgi.py
+    &lt;Directory /home/fr_romain/Sites/infirmerie/infirmerie/infirmerie&gt;
+        &lt;Files wsgi.py&gt;
+            Require all granted
+        &lt;/Files&gt;
+    &lt;/Directory&gt;
+
+    Alias /static/ /home/fr_romain/Sites/infirmerie/infirmerie/static_files/
+    &lt;Directory /home/fr_romain/Sites/infirmerie/infirmerie/static_files&gt;
+        Require all granted
+    &lt;/Directory&gt;
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+&lt;/VirtualHost&gt;</pre>
+                        <p class="descr">Commentaire :<br>Le dossier static est celui dans lequel collectstatic va placer tous les fichiers statiques.</p>
+
+                        <p class="descr">Installer le module wsgi pour Apache :</p>
+                        <pre class="terminal">
+aptitude install libapache2-mod-wsgi-py3</pre>
+                        <p class="descr">Remarque :<br>Il se peut que le module ne soit pas adapté à la version de Django utilisée, auquel cas il faut l’installer from sources.</p>
+                        <p class="descr">Si besoin de MySQL :</p>
+                        <pre class="terminal">
+aptitude install libssl-dev; apt-get install python3.7-dev libmysqlclient-dev</pre>
+                        <p class="descr">Modifier settings.py :</p>
+                        <pre class="file">
+DEBUG = False
+…
+ALLOWED_HOSTS = ['*']
+…
+TEMPLATES = [
+    …
+    'DIRS': ['/home/fr_romain/Sites/infirmerie/infirmerie/templates'],
+    …
+]
+…
+STATIC_URL = '/static/'
+STATIC_ROOT = '/home/fr_romain/Sites/infirmerie/infirmerie/static_files/'</pre>
+                        <p class="descr">Modifier wsgi.py :</p>
+                        <pre class="file">
+import os
+import sys
+paths = [
+    '/home/fr_romain/Sites/infirmerie/infirmerie',
+    '/home/fr_romain/Sites/infirmerie/lib/python3.7/site-packages',
+]
+for path in paths:
+    if path not in sys.path:
+        sys.path.append(path)
+
+from django.core.wsgi import get_wsgi_application
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'infirmerie.settings')
+application = get_wsgi_application()</pre>
+
+                    </div>
         </div>
         <!-- END CONTENT -->
     </body>
