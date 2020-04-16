@@ -100,7 +100,8 @@ cd my_project</pre>
     - redirections
     - user’s access to that page/item
     - 200 with direct and reverse urls
-    - 404 - contains links to…
+    - 404
+    - contains links to…
     - initial values of forms
     - redirect after form.is_valid()
     - uses correct template
@@ -110,10 +111,10 @@ cd my_project</pre>
     - form.is_valid()
     - contains widget
     - labels, help_texts etc.</pre>
-                        <p class="descr">Différents niveaux de tests: module, type (fichier), classe, fonction :</p>
+                        <p class="descr">Les différents niveaux de tests : module, type (fichier), classe, fonction :</p>
                         <pre class="terminal">
 ./manage.py test [module.tests[.test_models[.TestClass[.unit_test]]]]</pre>
-                        <p class="descr">Avec coverage :</p>
+                        <p class="descr">Avec coverage et une sortie html :</p>
                         <pre class="terminal">
 coverage run manage.py test; coverage html</pre>
                     </div>
@@ -163,7 +164,7 @@ NameVirtualHost *:8000
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 &lt;/VirtualHost&gt;</pre>
-                        <p class="descr">Commentaires :<br>Le dossier static est celui dans lequel collectstatic va placer tous les fichiers statiques.<br>S'il y a plusieurs sites distingués uniquement par le port, ajouter "listen" en tête des virtual hosts :</p>
+                        <p class="descr">Commentaires :<br>Le dossier static est celui dans lequel collectstatic va placer tous les fichiers statiques.<br>S'il y a plusieurs sites distingués uniquement par le port, ajouter un "listen" par port en tête des virtual hosts :</p>
                         <pre class="terminal">
 listen 8000
 listen 8001
@@ -175,7 +176,7 @@ aptitude install libapache2-mod-wsgi-py3</pre>
                         <p class="descr">Remarque :<br>Il se peut que le module ne soit pas adapté à la version de Django utilisée, auquel cas il faut l’installer from sources.</p>
                         <p class="descr">Si besoin de MySQL :</p>
                         <pre class="terminal">
-aptitude install libssl-dev; apt-get install python3.7-dev libmysqlclient-dev</pre>
+aptitude install libssl-dev python3.7-dev libmysqlclient-dev</pre>
                         <p class="descr">Modifier settings.py :</p>
                         <pre class="file">
 DEBUG = False

@@ -90,8 +90,11 @@ fdisk -l
                             Ensuite copier les fichiers de configuration : .muttrc, .fetchmailrc, .procmailrc, .msmtprc, .mailcap dans son home.<br>
                             Enfin lancer fetchmail (en mode nossl) et mutt :
                         </p>
+                        <!-- TODO: Afficher le contenu des fichiers de config. -->
                         <p class="terminal">rm ~/.fetchmail.pid; fetchmail --nosslcertck -av -d 10; mutt</p>
                     </div>
+                
+                <!-- TODO: Crontab, cronic -->
 
 
                 <h4>Configurer le proxy pour root :</h4>
@@ -183,7 +186,7 @@ fdisk -l
                         <p class="terminal">mysql_secure_installation</p>
 
                         <p class="descr">Enfin dans une console MySQL :</p>
-                        <p class="terminal">ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '<my_password>';</p>                    </div>
+                        <p class="terminal">ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '&lt;my_password&gt;';</p>                    </div>
 
 
                 <h4>PHP7.3.</h4>
@@ -215,6 +218,7 @@ fdisk -l
 
 
                 <h4>Git et ~/.gitconfig.</h4>
+                    <!-- TODO: Display content of .gitconfig. -->
 
 
                 <h4>VSCode et ses plugins:</h4>
