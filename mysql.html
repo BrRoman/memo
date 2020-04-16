@@ -33,34 +33,78 @@
         </nav>
 
         <!-- CONTENT -->
-        <div id="content" class="w-100 m-3 p-2">
-            <h1 class="mt-5">MySQL</h1>
 
-            USERS		
-                SELECT User, Select_priv, Insert_priv, Create_priv, Update_priv FROM user;	Voir les utilisateurs.
-                CREATE USER 'savio'@'192.168.1.%' IDENTIFIED BY 'm0nk';	Créer un utilisateur.
-                SHOW GRANTS FOR 'savio'@'192.168.1.%';	Voir les privilèges d'un utilisateur.
-                GRANT SELECT ON editor.* TO 'savio'@'192.168.1.%';	Attribuer des privilèges.
-                SET PASSWORD FOR 'user'@'localhost' = PASSWORD('mdp');	Changer mot de passe.
-                    
-            TABLES		
-                ALTER TABLE Table CONVERT TO CHARACTER SET utf8;	Mettre une table en utf8.
-                RENAME TABLE Xxx TO Yyy;	Renommer une table.
-                SELECT COUNT(*) FROM table;	Compter enregistrements de <table>.
-                    
-            FIELDS		
-                RPAD(text, 50, “.”);	Tronquer un champ à droite (field, length, fill).
-                    
-            FOREIGN KEYS		
-                SELECT TABLE_NAME, COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE CONSTRAINT_NAME LIKE "%fk_%";	Voir les clés étrangères de toutes les tables.
-                ALTER TABLE Billets ADD CONSTRAINT fk_billets_users FOREIGN KEY (author) REFERENCES Users(ID);	Créer une clé étrangère.
-                ALTER TABLE Billets DROP FOREIGN KEY fk_absences_absents;	Supprimer une clé étrangère.
-                    
-            ERRORS		
-                SHOW ENGINE INNODB STATUS;	Utile pour repérer une erreur (par ex. échec de création d’une clé étrangère).
-                    
-            DIVERS		
-                mysql bdd < text.sql	Exécuter un statement depuis un fichier sur la base bdd.
+        <!-- CONTENT -->
+        <div class="d-flex flex-column align-items-center w-75 mx-auto">
+            <div id="content" class="w-100 m-3 p-2">
+                <h1>MySQL</h1>
+                    <h5 class="descr text-center mb-5">Les chevrons (>>>) indiquent que la commande doit être exécutée dans un shell MySQL.</h5>
+
+                <h4>USERS</h4>
+                    <div class="group">
+                    <p class="descr">Voir les utilisateurs et leurs privilèges :</p>
+                        <pre class="terminal">
+>>> SELECT User, Select_priv, Insert_priv, Create_priv, Update_priv FROM user;</pre>
+                    <p class="descr">Créer un utilisateur. :</p>
+                        <pre class="terminal">
+>>> CREATE USER 'savio'@'192.168.1.%' IDENTIFIED BY 'm0nk';</pre>
+                    <p class="descr">Voir les privilèges d'un utilisateur :</p>
+                        <pre class="terminal">
+>>> SHOW GRANTS FOR 'savio'@'192.168.1.%';</pre>
+                    <p class="descr">Attribuer des privilèges :</p>
+                        <pre class="terminal">
+>>> GRANT SELECT ON editor.* TO 'savio'@'192.168.1.%';</pre>
+                    <p class="descr">Changer mot de passe :</p>
+                        <pre class="terminal">
+>>> SET PASSWORD FOR 'user'@'localhost' = PASSWORD('mdp');</pre>
+                    </div>
+
+
+                <h4>TABLES</h4>
+                    <div class="group">
+                    <p class="descr">Mettre une table en utf8 :</p>
+                        <pre class="terminal">
+>>> ALTER TABLE Table CONVERT TO CHARACTER SET utf8;</pre>
+                    <p class="descr">Renommer une table :</p>
+                        <pre class="terminal">
+>>> RENAME TABLE Xxx TO Yyy;</pre>
+                    <p class="descr">Compter les enregistrements de 'table' :</p>
+                        <pre class="terminal">
+>>> SELECT COUNT(*) FROM table;</pre>
+                    </div>
+
+
+                <h4>FIELDS</h4>
+                    <div class="group">
+                    <p class="descr">Tronquer un champ à droite (field, length, fill) :</p>
+                        <pre class="terminal">
+>>> RPAD(text, 50, “.”);</pre>
+                    </div>
+
+
+                <h4>FOREIGN KEYS</h4>
+                    <div class="group">
+                    <p class="descr">Créer une clé étrangère :</p>
+                        <pre class="terminal">
+>>> ALTER TABLE Billets ADD CONSTRAINT fk_billets_users FOREIGN KEY (author) REFERENCES Users(ID);</pre>
+                    <p class="descr">Supprimer une clé étrangère :</p>
+                        <pre class="terminal">
+>>> ALTER TABLE Billets DROP FOREIGN KEY fk_absences_absents;</pre>
+                    <p class="descr">Voir les clés étrangères de toutes les tables :</p>
+                        <pre class="terminal">
+>>> SELECT TABLE_NAME, COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE CONSTRAINT_NAME LIKE "%fk_%";</pre>
+                    </div>
+
+
+                <h4>DIVERS</h4>
+                    <div class="group">
+                    <p class="descr">Utile pour repérer une erreur (par ex. échec de création d’une clé étrangère) :</p>
+                        <pre class="terminal">
+>>> SHOW ENGINE INNODB STATUS;</pre>
+                    <p class="descr">Exécuter un statement depuis le fichier file.sql sur la base my_database :</p>
+                        <pre class="terminal">
+mysql my_database < file.sql</pre>
+                    </div>
         </div>
         <!-- END CONTENT -->
     </body>
