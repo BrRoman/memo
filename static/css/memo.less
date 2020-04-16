@@ -2,6 +2,8 @@
 @orange: rgb(255, 145, 0);
 @red: rgb(200, 0, 0);
 @blue: rgb(0, 23, 151);
+@background_color: rgb(255, 242, 231);
+@header_height: 60px;
 
 // Colors:
 .green {
@@ -21,10 +23,14 @@
 }
 
 body {
-    background-color: rgb(255, 242, 231);
+    background-color: @background_color;
 
 
     #header {
+        height: @header_height;
+        position: fixed;
+        width: 100%;
+
         #logo {
             img {
                 width: 50px;
@@ -39,11 +45,26 @@ body {
     }
 
     nav {
-        li {
-            border-bottom: 1px solid @green;
-            display: inline;
-            padding: 5px;
-            margin: 10px;
+        // border-bottom: 1px solid #343a40;
+        background: linear-gradient(#343a40, @background_color);
+        background-color: @background_color;
+        height: 70px;
+        margin: @header_height auto 0px auto;
+        padding: 5px 0px 5px 0px;
+        position: fixed;
+        width: 100%;
+
+        ul {
+            margin: 5px 0px 5px 0px;
+
+            li {
+                border-bottom: 1px solid @green;
+                color: yellowgreen;
+                display: inline;
+                font-size: 1.1em;
+                padding: 0px 5px 5px 5px;
+                margin: 0px 10px 0px 10px;
+            }
         }
     }
 
@@ -53,6 +74,7 @@ body {
 
         h1 {
             color: @green;
+            margin: @header_height+40px 0px 0px 0px;
             text-align: center;
         }
 
