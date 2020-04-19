@@ -96,6 +96,33 @@
                     </div>
 
 
+                <h4>PROCÉDURES STOCKÉES</h4>
+                    <div class="group">
+                    <p class="descr">Créer une procédure stockée (mettre à jour un verset de la polyglotte s'il existe, sinon le créer) :</p>
+                        <pre class="terminal">
+>>> DELIMITER |
+>>> CREATE PROCEDURE update_or_insert_hebrew(in_book VARCHAR(10), in_chapter INT, in_verse INT, in_txt TEXT)
+>>> BEGIN
+>>>     IF EXISTS(SELECT id FROM Verse WHERE book=in_book AND chapter=in_chapter AND verse=in_verse) THEN
+>>>         UPDATE Verse SET txt_hebrew = in_txt WHERE book=in_book AND chapter=in_chapter AND verse=in_verse;
+>>>     ELSE
+>>>         INSERT INTO Verse(book, chapter, verse, txt_hebrew) VALUES(in_book, in_chapter, in_verse, in_txt);
+>>>     END IF;
+>>> END
+>>> |
+>>> DELIMITER ;</pre>
+                    <p class="descr">Appeler une procédure stockée :</p>
+                        <pre class="terminal">
+>>> CALL update_or_insert_hebrew('Ex', 7, 30, 'test');</pre>
+                    <p class="descr">Supprimer une procédure stockée :</p>
+                        <pre class="terminal">
+>>> DROP PROCEDURE update_or_insert_hebrew;</pre>
+                    <p class="descr">Voir toutes les procédures stockées :</p>
+                        <pre class="terminal">
+>>> SELECT ROUTINE_TYPE, ROUTINE_NAME FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_SCHEMA='polyglotte';</pre>
+                    </div>
+
+
                 <h4>DIVERS</h4>
                     <div class="group">
                     <p class="descr">Utile pour repérer une erreur (par ex. échec de création d’une clé étrangère) :</p>
