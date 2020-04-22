@@ -58,7 +58,14 @@ fdisk -l
                     </div>
 
 
-                <h4>Installer aptitude.</h4>
+                <h4>Montage de la partition DATA au démarrage :</h4>
+                    <div class="group">
+                        <p class="descr">Ajouter la ligne suivante dans /etc/fstab :</p>
+                        <p class="terminal">UUID=e42f2506-cd08-4910-8602-57f43ca5be49	/media/frromain/DATA	ext4	defaults	0	2</p>
+                    </div>
+
+
+                <h4>Installer aptitude, curl, tree, htop, ncdu, rsync.</h4>
 
                 
                 <h4>Configurer le réseau.</h4>
@@ -76,7 +83,7 @@ fdisk -l
 
                 <h4>Firefox :</h4>
                     <div class="group">
-                        <p class="descr">Onglets, home, sécurité, proxy.</p>
+                        <p class="descr">Bookmarks, home, proxy, sécurité, dossier de téléchargement.</p>
                     </div>
 
 
@@ -86,7 +93,7 @@ fdisk -l
                 <h4>Mails (Mutt) :</h4>
                     <div class="group">
                         <p class="descr">
-                            Installer mutt, fetchmail, procmail, msmtp et links.<br>
+                            Installer mutt, ripmime, fetchmail, procmail, msmtp et links.<br>
                             Ensuite copier les fichiers de configuration : .muttrc, .fetchmailrc, .procmailrc, .msmtprc, .mailcap dans son home.<br>
                             Enfin lancer fetchmail (en mode nossl) et mutt :
                         </p>
@@ -131,21 +138,21 @@ fdisk -l
                         <p class="descr">Dupliquer /etc/apache2/sites-available/000-default.conf avant de le modifier ainsi :</p>
                         <pre class="file">
 &lt;VirtualHost *:80&gt;
-    ServerName services.asj.com
-    DocumentRoot /home/frromain/Sites
-    &lt;Directory "/home/frromain/Sites"&gt;
+    ServerName localhost
+    DocumentRoot /media/frromain/DATA/Sites
+    &lt;Directory "/media/frromain/DATA/Sites"&gt;
         Options FollowSymLinks
         AllowOverride all
         Require all granted
-        order allow,deny
+        Order allow,deny
         Allow from all
     &lt;/Directory&gt;
 
-    &lt;Directory "/home/frromain/Sites/sql"&gt;
+    &lt;Directory "/media/frromain/DATA/Sites/sql"&gt;
         Options FollowSymLinks
         AllowOverride all
         Require all granted
-        order&lt; deny,allow
+        Order deny,allow
         deny from all
     &lt;/Directory&gt;
 
@@ -154,20 +161,22 @@ fdisk -l
 &lt;/VirtualHost&gt;
 
 &lt;VirtualHost *:80&gt;
-    ServerName gregorio-doc.asj.com
-    DocumentRoot /home/frromain/Sites/gregorio-doc
-    &lt;Directory "/home/frromain/Sites/gregorio-doc/"&gt;
+    ServerName gregorio.local
+    DocumentRoot /media/frromain/DATA/Sites/gregorio-doc
+    &lt;Directory "/media/frromain/DATA/Sites/gregorio-doc/"&gt;
         Options FollowSymLinks
         AllowOverride all
         Require all granted
-        order allow,deny
+        Order allow,deny
         Allow from all
     &lt;/Directory&gt;
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
-&lt;/VirtualHost&gt;</pre>
+&lt;/VirtualHost&gt;
 
-                    <p class="descr"> Pour les virtual hosts de Django, voir la page Python/Django.</p>
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet</pre>
+
+                    <p class="descr"> Pour les virtual hosts de Django sur le serveur, voir la page Python/Django.</p>
                 </div>
 
 
@@ -197,13 +206,15 @@ fdisk -l
 
                 <h4>Polices :</h4>
                     <div class="group">
-                        <p class="descr">Fonts à copier dans /etc/share/fonts (ttf dans truetype et otf dans opentype).</p>
+                        <p class="descr">Fonts à copier dans /etc/share/fonts (ttf dans truetype et otf dans opentype). Puis :</p>
+                        <p class="terminal">fc-cache -fv</p>
                     </div>
 
 
                 <h4>LaTeX :</h4>
                     <div class="group">
-                        <p class="descr">Installer texlive, pas -full (qui semble faire des problèmes), puis texlive-luatex, texlive-xetex, texlive-lang-european, texlive-lang-french.</p>
+                        <p class="descr">Installer texlive texlive-luatex texlive-xetex texlive-lang-european texlive-lang-french.</p>
+                        <p class="descr">Ne pas installer texlive-full, qui semble faire des problèmes.</p>
                     </div>
                 
 
@@ -221,26 +232,43 @@ fdisk -l
                     <!-- TODO: Display content of .gitconfig. -->
 
 
-                <h4>VSCode et ses plugins:</h4>
+                <h4>VSCode :</h4>
                     <div class="group">
-                        <p class="descr">Auto close tags</p>
-                        <p class="descr">Auto rename tags</p>
-                        <p class="descr">Beautify</p>
-                        <p class="descr">Bookmarks</p>
-                        <p class="descr">Bracket pair colorizer</p>
-                        <p class="descr">CSS peek</p>
-                        <p class="descr">Django</p>
-                        <p class="descr">Git graph</p>
-                        <p class="descr">Highlight matching tags</p>
-                        <p class="descr">jQuery code snippets</p>
-                        <p class="descr">LaTeX workshop</p>
-                        <p class="descr">Markdown all in one</p>
-                        <p class="descr">PHP debug</p>
-                        <p class="descr">PHP intellisense</p>
-                        <p class="descr">Project manager</p>
-                        <p class="descr">Python</p>
-                        <p class="descr">Todo tree</p>
+                        <p class="descr">Clé :</p>
+                        <p class="terminal">curl --proxy http://192.168.1.11:8080 https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg</p>
+                        <p class="terminal">install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/</p>
+                        <p class="descr">Dépôt :</p>
+                        <p class="terminal">echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list</p>
+                        <p class="descr">Installation proprement dite :</p>
+                        <p class="terminal">apt update</p>
+                        <p class="terminal">apt install code</p>
+                        <!-- TODO: contenu du fichier de config.
+                        <p class="descr">Fichier de config (~/.vscode…) :</p>
+                        <pre class="file">
+                        </pre> -->
+                        <p class="descr">Installer les extensions :</p>
+                        <pre class="file">
+Auto close tags
+Auto rename tags
+Beautify
+Bookmarks
+Bracket pair colorizer
+CSS peek
+Django
+Git graph
+Highlight matching tags
+jQuery code snippets
+LaTeX workshop
+Markdown all in one
+PHP debug
+PHP intellisense
+Project manager
+Python
+Todo tree</pre>
                     </div>
+
+
+                <h4>XnView, RawTherapee.</h4>
             </div>
         </div>
         <!-- END CONTENT -->
