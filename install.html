@@ -90,19 +90,124 @@ fdisk -l
                 <h4>Vim.</h4>
 
 
-                <h4>Mails (Mutt) :</h4>
+                <h4>Mails (mutt) :</h4>
                     <div class="group">
                         <p class="descr">
                             Installer mutt, ripmime, fetchmail, procmail, msmtp et links.<br>
-                            Ensuite copier les fichiers de configuration : .muttrc, .fetchmailrc, .procmailrc, .msmtprc, .mailcap dans son home.<br>
-                            Enfin lancer fetchmail (en mode nossl) et mutt :
-                        </p>
-                        <!-- TODO: Afficher le contenu des fichiers de config. -->
+                            Ensuite copier les fichiers de configuration :</p>
+                        <p class="descr">~/.muttrc :</p>
+                        <pre class="file">
+alternative_order text/plain text/enriched text/html
+auto_view text/html
+bind index D purge-message
+bind index,pager <C-down> sidebar-next
+bind index,pager <C-right> sidebar-open
+bind index,pager <C-up> sidebar-prev
+color normal default default
+color index brightcolor196 default "~N"
+color index color214 default "~F"
+color indicator black color28 
+color status brightcolor196 color18
+folder-hook . set sort=date-sent
+hdr_order Date From To Cc Subject
+ignore *
+macro index,pager S "<pipe-message>ripmime -i - -d "
+mailboxes =Inbox =Sent =Postponed =Trash
+set alias_file=~/Mail/.aliases
+set attribution="On %d, %n wrote:"
+set beep
+set beep_new
+set charset=utf-8
+set date_format="%d-%m-%Y %H:%M:%S%p"
+set delete=yes
+set edit_hdrs
+set editor="vim"
+set envelope_from_address="editeur@traditions-monastiques.com"
+set fast_reply
+set folder=~/Mail
+set forward_format="[%a: %s]"
+set from="editeur@traditions-monastiques.com"
+set honor_followup_to
+set hostname="traditions-monastiques.com"
+set include=yes
+set index_format="%Z %D %-25.25L %s %*  |%-2.1X |%-4.4c"
+set ispell="aspell -e -c"
+set mail_check=5
+set mailcap_path = ~/.mailcap
+set mime_forward=yes
+set pager_index_lines=10
+set pager_stop
+set postponed=~/Mail/Postponed
+set quit=ask-yes
+set realname="Frère Romain Marie"
+set record=~/Mail/Sent
+set reply_to
+set send_charset=utf-8
+set sendmail="/usr/bin/msmtp"
+set sidebar_visible
+set sidebar_width=20
+set sig_on_top
+set signature=~/Mail/.signature
+set spoolfile=~/Mail/Inbox
+set strict_threads
+set text_flowed=no
+set timeout=10
+set trash=~/Mail/Trash
+set use_domain
+set use_envelope_from
+set use_from
+set xterm_set_titles=yes
+set xterm_title="Mutt with %?m?%m messages&no messages?%?n? [%n NEW]?"
+source ~/Mail/.aliases
+unignore From To Cc Subject Date Reply-To
+unset markers</pre>
+                        <p class="descr">~/.fetchmailrc :</p>
+                        <pre class="file">
+poll 192.168.1.11
+    uidl
+    port 110
+    protocol POP3
+    username editeur@traditions-monastiques.com
+    password my_super_password
+    mda "/usr/bin/procmail -Y -d %T"</pre>
+                        <p class="descr">~/.procmailrc :</p>
+                        <pre class="file">
+MAILDIR=$HOME/Mail                
+LOGFILE=$HOME/.procmaillog
+LOGABSTRACT=no
+VERBOSE=off
+DEFAULT=$MAILDIR/Inbox
+ORGMAIL=$MAILDIR/Emergency
+SHELL=/bin/bash
+
+:0
+* ^From.*
+$DEFAULT</pre>
+                        <p class="descr">~/.msmtprc :</p>
+                        <pre class="file">
+account editeur
+host 192.168.1.11
+port 25
+auth off 
+from editeur@traditions-monastiques.com
+
+account default : editeur</pre>
+                        <p class="descr">~/.mailcap :</p>
+                        <pre class="file">
+# Pour ouvrir des messages au format html avec Firefox (raccourci clavier "m"):
+text/html; firefox '%s' & sleep 10;
+
+# Ouvrir autres types MIME :
+text/html; links -html-assume-codepage %{charset} '%s'; needsterminal; description=HTML Text; nametemplate=%s.html
+image/jpeg; /usr/bin/eog %s; test=test -n "$DISPLAY"
+image/jpg; /usr/bin/eog %s; test=test -n "$DISPLAY"
+image/png; /usr/bin/eog %s; test=test -n "$DISPLAY"
+image/tiff; /usr/bin/eog %s; test=test -n "$DISPLAY"
+application/pdf; /usr/bin/evince %s; test=test -n "$DISPLAY"</pre>
+                        <p class="descr">Enfin lancer fetchmail (en mode nossl) et mutt :<p>
                         <p class="terminal">rm ~/.fetchmail.pid; fetchmail --nosslcertck -av -d 10; mutt</p>
                     </div>
                 
-                <!-- TODO: Crontab, cronic -->
-
 
                 <h4>Configurer le proxy pour root :</h4>
                     <div class="group">
@@ -121,13 +226,13 @@ fdisk -l
                 <h4>Virtualbox :</h4>
                      <div class="group">
                         <p class="descr">Pour installer :</p>
-                        <p class="terminal">wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -</p>
-                        <p class="terminal">echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian bionic contrib" | tee /etc/apt/sources.list.d/virtualbox.list</p>
-                        <p class="terminal">apt update</p>
-                        <p class="terminal">apt install virtualbox-6.1</p>
+                        <pre class="terminal">wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -</pre>
+                        <pre class="terminal">echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian bionic contrib" | tee /etc/apt/sources.list.d/virtualbox.list</pre>
+                        <pre class="terminal">apt update</pre>
+                        <pre class="terminal">apt install virtualbox-6.1</pre>
 
                         <p class="descr">Pour désinstaller :</p>
-                        <p class="terminal">apt-get remove virtualbox-6.1</p>
+                        <pre class="terminal">apt-get remove virtualbox-6.1</pre>
                     </div>
 
 
@@ -177,7 +282,7 @@ fdisk -l
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet</pre>
 
                     <p class="descr"> Pour les virtual hosts de Django sur le serveur, voir la page Python/Django.</p>
-                </div>
+                    </div>
 
 
                 <h4>MySQL :</h4>
@@ -195,7 +300,17 @@ fdisk -l
                         <p class="terminal">mysql_secure_installation</p>
 
                         <p class="descr">Enfin dans une console MySQL :</p>
-                        <p class="terminal">ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '&lt;my_password&gt;';</p>                    </div>
+                        <p class="terminal">ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '&lt;my_password&gt;';</p>
+
+                        <p class="descr">Créer le fichier ~/.my.cnf (pour ne pas avoir à saisir user et mdp à chaque connexion MySQL) :</p>
+                        <pre class="file">
+[mysql]
+user=root
+password=my_super_password
+[mysqldump]
+user=root
+password=my_super_password</pre>
+                    </div>
 
 
                 <h4>PHP7.3.</h4>
@@ -228,9 +343,31 @@ fdisk -l
                     </div>
 
 
-                <h4>Git et ~/.gitconfig.</h4>
-                    <!-- TODO: Display content of .gitconfig. -->
-
+                <h4>Git :</h4>
+                    <div class="group">
+                        <p class="descr">Fichier ~/.gitconfig :</p>
+                        <pre class="file">
+[user]
+	name = BrRoman
+	email = editeur@traditions-monastiques.com
+[alias]
+	ck = checkout
+	ci = commit -m
+	st = status -u
+	lg = log --graph --date=format:\"%d/%m/%Y %H:%M\" --pretty=format:\"%Cred%h%Creset %C(cyan)%d%Creset %s %C(yellow)%an%Creset %C(green)%ad%Creset\" --decorate --all
+[diff]
+	mnemonicprefix = true
+	renames = true
+	wordRegex = .
+[core]
+	editor = vim
+[http]
+	proxy = http://192.168.1.11:8080
+[https]
+	proxy = http://192.168.1.11:8080</pre>
+                        <p class="descr">Fichier ~/.netrc :</p>
+                        <pre class="file">machine github.com login BrRoman password my_super_password</pre>
+                    </div>
 
                 <h4>VSCode :</h4>
                     <div class="group">
@@ -242,10 +379,115 @@ fdisk -l
                         <p class="descr">Installation proprement dite :</p>
                         <p class="terminal">apt update</p>
                         <p class="terminal">apt install code</p>
-                        <!-- TODO: contenu du fichier de config.
-                        <p class="descr">Fichier de config (~/.vscode…) :</p>
+                        <p class="descr">Fichier de config (~/.config/Code/User/settings.json) :</p>
                         <pre class="file">
-                        </pre> -->
+{
+    // General appearence:
+    "html.autoClosingTags": true,
+    "window.menuBarVisibility": "default",
+    "window.newWindowDimensions": "maximized",
+    "window.openFilesInNewWindow": "on",
+    "workbench.activityBar.visible": true,
+    "workbench.colorCustomizations": {
+        "editor.background": "#000000",
+        "editor.foreground": "#ffffff"
+    },
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.editor.openPositioning": "last",
+    // Editor:
+    "editor.foldingHighlight": false,
+    "editor.fontFamily": "monospace",
+    "editor.fontSize": 14,
+    "editor.formatOnSave": true,
+    "editor.minimap.enabled": true,
+    "editor.renderControlCharacters": true,
+    "editor.renderWhitespace": "all",
+    "editor.smoothScrolling": true,
+    "editor.suggest.shareSuggestSelections": true,
+    "editor.suggestSelection": "first",
+    "editor.wordWrap": "on",
+    "editor.wrappingIndent": "indent",
+    // Explorer:
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.openEditors.visible": 12,
+    // Auto-save:
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 5000,
+    // Terminal:
+    "terminal.external.linuxExec": "gnome-terminal",
+    "terminal.integrated.allowChords": false,
+    "terminal.integrated.confirmOnExit": true,
+    "terminal.integrated.fontFamily": "monospace",
+    "terminal.integrated.fontSize": 14,
+    // Debug:
+    "debug.allowBreakpointsEverywhere": true,
+    "debug.node.autoAttach": "off",
+    // Git:
+    "diffEditor.ignoreTrimWhitespace": false,
+    "diffEditor.renderSideBySide": true,
+    "git-graph.maxDepthOfRepoSearch": 1,
+    // TODO highlight:
+    "todo-tree.general.tags": [
+        "FIXME",
+        "TODO",
+    ],
+    "todo-tree.highlights.defaultHighlight": {
+        "fontWeight": "bold",
+        "foreground": "#FF9600",
+        "type": "tag"
+    },
+    "todo-tree.highlights.customHighlight": {
+        "TODO": {
+            "icon": "pin",
+            "iconColour": "orange",
+        },
+        "FIXME": {
+            "icon": "alert",
+            "iconColour": "red",
+        }
+    },
+    "todo-tree.tree.showScanModeButton": false,
+    // -------------
+    // Languages:
+    // Javascript:
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    // LaTeX:
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "lualatex",
+            "tools": [
+                "lualatex"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "lualatex",
+            "command": "lualatex",
+            "args": [
+                "--shell-escape",
+                "%DOC%.tex"
+            ],
+            "env": {}
+        }
+    ],
+    "latex-workshop.view.pdf.viewer": "tab",
+    // PHP:
+    "php.suggest.basic": false,
+    // Python & Django:
+    "emmet.includeLanguages": {
+        "django-html": "html"
+    },
+    "files.associations": {
+        "*.html": "django-html"
+    },
+    "python.jediEnabled": true,
+    "python.linting.pylintArgs": [
+        "--load-plugins=pylint_django"
+    ],
+    "python.pythonPath": "${workspaceRoot}/bin/python3.7",
+}</pre>
                         <p class="descr">Installer les extensions :</p>
                         <pre class="file">
 Auto close tags
