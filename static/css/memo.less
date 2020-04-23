@@ -71,6 +71,7 @@ body {
     #content {
         margin: 10px 40px 40px 40px;
         padding: 20px;
+        width: 100%;
 
         h1 {
             color: @green;
@@ -89,8 +90,22 @@ body {
             .descr,
             .file,
             .terminal {
-                margin: 20px;
                 padding: 7px;
+            }
+
+            .descr {
+                background-color: lightgrey;
+                border: 1px solid grey;
+                border-radius: 4px;
+                font-family: sans-serif;
+                font-size: 12pt;
+                margin: 20px;
+                text-align: justify;
+            }
+
+            .file,
+            .terminal {
+                margin: 10px 40px 0px 40px;
             }
 
             .file {
@@ -108,16 +123,6 @@ body {
                 color: white;
                 font-family: monospace;
                 font-size: 10pt;
-            }
-
-
-            .descr {
-                background-color: lightgrey;
-                border: 1px solid grey;
-                border-radius: 4px;
-                font-family: sans-serif;
-                font-size: 12pt;
-                text-align: justify;
             }
         }
 
