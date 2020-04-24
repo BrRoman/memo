@@ -222,8 +222,8 @@
                 <h4>WATCH</h4>
                     <table>
                         <tr>
-                            <td><p class="terminal">watch -n 5 <command></p></td>
-                            <td><p class="description">Exécute <command> toutes les 5 secondes et affiche le résultat rafraîchi dans le Terminal.</p></td>
+                            <td><p class="terminal">watch -n 5 &lt;command&gt;</p></td>
+                            <td><p class="description">Exécute &lt;command&gt; toutes les 5 secondes et affiche le résultat rafraîchi dans le Terminal.</p></td>
                         </tr>
                     </table>
 
@@ -457,6 +457,16 @@
                         <tr>
                             <td><p class="terminal">apt list --installed</p></td>
                             <td><p class="description">Liste des paquets installés.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">dpkg-query -f '${status} ${package}\n' -W | awk '$3 == "half-configured" {print $4}'</p></td>
+                            <td><p class="description">Liste des paquets à moitié installés.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">dpkg-query -f '${status} ${package}\n' -W | awk '$3 != "installed" {print $4}'</p></td>
+                            <td><p class="description">Idem.</p></td>
                         </tr>
 
                         <tr>
