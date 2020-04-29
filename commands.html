@@ -769,7 +769,12 @@ Number    Permission            Symbol
 5         Read + Execute        r-x
 6         Read + Write          rw-
 7         Read + Write +Execute rwx</pre></td>
-                            <td><p class="descr">Permission sur les fichiers et les dossiers. Ainsi 744 équivaut à "rwxr--r--", soit "lecture écriture exécution" pour "u" (user) et "lecture seule" pour "g" (group) et "o" (others).</p></td>
+                            <td><p class="descr">
+                                Permission sur les fichiers et les dossiers. Ainsi 744 équivaut à "rwxr--r--", soit "lecture écriture exécution" pour "u" (user) et "lecture seule" pour "g" (group) et "o" (others).
+                                Pour les dossiers : Read (r) : The ability to read the names of files stored in this directory.
+                                Write (w) : The ability to rename files in the directory, create new files, or delete existing files, if you also have Execute permissions. If you don't have execute perms, then write perms are meaningless.
+                                Execute (x) : The ability to cd into this directory, and access the files in this directory.
+                            </p></td>
                         </tr>
 
                         <tr>
