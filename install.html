@@ -514,6 +514,20 @@ Todo tree</pre>
                     <div class="group">
                         <p class="descr">Gimp et gimp-help-en (paquets), XnView (.deb), RawTherapee (paquet), Google chrome (.deb), Scribus (paquet).</p>
                     </div>
+
+
+                <h4>Installation automatique :</h4>
+                    <div class="group">
+                        <p class="descr">Exporter la liste des paquets installés :</p>
+                        <p class="terminal">dpkg --get-selections > my_package_list.txt</p>
+                        <p class="descr">Ou bien, pour exporter uniquement les paquets explicitement installés :</p>
+                        <p class="terminal">aptitude search -F '%p %C' '~i!~M' > my_package_list.txt</p>
+                        <p class="descr">Pour faire une installation à partir de cette lite :</p>
+                        <pre class="terminal">
+apt-cache dumpavail | dpkg --merge-avail
+dpkg --set-selections &lt; my_package_list.txt
+apt-get dselect-upgrade</pre>
+                    </div>
             </div>
         </div>
         <!-- END CONTENT -->
