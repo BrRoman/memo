@@ -121,7 +121,7 @@ set charset=utf-8
 set date_format="%d-%m-%Y %H:%M:%S%p"
 set delete=yes
 set edit_hdrs
-set editor="vim"
+set editor="vim -c 'set spell spelllang=fr'"
 set envelope_from_address="editeur@traditions-monastiques.com"
 set fast_reply
 set folder=~/Mail
@@ -131,7 +131,7 @@ set honor_followup_to
 set hostname="traditions-monastiques.com"
 set include=yes
 set index_format="%Z %D %-25.25L %s %*  |%-2.1X |%-4.4c"
-set ispell="aspell -e -c"
+set ispell="/usr/bin/aspell -d french -e -c"
 set mail_check=5
 set mailcap_path = ~/.mailcap
 set mime_forward=yes
