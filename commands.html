@@ -26,6 +26,7 @@
                 <a href="commands.html"><li>Commandes</li></a>
                 <a href="scripts.html"><li>Scripts</li></a>
                 <a href="python.html"><li>Python</li></a>
+                <a href="node.html"><li>Node</li></a>
                 <a href="mysql.html"><li>MySQL</li><a>
                 <a href="vim.html"><li>Vim</li></a>
                 <a href="git.html"><li>Git</li></a>
@@ -445,8 +446,13 @@
                 <h4>PAQUETS</h4>
                     <table>
                         <tr>
-                            <td><p class="terminal">sudo dpkg -i *.deb</p></td>
+                            <td><p class="terminal">dpkg -i *.deb</p></td>
                             <td><p class="descr">Installer un paquet deb.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">dpkg --purge my_app</p></td>
+                            <td><p class="descr">Désinstaller une application installée avec un paquet deb (faire un dpkg --list + grep pour faire la liste et rechercher le nom exact de l'application).</p></td>
                         </tr>
 
                         <tr>
