@@ -175,12 +175,9 @@ meteor --port 3113</pre>
 
                 <h4>ELECTRON :</h4>
                     <div class="group">
-                        <p class="descr">Dans le dossier de l'application Electron :</p>
+                        <p class="descr">Installation :</p>
                         <pre class="terminal">
-npm install && npm start</pre>
-                        <p class="descr">Quand l'installation est terminée, mais que la postinstallation d'Electron bloque, lancer cette commande dans le dossier node_modules :</p>
-                        <pre class="terminal">
-npx cross-env ELECTRON_GET_USE_PROXY=true GLOBAL_AGENT_HTTPS_PROXY=http://192.168.1.11:8080 node node_modules/electron/install</pre>
+ELECTRON_GET_USE_PROXY=true GLOBAL_AGENT_HTTPS_PROXY=http://192.168.1.11:8080 npm install --save-dev electron</pre>
                     </div>
             </div>
         </div>
