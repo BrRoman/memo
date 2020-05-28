@@ -26,7 +26,7 @@
                 <a href="commands.html"><li>Commandes</li></a>
                 <a href="scripts.html"><li>Scripts</li></a>
                 <a href="python.html"><li>Python</li></a>
-                <a href="node.html"><li>Node</li></a>
+                <a href="js.html"><li>Javascript</li></a>
                 <a href="mysql.html"><li>MySQL</li><a>
                 <a href="vim.html"><li>Vim</li></a>
                 <a href="git.html"><li>Git</li></a>
@@ -178,6 +178,23 @@ meteor --port 3113</pre>
                         <p class="descr">Installation :</p>
                         <pre class="terminal">
 ELECTRON_GET_USE_PROXY=true GLOBAL_AGENT_HTTPS_PROXY=http://192.168.1.11:8080 npm install --save-dev electron</pre>
+                    </div>
+
+                <h4>METEOR :</h4>
+                    <div class="group">
+                        <p class="descr">Installation (sudo) :</p>
+                        <pre class="terminal">
+curl --proxy http://192.168.1.11:8080 https://install.meteor.com | sh</pre>
+                        <p class="descr">Meteor behind a proxy :</p>
+                        <pre class="terminal">
+export HTTP_PROXY=http://192.168.1.11:8080
+export HTTPS_PROXY=http://192.168.1.11:8080
+meteor update</pre>
+                        <p class="descr">Créer une application :</p>
+                        <pre class="terminal">
+meteor create --react my_app
+cd my_app
+meteor</pre>
                     </div>
             </div>
         </div>
