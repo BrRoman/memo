@@ -65,9 +65,9 @@ fdisk -l
                     </div>
 
 
-                <h4>Installer aptitude, curl, tree, htop, ncdu, rsync, locate, imagemagick et imagemagick-doc, aspell-fr.</h4>
+                <h4>Installer aptitude, curl, tree, htop, ncdu, rsync, locate, imagemagick et imagemagick-doc, aspell-fr, mplayer, calcurse (ou taskwarrior).</h4>
 
-                
+
                 <h4>Configurer le réseau.</h4>
 
 
@@ -240,6 +240,11 @@ application/pdf; /usr/bin/evince %s; test=test -n "$DISPLAY"</pre>
                     <div class="group">
                         <p class="descr">Ajouter o+rx sur le dossier /media/frromain.</p>
 
+                        <p class="descr">Dans le fichier /etc/apache2/envvars, changer www-data en frromain aux lignes suivantes, pour que les fichiers écrits par apache aient frromain comme propriétaire :</p>
+                        <pre class="file">
+export APACHE_RUN_USER=frromain
+export APACHE_RUN_GROUP=frromain</pre>
+
                         <p class="descr">Dupliquer /etc/apache2/sites-available/000-default.conf avant de le modifier ainsi :</p>
                         <pre class="file">
 &lt;VirtualHost *:80&gt;
@@ -321,15 +326,16 @@ password=my_super_password</pre>
 
                 <h4>Polices :</h4>
                     <div class="group">
-                        <p class="descr">Fonts à copier dans /etc/share/fonts (ttf dans truetype et otf dans opentype). Puis :</p>
+                        <p class="descr">Fonts à copier dans /usr/share/fonts (ttf dans truetype et otf dans opentype). Puis :</p>
                         <p class="terminal">fc-cache -fv</p>
                     </div>
 
 
                 <h4>LaTeX :</h4>
                     <div class="group">
-                        <p class="descr">Installer texlive texlive-luatex texlive-xetex texlive-lang-european texlive-lang-french.</p>
+                        <p class="descr">Installer texlive texlive-luatex texlive-xetex texlive-lang-european texlive-lang-french texlive-extra-utils.</p>
                         <p class="descr">Ne pas installer texlive-full, qui semble faire des problèmes.</p>
+                        <p class="descr">texlive-extra-utils contient latexindent, qui sert pour VSCode (formattage et compilation lors du Ctrl-S).</p>
                     </div>
                 
 
@@ -512,7 +518,7 @@ Todo tree</pre>
 
                 <h4>Autres logiciels :</h4>
                     <div class="group">
-                        <p class="descr">Gimp et gimp-help-en (paquets), XnView (.deb), RawTherapee (paquet), Audacity, Google chrome (.deb), Scribus (paquet).</p>
+                        <p class="descr">Gimp et gimp-help-en (paquets), XnView (.deb), RawTherapee (paquet), Audacity, Google chrome (.deb), Scribus (paquet), Anki (paquet), FBReader pour lire les epubs (paquet).</p>
                     </div>
 
 
