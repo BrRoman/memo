@@ -297,7 +297,7 @@
 
                         <tr>
                             <td><p class="terminal">mount /dev/disk/by-id/ata-ST31500341AS_9VS2AM04-part1 /some/dir</p></td>
-                            <td><p class="descr">Idem by verbose path (other names: /dev/disk/by-uuid/, /dev/disk/by-path/, /dev/disk/by-label/.</p></td>
+                            <td><p class="descr">Idem by verbose path (other names: /dev/disk/by-uuid/, /dev/disk/by-path/, /dev/disk/by-label/).</p></td>
                         </tr>
 
                         <tr>
@@ -891,6 +891,11 @@ Number    Permission            Symbol
                         <tr>
                             <td><p class="terminal">paste</p></td>
                             <td><p class="descr">Fusionne plusieurs fichiers en plusieurs colonnes séparées par des tabs :<br>$ cat state Arunachal Pradesh Assam Andhra Pradesh Bihar Chhattisgrah<br>$ cat capital Itanagar Dispur Hyderabad Patna Raipur<br>$ paste number state capital 1       Arunachal Pradesh       Itanagar 2       Assam   Dispur 3       Andhra Pradesh  Hyderabad 4       Bihar   Patna 5       Chhattisgrah    Raipur</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">nl file1 > file2</p></td>
+                            <td><p class="descr">Ajoute le numéro de ligne devant chaque ligne de file1. Il faut rediriger vers un autre fichier (file2) sous peine de se retrouver avec un fichier vide.</p></td>
                         </tr>
                     </table>
 
