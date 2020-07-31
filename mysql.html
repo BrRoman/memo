@@ -32,13 +32,13 @@
             </ul>
         </nav>
 
-        <!-- CONTENT -->
 
         <!-- CONTENT -->
         <div class="d-flex flex-column align-items-center w-75 mx-auto">
             <div id="content" class="w-100 m-3 p-2">
                 <h1>MySQL</h1>
                     <h5 class="descr text-center mb-5">Les chevrons (>>>) indiquent que la commande doit être exécutée dans un shell MySQL.</h5>
+
 
                 <h4>USERS</h4>
                     <div class="group">
@@ -71,6 +71,14 @@
                     <p class="descr">Compter les enregistrements de 'table' :</p>
                         <pre class="terminal">
 >>> SELECT COUNT(*) FROM table;</pre>
+                    </div>
+
+
+                <h4>RECHERCHES</h4>
+                    <div class="group">
+                    <p class="descr">Avec le mot clé BINARY, la recherche devient sensible à la casse :</p>
+                        <pre class="terminal">
+>>> SELECT nom, prenom FROM Personnes WHERE BINARY nom LIKE 'DE %';</pre>
                     </div>
 
 
