@@ -203,7 +203,8 @@ image/jpeg; /usr/bin/eog %s; test=test -n "$DISPLAY"
 image/jpg; /usr/bin/eog %s; test=test -n "$DISPLAY"
 image/png; /usr/bin/eog %s; test=test -n "$DISPLAY"
 image/tiff; /usr/bin/eog %s; test=test -n "$DISPLAY"
-application/pdf; /usr/bin/evince %s; test=test -n "$DISPLAY"</pre>
+application/pdf; /usr/bin/evince %s; test=test -n "$DISPLAY"
+audio/x-wav; /usr/bin/mplayer %s; test=test -n "$DISPLAY"</pre>
                         <p class="descr">Enfin lancer fetchmail (en mode nossl) et mutt :<p>
                         <p class="terminal">rm ~/.fetchmail.pid; fetchmail --nosslcertck -av -d 10; mutt</p>
                     </div>
