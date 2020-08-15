@@ -60,7 +60,7 @@
                             <td><p class="descr">Version du système.</p></td>
                         </tr>
                         <tr>
-                            <td><p class="terminal">sudo hwclock –show</p></td>
+                            <td><p class="terminal">hwclock –show</p></td>
                             <td><p class="descr">Heure du système.</p></td>
                         </tr>
                         <tr>
@@ -252,7 +252,7 @@
                         </tr>
 
                         <tr>
-                            <td><p class="terminal">sudo netdiscover -r 192.168.1.0/24</p></td>
+                            <td><p class="terminal">netdiscover -r 192.168.1.0/24</p></td>
                             <td><p class="descr">Scanne le réseau local.</p></td>
                         </tr>
 
@@ -286,7 +286,7 @@
                         </tr>
 
                         <tr>
-                            <td><p class="terminal">sudo fdisk -l</p></td>
+                            <td><p class="terminal">fdisk -l</p></td>
                             <td><p class="descr">Liste des devices (indique notamment la partition de boot).</p></td>
                         </tr>
 
@@ -306,7 +306,7 @@
                         </tr>
 
                         <tr>
-                            <td><p class="terminal">sudo blkid</p></td>
+                            <td><p class="terminal">blkid</p></td>
                             <td><p class="descr">Locate/print block device attributes.</p></td>
                         </tr>
 
@@ -340,7 +340,7 @@
                 <h4>MODULES</h4>
                     <table>
                         <tr>
-                            <td><p class="terminal">sudo modprobe <nom_du_module></p></td>
+                            <td><p class="terminal">modprobe <nom_du_module></p></td>
                             <td><p class="descr">Charger un module kernel.</p></td>
                         </tr>
 
@@ -404,12 +404,12 @@
                         </tr>
 
                         <tr>
-                            <td><p class="terminal">cd /etc/systemd/system sudo chmod a+x sdcard.service  systemctl --system daemon-reload  systemctl start sdcard.service</p></td>
+                            <td><p class="terminal">cd /etc/systemd/system chmod a+x sdcard.service  systemctl --system daemon-reload  systemctl start sdcard.service</p></td>
                             <td><p class="descr">Pour ajouter le service sdcard.service.</p></td>
                         </tr>
 
                         <tr>
-                            <td><p class="terminal">sudo systemctl stop sdcard.service sudo systemctl disable sdcard.service sudo rm sdcard.service sudo rm sdcard.service sudo systemctl daemon-reload  sudo systemctl reset-failed</p></td>
+                            <td><p class="terminal">systemctl stop sdcard.service systemctl disable sdcard.service rm sdcard.service rm sdcard.service systemctl daemon-reload  systemctl reset-failed</p></td>
                             <td><p class="descr">Pour supprimer le service sdcard.service.</p></td>
                         </tr>
                     </table>
@@ -559,12 +559,12 @@
                 <h4>KEYS</h4>
                     <table>
                         <tr>
-                            <td><p class="terminal">wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -</p></td>
+                            <td><p class="terminal">wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -</p></td>
                             <td><p class="descr">Ajouter une clé.</p></td>
                         </tr>
 
                         <tr>
-                            <td><p class="terminal">wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key --keyring /tmp/test add -</p></td>
+                            <td><p class="terminal">wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key --keyring /tmp/test add -</p></td>
                             <td><p class="descr">Ajouter une clé dans un autre dossier que /etc/apt/.</p></td>
                         </tr>
 
@@ -904,7 +904,7 @@ Number    Permission            Symbol
                     <table>
                         <tr>
                             <td><p class="terminal">./configure<br>make<br>make install</p></td>
-                            <td><p class="descr">1. Configure the software<br>The configure script is responsible for getting ready to build the software on your specific system. It makes sure all of the dependencies for the rest of the build and install process are available, and finds out whatever it needs to know to use those dependencies.<br>Unix programs are often written in C, so we’ll usually need a C compiler to build them. In these cases the configure script will establish that your system does indeed have a C compiler, and find out what it’s called and where to find it.<br>2. Build the software<br>Once configure has done its job, we can invoke make to build the software. This runs a series of tasks defined in a Makefile to build the finished program from its source code.<br>The tarball you download usually doesn’t include a finished Makefile. Instead it comes with a template called Makefile.in and the configure script produces a customised Makefile specific to your system.3. Install the software<br>Now that the software is built and ready to run, the files can be copied to their final destinations. The make install command will copy the built program, and its libraries and documentation, to the correct locations.<br>This usually means that the program’s binary will be copied to a directory on your PATH, the program’s manual page will be copied to a directory on your MANPATH, and any other files it depends on will be safely stored in the appropriate place.<br>Since the install step is also defined in the Makefile, where the software is installed can change based on options passed to the configure script, or things the configure script discovered about your system.<br>Depending on where the software is being installed, you might need escalated permissions for this step so you can copy files to system directories. Using sudo will often do the trick.</p></td>
+                            <td><p class="descr">1. Configure the software<br>The configure script is responsible for getting ready to build the software on your specific system. It makes sure all of the dependencies for the rest of the build and install process are available, and finds out whatever it needs to know to use those dependencies.<br>Unix programs are often written in C, so we’ll usually need a C compiler to build them. In these cases the configure script will establish that your system does indeed have a C compiler, and find out what it’s called and where to find it.<br>2. Build the software<br>Once configure has done its job, we can invoke make to build the software. This runs a series of tasks defined in a Makefile to build the finished program from its source code.<br>The tarball you download usually doesn’t include a finished Makefile. Instead it comes with a template called Makefile.in and the configure script produces a customised Makefile specific to your system.3. Install the software<br>Now that the software is built and ready to run, the files can be copied to their final destinations. The make install command will copy the built program, and its libraries and documentation, to the correct locations.<br>This usually means that the program’s binary will be copied to a directory on your PATH, the program’s manual page will be copied to a directory on your MANPATH, and any other files it depends on will be safely stored in the appropriate place.<br>Since the install step is also defined in the Makefile, where the software is installed can change based on options passed to the configure script, or things the configure script discovered about your system.<br>Depending on where the software is being installed, you might need escalated permissions for this step so you can copy files to system directories. Using will often do the trick.</p></td>
                         </tr>
                     </table>
 
@@ -1071,7 +1071,7 @@ Number    Permission            Symbol
                         </tr>
                         
                         <tr>
-                            <td><p class="terminal">sudo netstat -tnpa | grep 'ESTABLISHED.*ssh'</p></td>
+                            <td><p class="terminal">netstat -tnpa | grep 'ESTABLISHED.*ssh'</p></td>
                             <td><p class="descr">Liste de toutes les connexions ssh en cours.</p></td>
                         </tr>
                         
