@@ -82,6 +82,12 @@
 >>> SELECT nom, prenom FROM Personnes WHERE BINARY nom LIKE 'DE %';</pre>
                     </div>
 
+                    <div class="group">
+                    <p class="descr">GROUP BY avec COUNT(*) (ici on compte le nombre de mails de chaque personne) :</p>
+                        <pre class="terminal">
+>>> SELECT id_personne, COUNT(*) AS nb_mails FROM Mails GROUP BY id_personne ORDER BY nb_mails;</pre>
+                    </div>
+
 
                 <h4>FIELDS</h4>
                     <div class="group">
