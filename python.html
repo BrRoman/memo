@@ -98,6 +98,25 @@ if any((x, y, z)):
 >>> sorted(xs.items(), key=operator.itemgetter(1))
 [('d', 1), ('c', 2), ('b', 3), ('a', 4)]</pre>
 
+                        <p class="descr">La méthode get() peut être appliquée à un dict, et on peut lui donner une valeur par défaut :</p>
+                        <pre class="terminal">
+# The get() method on dicts
+# and its "default" argument
+
+name_for_userid = {
+    382: "Alice",
+    590: "Bob",
+    951: "Dilbert",
+}
+
+def greeting(userid):
+    return "Hi %s!" % name_for_userid.get(userid, "there")
+
+>>> greeting(382)
+"Hi Alice!"
+
+>>> greeting(333333)
+"Hi there!"</pre>
                         <p class="descr">Merger deux dictionnaires :</p>
                         <pre class="terminal">
 # How to merge two dictionaries
@@ -124,6 +143,33 @@ if any((x, y, z)):
 # See:
 <a href="https://t.dripemail2.com/c/eyJhY2NvdW50X2lkIjoiNjIxNDUwMCIsImRlbGl2ZXJ5X2lkIjoiYnV1azgzbDhtN3oydmo4YXhnbXYiLCJ1cmwiOiJodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PUR1ZXh3MDhLYUM4XHUwMDI2X19zPWxjdGdqaGZ2cmNveWl1NHk0NW5pIn0</pre>
 ">https://t.dripemail2.com/c/eyJhY2NvdW50X2lkIjoiNjIxNDUwMCIsImRlbGl2ZXJ5X2lkIjoiYnV1azgzbDhtN3oydmo4YXhnbXYiLCJ1cmwiOiJodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PUR1ZXh3MDhLYUM4XHUwMDI2X19zPWxjdGdqaGZ2cmNveWl1NHk0NW5pIn0</a></pre>
+                    </div>
+
+
+                <h4>TUPLES</h4>
+                    <div class="group">
+                        <p class="descr">Utiliser un tuple nommé peut s'avérer plus rapide que de définir une classe :</p>
+                        <pre class="terminal">
+# Why Python is Great: Namedtuples
+# Using namedtuple is way shorter than
+# defining a class manually:
+>>> from collections import namedtuple
+>>> Car = namedtuple('Car', 'color mileage')
+    
+# Our new "Car" class works as expected:
+>>> my_car = Car('red', 3812.4)
+>>> my_car.color
+'red'
+>>> my_car.mileage
+3812.4
+ 
+# We get a nice string repr for free:
+>>> my_car
+Car(color='red' , mileage=3812.4)
+    
+# Like tuples, namedtuples are immutable:
+>>> my_car.color = 'blue'
+AttributeError: "can't set attribute"</pre>
                     </div>
 
 
