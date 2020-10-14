@@ -40,6 +40,34 @@
                     <h5 class="descr text-center mb-5">Les chevrons (>>>) indiquent que la commande doit être exécutée dans un shell Python.</h5>
 
 
+                <h4>THE ZEN OF PYTHON</h4>
+                    <div class="group">
+                        <pre class="terminal">
+>>> import this
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!</pre>
+                    </div>
+
+
                 <h4>COMMANDES SYSTÈME</h4>
                     <div class="group">
                         <p class="descr">Exécuter une commande système en Python :</p>
@@ -82,6 +110,27 @@ if any((x, y, z)):
 
                 <h4>OPÉRATIONS SUR LES DICTIONNAIRES</h4>
                     <div class="group">
+                        <p class="descr">Affichier un dictionnaire avec le module json :</p>
+                        <pre class="terminal">
+# The standard string repr for dicts is hard to read:
+>>> my_mapping = {'a': 23, 'b': 42, 'c': 0xc0ffee}
+>>> my_mapping
+{'b': 42, 'c': 12648430. 'a': 23}  # 😞
+
+# The "json" module can do a much better job:
+>>> import json
+>>> print(json.dumps(my_mapping, indent=4, sort_keys=True))
+{
+    "a": 23,
+    "b": 42,
+    "c": 12648430
+}
+
+# Note this only works with dicts containing
+# primitive types (check out the "pprint" module):
+>>> json.dumps({all: 'yup'})
+TypeError: keys must be a string</pre>
+
                         <p class="descr">Trier un dictionnaire par les values :</p>
                         <pre class="terminal">
 # How to sort a Python dict by value
@@ -170,6 +219,27 @@ Car(color='red' , mileage=3812.4)
 # Like tuples, namedtuples are immutable:
 >>> my_car.color = 'blue'
 AttributeError: "can't set attribute"</pre>
+                    </div>
+
+
+                <h4>FONCTIONS</h4>
+                    <div class="group">
+                        <p class="descr">Function argument unpacking:</p>
+                        <pre class="terminal">
+# Why Python Is Great:
+# Function argument unpacking
+
+def myfunc(x, y, z):
+    print(x, y, z)
+
+tuple_vec = (1, 0, 1)
+dict_vec = {'x': 1, 'y': 0, 'z': 1}
+
+>>> myfunc(*tuple_vec)
+1, 0, 1
+
+>>> myfunc(**dict_vec)
+1, 0, 1</pre>
                     </div>
 
 
