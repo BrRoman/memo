@@ -86,6 +86,30 @@ Namespaces are one honking great idea -- let's do more of those!</pre>
                     </div>
 
 
+                <h4>VARIABLES</h4>
+                    <div class="group">
+                        <p class="descr">Inverser les valeurs de deux variables :</p>
+                        <pre class="terminal">
+# Why Python Is Great:
+# In-place value swapping
+
+# Let's say we want to swap
+# the values of a and b...
+a = 23
+b = 42
+
+# The "classic" way to do it
+# with a temporary variable:
+tmp = a
+a = b
+b = tmp
+
+# Python also lets us
+# use this short-hand:
+a, b = b, a</pre>
+                    </div>
+
+
                 <h4>TESTS MULTIPLES</h4>
                     <div class="group">
                         <pre class="terminal">
@@ -219,6 +243,31 @@ Car(color='red' , mileage=3812.4)
 # Like tuples, namedtuples are immutable:
 >>> my_car.color = 'blue'
 AttributeError: "can't set attribute"</pre>
+                    </div>
+
+
+                <h4>TEMPS</h4>
+                    <div class="group">
+                        <p class="descr">Mesurer la durée d'exécution d'un bout de code avec timeit :</p>
+                        <pre class="terminal">
+# The "timeit" module lets you measure the execution
+# time of small bits of Python code
+  
+>>> import timeit
+>>> timeit.timeit('"-".join(str(n) for n in range(100))',
+                  number=10000)
+
+0.3412662749997253
+
+>>> timeit.timeit('"-".join([str(n) for n in range(100)])',
+                  number=10000)
+
+0.2996307989997149
+  
+>>> timeit.timeit('"-".join(map(str, range(100)))',
+                  number=10000)
+  
+0.24581470699922647</pre>
                     </div>
 
 
