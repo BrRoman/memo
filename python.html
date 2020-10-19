@@ -126,7 +126,7 @@ if 1 in (x, y, z):
 # These only test for truthiness:
 if x or y or z:
     print('passed')
-  
+
 if any((x, y, z)):
     print('passed')</pre>
                     </div>
@@ -166,7 +166,7 @@ TypeError: keys must be a string</pre>
 [('d', 1), ('c', 2), ('b', 3), ('a', 4)]
 
 # Or:
-  
+
 >>> import operator
 >>> sorted(xs.items(), key=operator.itemgetter(1))
 [('d', 1), ('c', 2), ('b', 3), ('a', 4)]</pre>
@@ -194,15 +194,15 @@ def greeting(userid):
                         <pre class="terminal">
 # How to merge two dictionaries
 # in Python 3.5+
-  
+
 >>> x = {'a': 1, 'b': 2}
 >>> y = {'b': 3, 'c': 4}
-  
+
 >>> z = {**x, **y}
 
 >>> z
 {'c': 4, 'a': 1, 'b': 3}
-  
+
 # In Python 2.x you could
 # use this:
 >>> z = dict(x, **y)
@@ -252,7 +252,7 @@ AttributeError: "can't set attribute"</pre>
                         <pre class="terminal">
 # The "timeit" module lets you measure the execution
 # time of small bits of Python code
-  
+
 >>> import timeit
 >>> timeit.timeit('"-".join(str(n) for n in range(100))',
                   number=10000)
@@ -263,10 +263,10 @@ AttributeError: "can't set attribute"</pre>
                   number=10000)
 
 0.2996307989997149
-  
+
 >>> timeit.timeit('"-".join(map(str, range(100)))',
                   number=10000)
-  
+
 0.24581470699922647</pre>
                     </div>
 
