@@ -287,6 +287,81 @@ dict_vec = {'x': 1, 'y': 0, 'z': 1}
 
 >>> myfunc(**dict_vec)
 1, 0, 1</pre>
+
+                        <p class="descr">Functions are first-class citizens in Python:</p>
+                        <pre class="terminal">
+# Functions are first-class citizens in Python:
+
+# They can be passed as arguments to other functions,
+# returned as values from other functions, and
+# assigned to variables and stored in data structures.
+
+>>> def myfunc(a, b):
+...     return a + b
+...
+>>> funcs = [myfunc]
+>>> funcs[0]
+<function myfunc at 0x107012230>
+>>> funcs[0](2, 3)
+5</pre>
+
+                        <p class="descr">On peut utiliser une fonction pour émuler un switch/case:</p>
+                        <pre class="terminal">
+# Because Python has first-class functions they can
+# be used to emulate switch/case statements
+
+def dispatch_if(operator, x, y):
+    if operator == 'add':
+        return x + y
+    elif operator == 'sub':
+        return x - y
+    elif operator == 'mul':
+        return x * y
+    elif operator == 'div':
+        return x / y
+    else:
+        return None
+
+
+def dispatch_dict(operator, x, y):
+    return {
+        'add': lambda: x + y,
+        'sub': lambda: x - y,
+        'mul': lambda: x * y,
+        'div': lambda: x / y,
+    }.get(operator, lambda: None)()
+
+
+>>> dispatch_if('mul', 2, 8)
+16
+
+>>> dispatch_dict('mul', 2, 8)
+16
+
+>>> dispatch_if('unknown', 2, 8)
+None
+
+>>> dispatch_dict('unknown', 2, 8)
+None</pre>
+                    </div>
+
+
+                <h4>SERVEUR WEB</h4>
+                    <div class="group">
+                        <p class="descr">On peut créer un serveur web basique avec la librairie standard de Python:</p>
+                        <pre class="terminal">
+# Python has a HTTP server built into the
+# standard library. This is super handy for
+# previewing websites.
+
+# Python 3.x
+$ python3 -m http.server
+
+# Python 2.x
+$ python -m SimpleHTTPServer 8000
+
+# (This will serve the current directory at
+#  http://localhost:8000)</pre>
                     </div>
 
 
