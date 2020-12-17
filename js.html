@@ -56,6 +56,22 @@ npm config set strict-ssl false</pre>
 npm config list</pre>
                     </div>
 
+
+                <h4>YARN (alternative à NPM) :</h4>
+                    <div class="group">
+                        <p class="descr">Configuration du repository :</p>
+                        <pre class="terminal">
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list</pre>
+                        <p class="descr">Installation :</p>
+                        <pre class="terminal">
+apt update && sudo apt install yarn</pre>
+                        <p class="descr">Vérification :</p>
+                        <pre class="terminal">
+yarn --version</pre>
+                    </div>
+
+
                 <h4>EXPRESS :</h4>
                     <div class="group">
                         <p class="descr">Installation d'express-generator, puis d'un skeleton Express (avec Pug comme moteur de template) :</p>
