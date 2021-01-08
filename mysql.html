@@ -138,6 +138,17 @@
                     </div>
 
 
+                <h4>EXPORTER DANS UN FICHIER</h4>
+                    <div class="group">
+                    <p class="descr">On n'a pas le droit d'exporter partout. Il faut d'abord rechercher dans quel répertoire on a le droit d'exporter :</p>
+                        <pre class="terminal">
+>>> SHOW VARIABLES LIKE "secure_file_priv";</pre>
+                    <p class="descr">Ensuite exporter le statement dans ce répertoire (ici /var/lib/mysql-files/):</p>
+                        <pre class="terminal">
+>>> SELECT Ref_TM, Titre, Sous_titre INTO OUTFILE '/var/lib/mysql-files/books.txt' FIELDS TERMINATED BY "|" FROM Objets WHERE Cat_objet = 1 ORDER BY Ref_TM;</pre>
+                    </div>
+
+
                 <h4>DIVERS</h4>
                     <div class="group">
                     <p class="descr">Utile pour repérer une erreur (par ex. échec de création d’une clé étrangère) :</p>
