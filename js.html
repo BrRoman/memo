@@ -92,7 +92,12 @@ npm install --save-dev nodemon</pre>
 "start": "node ./bin/www",
 "devstart": "nodemon ./bin/www",
 "serverstart": "DEBUG=my_project:* npm run devstart"
-},</pre>                    </div>
+},</pre>
+
+                        <p class="descr">En cas de problème du type "[nodemon] Internal watch failed: ENOSPC: System limit for number of file watchers reached…", augmenter (en tant que su) le nombre de max_user_watches :</p>
+                        <pre class="terminal">
+sysctl -w fs.inotify.max_user_watches=165536</pre>
+                    </div>
 
 
                 <h4>INSTALLATION DE MONGODB :</h4>
