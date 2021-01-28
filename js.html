@@ -150,7 +150,7 @@ mongo -u &lt;username&gt; -p &lt;password&gt; --authenticationDatabase &lt;dbnam
 >>> db.&lt;collectionName&gt;.insert([{field1: "value1"}, {field1: "value2"}])</pre>
                       <p class="descr">Update :</p>
                         <pre class="terminal">
->>> db.<collectionName>.save({"_id": new ObjectId("jhgsdjhgdsf"), field1: "value", field2: "value"})
+>>> db.&lt;collectionName&gt;.save({"_id": new ObjectId("jhgsdjhgdsf"), field1: "value", field2: "value"})
 </pre>
                       <p class="descr">Display :</p>
                         <pre class="terminal">
