@@ -215,11 +215,23 @@ curl --proxy http://192.168.1.11:8080 https://install.meteor.com | sh</pre>
 export HTTP_PROXY=http://192.168.1.11:8080
 export HTTPS_PROXY=http://192.168.1.11:8080
 meteor update</pre>
+
                         <p class="descr">Créer une application :</p>
                         <pre class="terminal">
 meteor create --react my_app
 cd my_app
 meteor</pre>
+
+                        <p class="descr">Pour résoudre le problème du max_user_watches, lancer cette commande en tant que su :
+                            <pre class="terminal">
+echo fs.inotify.max_user_watches = 524288 | tee -a /etc/sysctl.conf && sudo sysctl -p
+vim /proc/sys/fs/inotify/max_user_watches</pre> 
+                        </p>
+
+                        <p class="descr">Pour connaître l'url de la mini database mongo :
+                            <pre class="terminal">
+meteor mongo -U</pre> 
+                        </p>
                     </div>
             </div>
         </div>
