@@ -111,6 +111,14 @@
                     </div>
 
 
+                <h4>OPÉRATIONS MATHÉMATIQUES</h4>
+                    <div class="group">
+                    <p class="descr">Cette commande fait, pour tous les Objets dont le champ Ref_TM commence par "L1", la somme des montants dans la table Charges et la divise par le champ Chiffre_tirage de la table Objets (le GROUP BY final ne sert à rien mais évite la levée d'une erreur) :</p>
+                        <pre class="terminal">
+>>> SELECT o.Ref_TM, (SUM(c.montant) / o.Chiffre_tirage) AS prix_revient FROM Charges AS c INNER JOIN Objets AS o ON o.ID = c.ID_objet WHERE o.Ref_TM LIKE "L1%" GROUP BY o.ID;</pre>
+                    </div>
+
+
                 <h4>PROCÉDURES STOCKÉES</h4>
                     <div class="group">
                     <p class="descr">Créer une procédure stockée (mettre à jour un verset de la polyglotte s'il existe, sinon le créer) :</p>
