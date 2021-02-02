@@ -119,6 +119,37 @@
                     </div>
 
 
+                <h4>JSON</h4>
+                    <div class="group">
+                    <p class="descr">On peut exporter un statement au format JSON grâce à la combinaison des commandes JSON_ARRAYAGG() et JSON_OBJECT() :</p>
+                        <pre class="terminal">
+>>> SELECT JSON_ARRAYAGG(JSON_OBJECT(
+    'ref_tm', Ref_TM,
+    'ean', EAN,
+    'category', Cat_objet,
+    'title', Titre,
+    'sub_title', Sous_titre,
+    'author', Auteur
+))
+FROM Objets
+WHERE ID = 159;</pre>
+
+                    <p class="descr">Il est possible d'imbriquer plusieurs JSON_ARRAYAGG() en cas de jointure de tables (ici Charges et Objets) :</p>
+                        <pre class="terminal">
+>>> SELECT JSON_ARRAYAGG(JSON_OBJECT(
+    'ref_tm', o.Ref_TM,
+    'ean', o.EAN,
+    'category', o.Cat_objet,
+    'title', o.Titre,
+    'sub_title', o.Sous_titre,
+    'author', o.Auteur,
+    'charges', (SELECT JSON_ARRAYAGG(JSON_OBJECT('charge', c.Charge, 'montant', c.Montant)) FROM Charges AS c WHERE c.ID_objet = o.ID)
+))
+INTO OUTFILE '/var/lib/mysql-files/objects.json'
+FROM Objets AS o;</pre>
+                    </div>
+
+
                 <h4>PROCÉDURES STOCKÉES</h4>
                     <div class="group">
                     <p class="descr">Créer une procédure stockée (mettre à jour un verset de la polyglotte s'il existe, sinon le créer) :</p>
