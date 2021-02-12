@@ -547,10 +547,15 @@ listen 8000
 listen 8001
 listen 8002</pre>
 
-                        <p class="descr">Installer le module wsgi pour Apache :</p>
+                        <p class="descr">Installer le module wsgi pour Apache. Comme le paquet libapache2-mod-wsgi-py3 d'Ubuntu n'est pas adapté à python3.7, il faut installer le module from sources. Après avoir téléchargé mod_wsgi-4.6.5.tar.gz, le désarchiver :</p>
                         <pre class="terminal">
-aptitude install libapache2-mod-wsgi-py3</pre>
-                        <p class="descr">Remarque :<br>Il se peut que le module ne soit pas adapté à la version de Django utilisée, auquel cas il faut l’installer from sources.</p>
+tar xvfz mod_wsgi-4.6.5.tar.gz</pre>
+                        <p class="descr">Puis installer le module :</p>
+                        <pre class="terminal">
+cd mod_wsgi-4.6.5
+./configure
+make
+make install</pre>
                         <p class="descr">Si besoin de MySQL :</p>
                         <pre class="terminal">
 aptitude install libssl-dev python3.7-dev libmysqlclient-dev</pre>
