@@ -78,6 +78,17 @@
                     </div>
 
 
+                <h4>UPDATE</h4>
+                    <div class="group">
+                    <p class="descr">Mettre à jour tous les enregistrements d'une table (ici Objets) en attribuant à un champ une valeur extraite d'une table jointe (ici Interpretes_CD) (on fait le INNER JOIN et ensuite le SET):</p>
+                        <pre class="terminal">
+>>> UPDATE Objets AS o
+    INNER JOIN Interpretes_CD AS i
+    ON o.Interprete_CD = i.ID
+    SET o.Interprete = i.Interprete;</pre>
+                    </div>
+
+
                 <h4>RECHERCHES</h4>
                     <div class="group">
                     <p class="descr">Avec le mot clé BINARY, la recherche devient sensible à la casse :</p>
