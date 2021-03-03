@@ -66,6 +66,9 @@
                     <p class="descr">Mettre une table en utf8 :</p>
                         <pre class="terminal">
 >>> ALTER TABLE Table CONVERT TO CHARACTER SET utf8;</pre>
+                    <p class="descr">Modifier une colonne :</p>
+                        <pre class="terminal">
+>>> ALTER TABLE Table CHANGE ancien_nom nouveau_nom VARCHAR(25) DEFAULT NULL;</pre>
                     <p class="descr">Renommer une table :</p>
                         <pre class="terminal">
 >>> RENAME TABLE Xxx TO Yyy;</pre>
