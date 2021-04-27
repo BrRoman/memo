@@ -739,6 +739,25 @@ If you run the command chain you specify, the invocation ./script.sh 4 will be i
                     </table>
 
 
+                <h4>NOMBRES</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">seq 1 10</p></td>
+                            <td><p class="descr">Écrit les nombres de 1 à 10 en colonne.</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">seq -f "%02g" 6</p></td>
+                            <td><p class="descr">Écrit les nombres de 1 à 6 avec 4 caractères ('0001' etc.).</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">jot 10</p></td>
+                            <td><p class="descr">Écrit les nombres de 1 à 10 en colonne.</p></td>
+                        </tr>
+                    </table>
+
+
                 <h4>DOSSIERS</h4>
                     <table>
                         <tr>
@@ -845,8 +864,8 @@ Number    Permission            Symbol
                         </tr>
 
                         <tr>
-                            <td><p class="terminal">jot 36</p></td>
-                            <td><p class="descr">Écrit les nombres de 1 à 36.</p></td>
+                            <td><p class="terminal">touch $(seq -f "file%g" 1 10)</p></td>
+                            <td><p class="descr">Créer les fichiers 'file1', 'file2'… 'file10'.</p></td>
                         </tr>
 
                         <tr>
