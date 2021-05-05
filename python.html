@@ -430,19 +430,24 @@ $ python -m SimpleHTTPServer 8000
                         <p class="descr">Installation de virtualenv (en su -):</p>
                         <pre class="terminal">
 pip3 install virtualenv</pre>
+
                         <p class="descr">Création du projet my_project dans un environnement virtuel :</p>
                         <pre class="terminal">
 virtualenv -p python3.7 my_project
 cd my_project</pre>
+
                       <p class="descr">Activer l’environnement virtuel :</p>
                         <pre class="terminal">
 source bin/activate</pre>
+
                       <p class="descr">Installer un module (ici Django) dans l'environnement virtuel :</p>
                         <pre class="terminal">
 pip install Django</pre>
+
                       <p class="descr">Installer des modules à partir d'un fichier :</p>
                         <pre class="terminal">
 pip install -r requirements.txt</pre>
+
                       <p class="descr">Tester la version de Django :</p>
                         <pre class="terminal">
 >>> import django;
@@ -456,6 +461,7 @@ pip install -r requirements.txt</pre>
                         <pre class="terminal">
 django-admin startproject my_project
 cd my_project</pre>
+
                         <p class="descr">Démarrer l'application sur 'http://localhost:8003' :</p>
                         <pre class="terminal">
 ./manage.py runserver 8003</pre>
@@ -488,9 +494,11 @@ cd my_project</pre>
     - form.is_valid()
     - contains widget
     - labels, help_texts etc.</pre>
+
                         <p class="descr">Les différents niveaux de tests : module, type (fichier), classe, fonction :</p>
                         <pre class="terminal">
 ./manage.py test [module.tests[.test_models[.TestClass[.unit_test]]]]</pre>
+
                         <p class="descr">Avec coverage et une sortie html :</p>
                         <pre class="terminal">
 coverage run manage.py test; coverage html</pre>
@@ -502,10 +510,12 @@ coverage run manage.py test; coverage html</pre>
                         <p class="descr">Installer tempus-dominus :</p>
                         <pre class="terminal">
 pip install django-tempus-dominus</pre>
+
                         <p class="descr">Ensuite dans settings.py :</p>
                         <pre class="file">
 1. Installed apps: ajouter ‘tempus_dominus’.
 2. Ajouter tout en bas une option pour dire à Django de ne pas aller chercher les scripts sur le Cloud : TEMPUS_DOMINUS_INCLUDE_ASSETS = False</pre>
+
                         <p class="descr">Ensuite installer lesdits scripts dans le dossier static, en allant les chercher sur le Cloud :</p>
                         <pre class="file">
 https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js
@@ -541,6 +551,7 @@ NameVirtualHost *:8000
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 &lt;/VirtualHost&gt;</pre>
+
                         <p class="descr">Commentaires :<br>Le dossier static est celui dans lequel collectstatic va placer tous les fichiers statiques.<br>S'il y a plusieurs sites distingués uniquement par le port, ajouter un "listen" par port en tête des virtual hosts :</p>
                         <pre class="terminal">
 listen 8000
@@ -550,15 +561,18 @@ listen 8002</pre>
                         <p class="descr">Installer le module wsgi pour Apache. Comme le paquet libapache2-mod-wsgi-py3 d'Ubuntu n'est pas adapté à python3.7, il faut installer le module from sources. Après avoir téléchargé mod_wsgi-4.6.5.tar.gz, le désarchiver :</p>
                         <pre class="terminal">
 tar xvfz mod_wsgi-4.6.5.tar.gz</pre>
+
                         <p class="descr">Puis installer le module :</p>
                         <pre class="terminal">
 cd mod_wsgi-4.6.5
 ./configure
 make
 make install</pre>
+
                         <p class="descr">Si besoin de MySQL :</p>
                         <pre class="terminal">
 aptitude install libssl-dev python3.7-dev libmysqlclient-dev</pre>
+
                         <p class="descr">Modifier settings.py :</p>
                         <pre class="file">
 DEBUG = False
@@ -573,6 +587,7 @@ TEMPLATES = [
 …
 STATIC_URL = '/static/'
 STATIC_ROOT = '/home/fr_romain/Sites/infirmerie/infirmerie/static_files/'</pre>
+
                         <p class="descr">Modifier wsgi.py :</p>
                         <pre class="file">
 import os
@@ -588,7 +603,6 @@ for path in paths:
 from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'infirmerie.settings')
 application = get_wsgi_application()</pre>
-
                     </div>
             </div>
         </div>
