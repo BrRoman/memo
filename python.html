@@ -533,18 +533,18 @@ NameVirtualHost *:8000
 &lt;VirtualHost *:8000&gt;
     ServerName python.asj.com
     ServerAdmin editeur@traditions-monastiques.com
-    DocumentRoot /home/fr_romain/Sites/infirmerie/infirmerie
-    WSGIDaemonProcess infirmerie.asj.com processes=2 threads=15 display-name=%{GROUP} python-home=/home/fr_romain/Sites/infirmerie python-path=/home_fr_romain/Sites/infirmerie/infirmerie
+    DocumentRoot /home/frromain/Sites/infirmerie/infirmerie
+    WSGIDaemonProcess infirmerie.asj.com processes=2 threads=15 display-name=%{GROUP} python-home=/home/frromain/Sites/infirmerie python-path=/home_frromain/Sites/infirmerie/infirmerie
     WSGIProcessGroup infirmerie.asj.com
-    WSGIScriptAlias / /home/fr_romain/Sites/infirmerie/infirmerie/infirmerie/wsgi.py
-    &lt;Directory /home/fr_romain/Sites/infirmerie/infirmerie/infirmerie&gt;
+    WSGIScriptAlias / /home/frromain/Sites/infirmerie/infirmerie/infirmerie/wsgi.py
+    &lt;Directory /home/frromain/Sites/infirmerie/infirmerie/infirmerie&gt;
         &lt;Files wsgi.py&gt;
             Require all granted
         &lt;/Files&gt;
     &lt;/Directory&gt;
 
-    Alias /static/ /home/fr_romain/Sites/infirmerie/infirmerie/static_files/
-    &lt;Directory /home/fr_romain/Sites/infirmerie/infirmerie/static_files&gt;
+    Alias /static/ /home/frromain/Sites/infirmerie/infirmerie/static_files/
+    &lt;Directory /home/frromain/Sites/infirmerie/infirmerie/static_files&gt;
         Require all granted
     &lt;/Directory&gt;
 
@@ -581,20 +581,20 @@ ALLOWED_HOSTS = ['*']
 …
 TEMPLATES = [
     …
-    'DIRS': ['/home/fr_romain/Sites/infirmerie/infirmerie/templates'],
+    'DIRS': ['/home/frromain/Sites/infirmerie/infirmerie/templates'],
     …
 ]
 …
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/fr_romain/Sites/infirmerie/infirmerie/static_files/'</pre>
+STATIC_ROOT = '/home/frromain/Sites/infirmerie/infirmerie/static_files/'</pre>
 
                         <p class="descr">Modifier wsgi.py :</p>
                         <pre class="file">
 import os
 import sys
 paths = [
-    '/home/fr_romain/Sites/infirmerie/infirmerie',
-    '/home/fr_romain/Sites/infirmerie/lib/python3.7/site-packages',
+    '/home/frromain/Sites/infirmerie/infirmerie',
+    '/home/frromain/Sites/infirmerie/lib/python3.7/site-packages',
 ]
 for path in paths:
     if path not in sys.path:
