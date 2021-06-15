@@ -686,6 +686,14 @@ If you run the command chain you specify, the invocation ./script.sh 4 will be i
                         </tr>
                     </table>
 
+                <h4>CHAÎNES</h4>
+                    <table>
+                        <tr>
+                            <td><p class="terminal">printf "%s.\n" $(seq 10)</p></td>
+                            <td><p class="descr">Affiche les nombres de 1 à 10 + point + retour à la ligne.</p></td>
+                        </tr>
+                    </table>
+
 
                 <h4>FIND</h4>
                     <table>
@@ -707,6 +715,11 @@ If you run the command chain you specify, the invocation ./script.sh 4 will be i
                         <tr>
                             <td><p class="terminal">find ~ -type f -mmin -3 -exec grep -Fl 'rc' {} \;</p></td>
                             <td><p class="descr">Combiner find et grep (fichier modifié il y a moins de 3 minutes et contenant 'rc').</p></td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="terminal">find . -type f -name wsgi.py -execdir test -f settings.py \; -printf '%h\n'</p></td>
+                            <td><p class="descr">Afficher les dossiers contenant à la fois un fichier "wsgi.py" et un fichier "settings.py" ('execdir': exécute une commande sur le dossier contenant le fichier trouvé, '%h' = folder).</p></td>
                         </tr>
                     </table>
 
